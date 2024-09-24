@@ -14,11 +14,12 @@ import {
   useDisclosure,
   VStack,
 } from "@chakra-ui/react";
-import Image from "next/image";
-import logo from "../assets/logo.webp";
-import { Link } from "@chakra-ui/next-js";
+import logo from  '../assets/logo.webp'
+import { Image, Link } from "@chakra-ui/next-js";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import theme from "../theme";
+
+
 function Nav() {
 //   const { isOpen, onOpen, onClose } = useDisclosure();
   const {
@@ -138,10 +139,10 @@ function Nav() {
                     About Us
                   </Link>
 
-                  <Link href="/growth" onClick={onMobileMenuClose}>
+                  <Link href="/services" onClick={onMobileMenuClose}>
                     Our Services
                   </Link>
-                  <Link href="/e-solution" onClick={onMobileMenuClose}>
+                  <Link href="/autoclub" onClick={onMobileMenuClose}>
                     Autoclub
                   </Link>
 
