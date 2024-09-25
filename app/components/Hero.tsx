@@ -16,7 +16,7 @@ import Nav from "./Nav";
 function Hero() {
   return (
     <>
-      <Box color="whiteText" height="110vh" width="100vw">
+      <Box color="whiteText" height="110vh" >
         <Flex
           flexDirection="column"
           zIndex={1}
@@ -56,8 +56,8 @@ function Hero() {
                 A fair price in seconds, mechanics you can trust, day service at
                 your door
               </Text>
-              <Box w="full">
-                <Text color="red.500" mb={2}>
+              <Flex w="full" flexDir='column' gap='.5rem' >
+                <Text color="white" mb={2}>
                   Buying a Used Car?
                 </Text>
                 <Flex gap="1rem">
@@ -66,19 +66,23 @@ function Hero() {
                     // bg="white"
                     color="white"
                     borderRadius="12rem"
+                    focusBorderColor="white"
                   />
                   <Button
                     borderRadius="12rem"
                     bgColor="white"
-                    padding="1rem"
+                    padding="1rem 2.5rem"
                     fontSize="sm"
                     fontWeight={400}
                     color="black"
+                    _hover={{
+                      bgColor:'gray.300'
+                    }}
                   >
                     Search VIN
                   </Button>
                 </Flex>
-              </Box>
+              </Flex>
               <HStack spacing={8}>
                 <VStack align="flex-start">
                   <Text>1000+ Google Reviews</Text>

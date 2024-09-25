@@ -108,7 +108,7 @@ import {
               <Button
               
                 as="a"
-                href="/socials"
+                href="/booking"
                 fontSize='sm' // Responsive font size
                 padding={theme.buttonPadding}
                 bgColor="buttonOrange"
@@ -147,7 +147,7 @@ import {
                       Autoclub
                     </Link>
   
-                    <Link href="/socials" onClick={onMobileMenuClose}>
+                    <Link href="/booking" onClick={onMobileMenuClose}>
                       Book an Appointment
                     </Link>
                   </VStack>

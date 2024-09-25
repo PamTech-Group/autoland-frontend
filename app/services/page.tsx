@@ -4,7 +4,6 @@ import servicesHero from "../assets/servicesHero.webp";
 import quote from "../assets/services_quotes.webp";
 import wedo1 from "../assets/wedo1.webp";
 import wedo2 from "../assets/wedo2.webp";
-import left_wedo from "../assets/left_wedo.webp"
 import { Image } from "@chakra-ui/next-js";
 
 import NavWhite from "../components/NavWhite";
@@ -12,7 +11,7 @@ import SectionComponent from "../components/SectionComponent";
 
 function Services() {
   return (
-    <Box bgColor="white">
+    <Box bgColor='backgroundWhite'>
       <NavWhite />
       <Box
         padding={{
@@ -147,19 +146,18 @@ function Services() {
           </Flex> */}
           <SectionComponent
             title="Computerised Auto Repair & Services"
-            description="At AutoLand, we specialize in computerized auto repair and services for precise diagnostics. Our advanced technology quickly identifies issues, enhancing your vehicle's performance and safety. Trust our skilled technicians to ensure your car is in expert hands, from diagnosis to final repair."
-            buttonText="Book an Appointment"
-            
+            description="At AutoLand, we specialize in computerized auto repair and services for precise diagnostics. Our advanced technology quickly identifies issues, enhancing your vehicle's        
+             performance and safety. Trust our skilled technicians to ensure your car is in expert hands, from diagnosis to final repair."
             imageSrc2={wedo1} // Update with your image path
             isReverse={false}
           />
 
           <SectionComponent
             title="AC / Electrical Repairs"
-            description="At AutoLand, we take a detail-oriented approach to AC and electrical repairs, ensuring reliable vehicle function. Our services enhance comfort, improve safety, and boost efficiency. Using the latest technology and best practices, we deliver precise repairs. Trust our expertise to keep your car's systems in expert hands, from diagnosis to repair."
-            buttonText="Book an Appointment"
-            imageSrc2={wedo2} // Update with your image path
-            isReverse={true} // Image on the left side
+            description="At AutoLand, we take a detail-oriented approach to AC and electrical repairs, ensuring reliable vehicle function. Our services enhance comfort, improve safety, and boost 
+             efficiency. Using the latest technology and best practices, we deliver precise repairs. Trust our expertise to keep your car's systems in expert hands, from diagnosis to repair."
+            imageSrc2={wedo2} 
+             isReverse={true} 
           />
         </Box>
       </Box>

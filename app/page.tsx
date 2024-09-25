@@ -6,7 +6,7 @@ import Footer from "./components/Footer";
 
 export default function Home() {
   return (
-    <Box bg='white'>
+    <Box bgColor='backgroundWhite'>
       <Hero />
       <Body/>
       <Footer/>
