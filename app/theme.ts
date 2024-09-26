@@ -10,10 +10,10 @@ const theme = extendTheme({
   config,
   breakpoints: {
     base: "0em",
-    sm: "20em",    // 320px
+    sm: "20em", // 320px
     mini: "31.25em", // 500px
-    md: "48em",    // 768px
-    lg: "60em",    // 960px
+    md: "48em", // 768px
+    lg: "60em", // 960px
     xl: "68.75em", // 1100px
     myxl: "76.25em", // 1220px
     // myxxl: "75.85em", // 1310px
@@ -26,13 +26,13 @@ const theme = extendTheme({
   colors: {
     primaryBlue: "#00204F",
     secondaryBlue: "#0D2B57",
-    backgroundWhite: '#FFFFFF',
+    backgroundWhite: "#FFFFFF",
     mildBackground: "#E4EDF6",
     whiteText: "#FAF9F6",
-   buttonOrange: '#FF0000',
+    buttonOrange: "#FF0000",
     backgroundCard: "#FFFFFC",
     text: "#333333",
-   
+    inputBg: "#33333333",
   },
   fontSizes: {
     xs: ".7rem",

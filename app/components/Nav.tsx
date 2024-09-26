@@ -107,7 +107,7 @@ function Nav() {
             <Button
             
               as="a"
-              href="/socials"
+              href="/booking"
               fontSize='sm' // Responsive font size
               padding={theme.buttonPadding}
               bgColor="buttonOrange"
@@ -146,7 +146,7 @@ function Nav() {
                     Autoclub
                   </Link>
 
-                  <Link href="/socials" onClick={onMobileMenuClose}>
+                  <Link href="/booking" onClick={onMobileMenuClose}>
                     Book an Appointment
                   </Link>
                 </VStack>
