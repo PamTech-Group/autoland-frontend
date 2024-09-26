@@ -22,7 +22,7 @@ const theme = extendTheme({
     dddxl: "125em", // 2000px
     xdxl: "175em", // 2800px
   },
-
+  vmargin: "3rem",
   colors: {
     primaryBlue: "#00204F",
     secondaryBlue: "#0D2B57",

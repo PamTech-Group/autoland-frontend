@@ -22,10 +22,17 @@ import mazda from "../assets/mazda.webp";
 import lexus from "../assets/lexus.webp";
 import acura from "../assets/acura.webp";
 import subaru from "../assets/subaru.webp";
-import nissan from "../assets/subaru.webp";
-import suzuki from "../assets/subaru.webp";
-import isuzu from "../assets/subaru.webp";
-import mitsubishi from "../assets/subaru.webp";
+import nissan from "../assets/nissan.webp";
+import suzuki from "../assets/suzuki.webp";
+import isuzu from "../assets/isuzu.webp";
+import ford from "../assets/ford.webp";
+import dodge from "../assets/dodge.webp"
+import chevrolet from "../assets/chevrolet.webp"
+import jeep from "../assets/jeep.webp"
+import audi from "../assets/audi.webp"
+import benz from "../assets/benz.webp"
+import bmw from "../assets/bmw.webp"
+import mitsubishi from "../assets/mitsubishi.webp";
 import choose_us from "../assets/choose_us.webp";
 import partner1 from "../assets/partner1.webp";
 import partner2 from "../assets/partner2.webp";
@@ -37,8 +44,12 @@ import Image from "next/image";
 //import { FaToolbox } from "react-icons/fa";
 import { MdSettings } from "react-icons/md";
 import YouTube from "react-youtube";
+import theme from "../theme";
+import { useState } from "react";
 
 function Body() {
+  const [selectedCountry, setSelectedCountry] = useState('japanese');
+
   const services = [
     { image: service1, title: "Computerised Auto Diagnosis" },
     { image: service2, title: "Maintenance / Lube Check" },
@@ -47,24 +58,30 @@ function Body() {
     { image: service5, title: "Body Shop / V-Upgrade and Conversion" },
     { image: service6, title: "Wheel alignment / Balancing" },
   ];
-  const carBrands = [
-    { image: toyota, name: "Toyota" },
-    { image: mazda, name: "Mazda" },
-    { image: lexus, name: "Lexus" },
-    { image: acura, name: "Acura" },
-    { image: subaru, name: "Subaru" },
-    { image: nissan, name: "Nissan" },
-    { image: suzuki, name: "Suzuki" },
-    { image: isuzu, name: "Isuzu" },
-    { image: mitsubishi, name: "Mitsubishi" },
-  ];
-  // const partners =[
-  //   { image: partner1, name: "partner1" },
-  //   { image: partner2, name: "partner2" },
-  //   { image: partner3, name: "partner3" },
-  //   { image: partner4, name: "partner4" },
-  //   { image: partner5, name: "partner5" },
-  //   { image: partner6, name: "partner6" },
+  const carBrands = {
+    japanese: [
+      { image: toyota, name: "Toyota" },
+      { image: mazda, name: "Mazda" },
+      { image: lexus, name: "Lexus" },
+      { image: acura, name: "Acura" },
+      { image: subaru, name: "Subaru" },
+      { image: nissan, name: "Nissan" },
+      { image: suzuki, name: "Suzuki" },
+      { image: isuzu, name: "Isuzu" },
+      { image: mitsubishi, name: "Mitsubishi" },
+    ],
+    american: [
+      { image: ford, name: "Ford" },
+      { image: dodge, name: "Dodge" },
+      { image: chevrolet, name: "Chevrolet" },
+      { image: jeep, name: "Jeep" },
+    ],
+    german: [
+      { image: audi, name: "Audi" },
+      { image: benz, name: "Mercedes-Benz" },
+      { image: bmw, name: "BMW" },
+    ],
+  };
 
   // ]
   const testimonials = [
@@ -74,20 +91,21 @@ function Body() {
     
   ];
   const carTips = [
-    "vXKotssNyIA", 
-    "riMLis8Ga7U",
-    "G9yit6oJink",
+    "R04Ik_0HhX4", 
+    "0g7KNhlep_o",
+    "UZ3r4ejxkwA",
     
   ];
   const opts = {
-    height: "200",
-    width: "300",
+    height: "250",
+    width: "350",
     playerVars: {
       autoplay: 0,
     },
   };
   return (
-    <Box
+    <Flex 
+    flexDirection='column' 
       color="text"
       padding={{
         base: "0.5rem 0.5rem",
@@ -95,7 +113,7 @@ function Body() {
         md: "1rem 4rem",
         lg: "1rem 4rem",
       }}
-      m="0 auto"
+     m='0 auto'
     >
       <Flex
         justifyContent="center"
@@ -118,11 +136,11 @@ function Body() {
         </Flex>
       </Flex>
       {/* OUR SERVICES */}
-      <Box p={8}>
-        <Heading as="h2" size="sm" mb={6} color="primaryBlue">
+      <Box my={theme.vmargin} >
+        <Heading textAlign='left' as="h2" size="md" mb={6} color="primaryBlue">
           Our Services
         </Heading>
-        <SimpleGrid flexWrap="wrap" columns={3} gap={6}>
+        <SimpleGrid flexWrap="wrap" columns={3} gap={6} rowGap={12}>
           {services.map((service, index) => (
             <Box
               key={index}
@@ -131,52 +149,70 @@ function Body() {
               borderRadius="md"
               overflow="hidden"
               boxShadow="md"
-              height="100%"
+              height="fit-content"
             >
-              <Box height="85%">
+              <Box height="85%" width='100%'>
                 <Image
                   src={service.image}
                   alt={service.title}
-                  width={350}
-                  height={100}
+                  style={{objectFit:'cover', width:'100%'}}
                 />
               </Box>
-              <VStack height="15%" p={4} align="start">
-                <Text fontWeight="bold">{service.title}</Text>
+              <VStack height="15%" p={4} align="start" py='2rem'>
+                <Text fontWeight={600} fontSize='sm'>{service.title}</Text>
               </VStack>
             </Box>
           ))}
         </SimpleGrid>
       </Box>
       {/** Car MAKE WE SERVICE */}
-      <Box>
-        <VStack spacing={8} align="stretch">
-          <Heading as="h2" size="sm" textAlign="left" color="primaryBlue">
+      <Box my={theme.vmargin} bgColor='#F0F8FF' padding='6rem 3rem'>
+        <Box>
+          <Heading as="h2" size="md" mb='2.5rem' textAlign="left" color="primaryBlue">
             Car Make We Service
           </Heading>
 
-          <Flex justifyContent="center" mb={6}>
-            <Button colorScheme="blue" mr={2}>
+          <Flex p='1rem 2rem' margin='0 auto' width='min-content' justifyContent="center" mb={6} gap='2rem' bgColor='rgba(0, 32, 79, 0.05)'>
+            <Button 
+              color={selectedCountry === 'japanese' ? 'white' : 'text'} 
+              onClick={() => setSelectedCountry('japanese')}
+              bgColor={selectedCountry === 'japanese' ? 'primaryBlue' : 'transparent'}
+              _active={{ bgColor: 'primaryBlue', color: 'white' }}
+              _hover={{ bgColor: 'primaryBlue', color: 'white' }}
+
+              _focus={{color: 'white'}}
+            >
               JAPANESE
             </Button>
-            <Button variant="ghost" mr={2}>
+            <Button 
+              color={selectedCountry === 'american' ? 'white' : 'text'} 
+              onClick={() => setSelectedCountry('american')}
+              bgColor={selectedCountry === 'american' ? 'primaryBlue' : 'transparent'}
+              _hover={{ bgColor: 'primaryBlue', color: 'white' }}
+            >
               AMERICAN
             </Button>
-            <Button variant="ghost">GERMAN</Button>
+            <Button 
+              color={selectedCountry === 'german' ? 'white' : 'text'} 
+              onClick={() => setSelectedCountry('german')}
+              bgColor={selectedCountry === 'german' ? 'primaryBlue' : 'transparent'}
+              _hover={{ bgColor: 'primaryBlue', color: 'white' }}
+             
+            >
+              GERMAN
+            </Button>
           </Flex>
 
-          <Grid templateColumns="repeat(5, 1fr)" gap={6}>
-            {carBrands.map((brand, index) => (
+          <Grid mt='2rem' templateColumns="repeat(5, 1fr)" gap={6} placeItems='center' justifyContent='center'>
+            {carBrands[selectedCountry].map((brand, index) => (
               <Image
                 key={index}
                 src={brand.image}
                 alt={brand.name}
-                objectFit="contain"
-                height={30}
               />
             ))}
           </Grid>
-        </VStack>
+        </Box>
       </Box>
       {/* WHY CHOOSE US */}
       <Box>
@@ -185,7 +221,7 @@ function Body() {
         </Heading>
         <Flex justifyContent="space-between" alignItems="center">
           <Box>
-            <SimpleGrid columns={2} textColor="text">
+            <SimpleGrid columns={2} rowGap={12} textColor="text">
               <Flex alignItems="center" gap={5}>
                 <Icon
                   bgColor="primaryBlue"
@@ -235,12 +271,12 @@ function Body() {
                 <Text>Warrantee & Guarantee</Text>
               </Flex>
             </SimpleGrid>
-            <Box>
-              <Flex justifyContent="space-between">
+            <Box mt='2rem'>
+              <Flex justifyContent="space-between" mb='1rem'>
                 <Text>Client Satisfaction</Text>
                 <Text>90%</Text>
               </Flex>
-              <Progress bgColor="#eee" size="sm" value={90} />
+              <Progress  bgColor="#eee" size="sm" value={90} />
             </Box>
           </Box>
           <Box>
@@ -314,7 +350,7 @@ function Body() {
           ))}
         </SimpleGrid>
       </Box>
-    </Box>
+    </Flex>
   );
 }
 export default Body;

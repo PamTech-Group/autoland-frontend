@@ -40,7 +40,7 @@ function Hero() {
             }}
             width="100%"
             alignItems="center"
-            justifyContent="space-between"
+            justifyContent="space-around"
           >
             {/* Left side content */}
             <VStack
@@ -60,12 +60,15 @@ function Hero() {
                 <Text color="white" mb={2}>
                   Buying a Used Car?
                 </Text>
-                <Flex gap="1rem">
+                <Flex gap="1rem" alignItems='center'>
                   <Input
-                    placeholder="Enter Car VIN"
+                    placeholder="4Y1SL65848Z411439"
+                    _placeholder={{color:'#a3a3a3'}}
                     // bg="white"
                     color="white"
+                    padding="1.5rem 2.5rem"
                     borderRadius="12rem"
+                    borderColor='backgroundWhite'
                     focusBorderColor="white"
                   />
                   <Button
