@@ -35,56 +35,20 @@ const Privacy = () => {
       >
         <Heading my="2rem" fontSize={headingFontSize}>Privacy Policy</Heading>
         <VStack spacing="1.5rem" align="stretch">
-          <Text textAlign="justify" fontSize={textFontSize}>
-            Pamtech Group is committed to protecting your privacy. This Privacy
-            Policy outlines how we collect, use, disclose, and protect your
-            information when you visit our website, www.pamtechgroup.com. By
-            accessing or using our website, you agree to the terms outlined in
-            this Privacy Policy.
+          <Text textAlign="left" fontSize={textFontSize}>
+          Pamtech Autoland  is committed to protecting your privacy. This Privacy Policy outlines how we collect, use, disclose, and protect your information when you visit our website, www.pamtechgroup.com. By accessing or using our website, you agree to the terms outlined in this Privacy Policy.
           </Text>
-          <Text textAlign="justify" fontSize={textFontSize}>
-            We collect both personal information, such as your name and email
-            address, and non-personal information, such as your IP address and
-            browser type. We collect personal information that you voluntarily
-            provide to us, and we automatically collect non-personal information
-            when you visit our website. We also use cookies and similar tracking
-            technologies to enhance your experience on our website. These
-            technologies help us understand how you use our website and enable
-            us to provide you with a personalized experience. You can manage
-            your cookie preferences through your browser settings.
+          <Text textAlign="left" fontSize={textFontSize}>
+          We collect both personal information, such as your name and email address, and non-personal information, such as your IP address and browser type. We collect personal information that you voluntarily provide to us, and we automatically collect non-personal information when you visit our website. We also use cookies and similar tracking technologies to enhance your experience on our website. These technologies help us understand how you use our website and enable us to provide you with a personalized experience. You can manage your cookie preferences through your browser settings.
           </Text>
-          <Text textAlign="justify" fontSize={textFontSize}>
-            We may use the information we collect for various purposes,
-            including providing, operating, and maintaining our website,
-            responding to your inquiries or requests, sending you newsletters,
-            updates, and promotional materials, analyzing usage trends and
-            improving our website, complying with legal obligations, and
-            preventing fraudulent activities.
+          <Text textAlign="left" fontSize={textFontSize}>
+            We may use the information we collect for various purposes, We may use the information we collect for various purposes, including providing, operating, and maintaining our website, responding to your inquiries or requests, sending you newsletters, updates, and promotional materials, analyzing usage trends and improving our website, complying with legal obligations, and preventing fraudulent activities.
           </Text>
-          <Text textAlign="justify" fontSize={textFontSize}>
-            We do not sell, trade, or otherwise transfer your personal
-            information to third parties without your consent, except as
-            described in this Privacy Policy. We may share your information with
-            third-party service providers who assist us in operating our
-            website, conducting our business, or serving our users. We may also
-            disclose your information if required by law or in response to valid
-            legal requests from governmental authorities. In the event of a
-            merger, acquisition, or sale of all or a portion of our assets, your
-            information may be transferred to the acquiring party.
+          <Text textAlign="left" fontSize={textFontSize}>
+          We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except as described in this Privacy Policy. We may share your information with third-party service providers who assist us in operating our website, conducting our business, or serving our users. We may also disclose your information if required by law or in response to valid legal requests from governmental authorities. In the event of a merger, acquisition, or sale of all or a portion of our assets, your information may be transferred to the acquiring party.
           </Text>
-          <Text textAlign="justify" fontSize={textFontSize}>
-            We take reasonable measures to protect your personal information
-            from unauthorized access, alteration, disclosure, or destruction.
-            However, no method of transmission over the Internet or electronic
-            storage is 100% secure, and we cannot guarantee absolute security.
-            You have the right to access and update your personal information,
-            opt-out of receiving promotional communications, and request the
-            deletion of your personal information. Our website is not intended
-            for individuals under the age of 13, and we do not knowingly collect
-            personal information from children under 13. We may update this
-            Privacy Policy from time to time, and we will notify you of any
-            material changes. If you have any questions or concerns about this
-            Privacy Policy or our data practices, please contact us.
+          <Text textAlign="left" fontSize={textFontSize}>
+          We take reasonable measures to protect your personal information from unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the Internet or electronic storage is 100% secure, and we cannot guarantee absolute security. You have the right to access and update your personal information, opt-out of receiving promotional communications, and request the deletion of your personal information. Our website is not intended for individuals under the age of 13, and we do not knowingly collect personal information from children under 13. We may update this Privacy Policy from time to time, and we will notify you of any material changes. If you have any questions or concerns about this Privacy Policy or our data practices, please contact us.
           </Text>
           <Box textAlign="left" fontSize={textFontSize}>
             Pamtech Group <br />

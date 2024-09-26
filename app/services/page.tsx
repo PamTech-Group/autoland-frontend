@@ -8,6 +8,7 @@ import { Image } from "@chakra-ui/next-js";
 
 import NavWhite from "../components/NavWhite";
 import SectionComponent from "../components/SectionComponent";
+import Footer from "../components/Footer";
 
 function Services() {
   return (
@@ -161,6 +162,7 @@ function Services() {
           />
         </Box>
       </Box>
+      <Footer/>
     </Box>
   );
 }

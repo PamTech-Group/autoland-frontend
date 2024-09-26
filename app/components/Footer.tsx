@@ -1,11 +1,58 @@
-import { Box, Flex, Text, Link, VStack, HStack, Icon, useBreakpointValue } from "@chakra-ui/react";
+import { Box, Flex, Text, Link, VStack, HStack, Icon, useBreakpointValue,  } from "@chakra-ui/react";
 import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube, FaEnvelope } from "react-icons/fa";
 import logo from '../assets/logo.webp'
+import phoneImage from '../assets/phoneImage.webp'
 import Image from "next/image";
 function Footer() {
     const logoSize = useBreakpointValue({ base: 25, sm: 30 });
 
   return (
+    <>
+    {/* DOWNLOAD APP SECTION */}
+    <Box padding={{
+        base: "0.5rem 0.5rem",
+        sm: "0.75rem 2rem",
+        md: "1rem 4rem",
+        lg: "1rem 4rem",
+      }} color='text' > 
+      <Flex
+       my='10rem'
+        mx="auto"
+        px={{ base: 4, md: 8 }}
+        py='6rem'
+        direction={{ base: "column", md: "row" }}
+        align="center"
+        justify="space-between"
+         bg="#F0F8FF"
+
+         position='relative'
+      >
+        <Box   maxW={{ base: "100%", md: "50%" }} mb={{ base: 6, md: 0 }}>
+          <Text fontSize="xl" fontWeight={400} mb={2}>
+            Prefer booking on an app?
+          </Text>
+          <Text fontSize="xl" mb={4} fontWeight={600}>
+            <Text as="span" color="buttonOrange" >
+              Download
+            </Text>{" "}
+            our app for easy Booking planning.
+          </Text>
+          <Box textAlign='center' width='fit-content' color='white' p='.5rem 1rem' borderRadius='md' bgColor='buttonOrange' >
+            Coming Soon
+          </Box>
+        </Box>
+        <Box maxW={{ base: "100%", md: "50%" }} position='absolute' top='-25%' right='10%'>
+          <Image
+            src={phoneImage}
+            alt="App Screenshot"
+            width={400}
+            height={400}
+            objectFit="contain"
+          />
+        </Box>
+      </Flex>
+    </Box>
+{/* MAIN FOOTER */}
     <Box bg="primaryBlue" color="white"  padding={{
         base: "0.5rem 0.5rem",
         sm: "0.75rem 2rem",
@@ -67,7 +114,9 @@ function Footer() {
       <Box borderTop="1px" borderColor="gray.300" mt={10} pt={5}>
         <Text textAlign="center">Copyright © 2024 Pamtechautoland. All rights reserved.</Text>
       </Box>
+   
     </Box>
+    </>
   );
 }
 
