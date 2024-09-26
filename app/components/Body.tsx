@@ -216,7 +216,7 @@ function Body() {
       </Box>
       {/* WHY CHOOSE US */}
       <Box>
-        <Heading as="h2" size="sm" textAlign="left" color="primaryBlue">
+        <Heading as="h2" size="md" textAlign="left" color="primaryBlue">
           Why Choose Us
         </Heading>
         <Flex justifyContent="space-between" alignItems="center">
@@ -285,10 +285,10 @@ function Body() {
         </Flex>
       </Box>
       {/** OUR PARTNERS */}
-      <Box mb='3rem'>
+      <Box my={theme.vmargin}>
         <Heading
           as="h2"
-          size="sm"
+          size="md"
           textAlign="center"
           color="primaryBlue"
           my={10}
