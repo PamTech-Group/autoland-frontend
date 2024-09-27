@@ -34,21 +34,21 @@ function Booking(){
                 }} placeholder="Toyota" borderRadius='0'  focusBorderColor="transparent"  />
               </FormControl>
               <FormControl>
-                <FormLabel>Model</FormLabel>
+                <FormLabel fontWeight={500}>Model</FormLabel>
                 <Input paddingY='2rem' bg='inputBg' _placeholder={{
                     color: '#00000080'
-                }} placeholder="Toyota" borderRadius='0'  focusBorderColor="transparent"  />
+                }} placeholder="Highlander" borderRadius='0'  focusBorderColor="transparent"  />
               </FormControl>
             </HStack>
             <HStack spacing={12}>
               <FormControl>
-                <FormLabel>Year</FormLabel>
-                <Select placeholder="2008" bgColor='inputBg' focusBorderColor="transparent">
+                <FormLabel fontWeight={500}>Year</FormLabel>
+                <Select paddingY='2rem' placeholder="2008" bgColor='inputBg' focusBorderColor="transparent">
                   {/* Add more year options here */}
                 </Select>
               </FormControl>
               <FormControl>
-                <FormLabel>Engine Type:</FormLabel>
+                <FormLabel fontWeight={500}>Engine Type:</FormLabel>
                 <Input paddingY='2rem' bg='inputBg' _placeholder={{
                     color: '#00000080'
                 }} placeholder="Toyota" borderRadius='0'  focusBorderColor="transparent"  />
@@ -56,13 +56,13 @@ function Booking(){
             </HStack>
             <HStack spacing={12}>
               <FormControl>
-                <FormLabel>City</FormLabel>
+                <FormLabel fontWeight={500}>City</FormLabel>
                 <Input paddingY='2rem' bg='inputBg' _placeholder={{
                     color: '#00000080'
                 }} placeholder="Toyota" borderRadius='0'  focusBorderColor="transparent"  />
               </FormControl>
               <FormControl>
-                <FormLabel>Workshop Centre</FormLabel>
+                <FormLabel fontWeight={500}>Workshop Centre</FormLabel>
                 <Select placeholder="Owerri" bgColor='inputBg' focusBorderColor="transparent">
                   {/* Add more workshop options here */}
                 </Select>
@@ -70,20 +70,20 @@ function Booking(){
             </HStack>
             <HStack spacing={12}>
               <FormControl>
-                <FormLabel>Full Name</FormLabel>
+                <FormLabel fontWeight={500}>Full Name</FormLabel>
                 <Input paddingY='2rem' bg='inputBg' _placeholder={{
                     color: '#00000080'
                 }} placeholder="Toyota" borderRadius='0'  focusBorderColor="transparent"  />
               </FormControl>
               <FormControl>
-                <FormLabel>Phone NO:</FormLabel>
+                <FormLabel fontWeight={500}>Phone NO:</FormLabel>
                 <Input paddingY='2rem' bg='inputBg' _placeholder={{
                     color: '#00000080'
                 }} placeholder="Toyota" borderRadius='0'  focusBorderColor="transparent"  />
               </FormControl>
             </HStack>
             <FormControl>
-              <FormLabel>Email</FormLabel>
+              <FormLabel fontWeight={500}>Email</FormLabel>
               <Input paddingY='2rem' bg='inputBg' _placeholder={{
                     color: '#00000080'
                 }} placeholder="Toyota" borderRadius='0'  focusBorderColor="transparent"  />
@@ -94,7 +94,7 @@ function Booking(){
                     color: '#00000080'
                 }} placeholder="The issues you have with your vehicle" rows={4} />
             </FormControl>
-            <Checkbox defaultChecked >
+            <Checkbox colorScheme="gray" defaultChecked >
               I hereby confirm that I agree to Pamtech Terms and Conditions
             </Checkbox>
             <Button 

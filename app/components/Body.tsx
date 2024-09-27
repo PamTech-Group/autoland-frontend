@@ -115,7 +115,7 @@ function Body() {
         lg: "1rem 6rem",
         myxl: "1rem 8rem",
       }}
-     m='0 auto'
+    justifyContent='center'
     >
       <Flex
         justifyContent="center"
@@ -221,7 +221,7 @@ function Body() {
         <Heading as="h2" size="md" textAlign="left"  color="primaryBlue">
           Why Choose Us
         </Heading>
-        <Flex justifyContent="space-between" alignItems="center">
+        <Flex justifyContent="space-around" alignItems="center">
           <Box>
             <SimpleGrid columns={2} rowGap={12} textColor="text">
               <Flex alignItems="center" gap={5}>

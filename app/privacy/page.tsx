@@ -19,7 +19,7 @@ const Privacy = () => {
     sm: "2rem 2rem",
     md: "2rem 4rem",
     lg: "2rem 6rem",
-    xl: "2rem 8rem",
+    myxl: "2rem 8rem",
   });
   const headingFontSize = useBreakpointValue({ base: "2rem", md: "2.5rem", lg: "3rem" });
   const textFontSize = useBreakpointValue({ base: "1rem", md: "1.1rem", lg: "1.2rem" });

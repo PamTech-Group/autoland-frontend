@@ -72,7 +72,7 @@ function Nav() {
               gap={navSpacing}
               display={{ base: "none", xl: "flex" }} // Show from medium screens and above
               //   fontWeight={theme.fontWeights.medium}
-              color="text"
+              color="white"
               padding='1rem 1.5rem'
               borderRadius='lg'
               bgColor='rgba(243, 243, 243, 0.13)'

@@ -38,6 +38,7 @@ function Hero() {
               md: "1rem 4rem",
               lg: "1rem 4rem",
             }}
+            height='75%'
             width="100%"
             alignItems="center"
             justifyContent="space-around"
