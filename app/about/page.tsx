@@ -1,11 +1,13 @@
 "use client";
-import { Box, Flex,  Heading, IconButton, Text } from "@chakra-ui/react";
+import { Box, Flex,  Heading, IconButton, SimpleGrid, Text,  } from "@chakra-ui/react";
 import NavWhite from "../components/NavWhite";
 import { Image } from "@chakra-ui/next-js";
 import about_hero from "../assets/about_hero.webp";
 import TestimonialCard from "../components/TestimonialCard";
 import { useState } from "react";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
+import Footer from "../components/Footer";
+import theme from "../theme";
 const testimonials = [
     {
       name: "Mr. Obiora",
@@ -38,9 +40,11 @@ function About() {
       );
     };
   return (
-    <Box bgColor="backgroundWhite">
+    <Box bgColor="backgroundWhite" >
       <NavWhite />
-      <Box
+      <Flex
+    
+      flexDirection='column'
         padding={{
           base: "0.5rem 0.5rem",
           sm: "0.75rem 2rem",
@@ -48,26 +52,27 @@ function About() {
           lg: "1rem 4rem",
         }}
       >
-        <Flex mt="3rem" gap="2rem" alignItems="center" justifyContent="center">
-          <Flex flexGrow={1}>
+        <SimpleGrid columns={2} placeItems='center'    my={theme.vmargin} >
+          <Box width='fit-content'>
             <Image src={about_hero} alt="about us" />
-          </Flex>
+          </Box>
           <Flex flexDir="column" gap={4} textAlign="left">
             <Heading fontSize="md" fontWeight={600} color="secondaryBlue">
               Who We Are
             </Heading>
-            <Heading fontWeight={700} color="primaryBlue">
+            <Heading fontWeight={700} color="secondaryBlue">
               About Autoland
             </Heading>
-            <Text width="50%" color="text">
+            <Text width="80%" color="text">
               Pamtech Autoland is your top choice for quality auto parts,
               maintenance, and repairs. We care for your car to keep it safe and
               in great shape, using the latest technology for all your
               automotive needs
             </Text>
           </Flex>
-        </Flex>
-        <Box mt="4rem" textAlign="left" padding='2rem' bgColor='#F0F8FF'>
+        </SimpleGrid>
+        <Box my={theme.vmargin}  px={{ base: 4, md: 8 }}
+          py="6rem" textAlign="left"  bgColor='#F0F8FF'>
           <Heading fontSize="lg" fontWeight={600} color="primaryBlue" mb="2rem">
             See What Others Are <br/> Saying About Us
           </Heading>
@@ -94,7 +99,8 @@ function About() {
            
           </Flex>
         </Box>
-      </Box>
+      </Flex>
+      <Footer/>
     </Box>
   );
 }
