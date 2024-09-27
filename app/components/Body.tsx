@@ -8,7 +8,7 @@ import {
   Progress,
   SimpleGrid,
   Text,
-  VStack,
+
 } from "@chakra-ui/react";
 import { FaCar, FaComments, FaUsers } from "react-icons/fa6";
 import service1 from "../assets/service1.webp";
@@ -56,7 +56,7 @@ function Body() {
     { image: service2, title: "Maintenance / Lube Check" },
     { image: service3, title: "AC/ Electrical Repairs" },
     { image: service4, title: "Mechanical Repairs" },
-    { image: service5, title: "Body Shop / V-Upgrade and Conversion" },
+    { image: service5, title: "Body Shop and Conversion" },
     { image: service6, title: "Wheel alignment / Balancing" },
   ];
   const carBrands = {
@@ -117,12 +117,14 @@ function Body() {
       }}
     justifyContent='center'
     >
-      <Flex
+       <Flex
         justifyContent="center"
-        gap="2rem"
-        alignItems="center"
+        m='-4rem auto'
+        gap={{ base: "1rem", md: "2rem" }}
+        alignItems={{base:"left", lg: 'center'}}
+        flexDirection={{ base: "column", lg: "row" }}
         p={4}
-        mt="-8rem"
+        // mt={{ base: "-4rem", md: "-6rem", lg: "-8rem" }}
       >
         <Flex alignItems="center" gap={2}>
           <Icon as={FaUsers} boxSize={8} mb={2} />
@@ -139,12 +141,19 @@ function Body() {
       </Flex>
       {/* OUR SERVICES */}
       <Box my={theme.vmargin} >
-        <Heading textAlign='left' as="h2" size="md" mb={6} color="primaryBlue">
+        <Heading textAlign='left' as="h2" size="md" mt={{
+          base: 12,
+          md: 6
+        }} mb={{
+          base: 9,
+          md: 6
+        }} color="primaryBlue">
           Our Services
         </Heading>
-        <SimpleGrid flexWrap="wrap" columns={3} gap={6} rowGap={12}>
+        <SimpleGrid  columns={{ base: 1, sm: 2, lg: 3 }} gap={6} rowGap={12}>
           {services.map((service, index) => (
-            <Box
+            <Flex
+            flexDirection='column'
               key={index}
               bg="white"
               width="fit-content"
@@ -153,28 +162,34 @@ function Body() {
               boxShadow="md"
               height="fit-content"
             >
-              <Box height="85%" width='100%'>
+              <Box  width='100%'>
                 <Image
                   src={service.image}
                   alt={service.title}
                   style={{objectFit:'cover', width:'100%'}}
                 />
               </Box>
-              <VStack height="15%" p={4} align="start" py='2rem'>
+              <Flex flexGrow={1} p={4} align="start" py='2rem'>
                 <Text fontWeight={600} fontSize='sm'>{service.title}</Text>
-              </VStack>
-            </Box>
+              </Flex>
+            </Flex>
           ))}
         </SimpleGrid>
       </Box>
       {/** Car MAKE WE SERVICE */}
-      <Box my={theme.vmargin} bgColor='#F0F8FF' padding='6rem 3rem'>
+      <Box my={theme.vmargin} bgColor='#F0F8FF' padding={{ base: '3rem 1rem', lg: '4rem 2rem', xl: '6rem 3rem' }}>
         <Box>
           <Heading as="h2" size="md" mb='2.5rem' textAlign="left" color="primaryBlue">
             Car Make We Service
           </Heading>
 
-          <Flex p='1rem 2rem' margin='0 auto' width='min-content' justifyContent="center" mb={6} gap='2rem' bgColor='rgba(0, 32, 79, 0.05)'>
+          <Flex p={{ base: '0.5rem 1rem', md: '1rem 2rem' }}      margin='0 auto' 
+            width={{ base: '100%', md: 'min-content' }} 
+            justifyContent="center" 
+            mb={6} 
+            gap={{base: '1rem%', lg: '2rem'}}
+            bgColor='rgba(0, 32, 79, 0.05)'
+            flexWrap={{ base: 'wrap', md: 'nowrap' }}>
             <Button 
               color={selectedCountry === 'japanese' ? 'white' : 'text'} 
               onClick={() => setSelectedCountry('japanese')}
@@ -205,7 +220,7 @@ function Body() {
             </Button>
           </Flex>
 
-          <Grid mt='2rem' templateColumns="repeat(5, 1fr)" gap={6} placeItems='center' justifyContent='center'>
+          <Grid mt='2rem' templateColumns={{ base: "repeat(2, 1fr)", md: "repeat(3, 1fr)", lg: "repeat(4, 1fr)", xl: "repeat(5, 1fr)" }}  gap={6} placeItems='center' justifyContent='center'>
           {carBrands[selectedCountry as CountryKey].map((brand, index) => (
               <Image
                 key={index}
@@ -217,13 +232,19 @@ function Body() {
         </Box>
       </Box>
       {/* WHY CHOOSE US */}
-      <Box>
-        <Heading as="h2" size="md" textAlign="left"  color="primaryBlue">
+      <Box my={theme.vmargin}>
+        <Heading as="h2" size="md" textAlign="left" mt={{
+          base: 0,
+          md: 6
+        }} mb={{
+          base: 9,
+          md: 6
+        }}  color="primaryBlue">
           Why Choose Us
         </Heading>
-        <Flex justifyContent="space-around" alignItems="center">
+        <Flex flexDirection={{ base: "column", lg: "row" }} gap={{ base: "2rem", lg: "0" }} justifyContent="space-around" alignItems="center">
           <Box>
-            <SimpleGrid columns={2} rowGap={12} textColor="text">
+            <SimpleGrid  columns={{ base: 1, md: 2 }} rowGap={12} textColor="text">
               <Flex alignItems="center" gap={5}>
                 <Icon
                   bgColor="primaryBlue"
@@ -293,11 +314,18 @@ function Body() {
           size="md"
           textAlign="center"
           color="primaryBlue"
-          my={10}
+          mt={{
+            base: 12,
+            md: 10
+          }} mb={{
+            base: 12,
+            md: 10
+          }}
         >
           Our Partners & Clients
         </Heading>
-        <Flex justifyContent="center" gap="2.5rem">
+        <Flex justifyContent="center" gap="2.5rem"   flexWrap="wrap"
+          alignItems="center">
           <Image
             src={partner1}
             alt="partner1"
@@ -332,7 +360,7 @@ function Body() {
       </Box>
         {/* VIDEO SECTION */}
         <Box>
-        <Heading as="h2" size="sm" textAlign="left" color="primaryBlue" my={10}>
+        <Heading as="h2" size="md" textAlign="left" color="primaryBlue" my={10}>
           Our Customers Love Us
         </Heading>
         <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={10}>
@@ -343,7 +371,7 @@ function Body() {
       </Box>
 
       <Box>
-        <Heading as="h2" size="sm" textAlign="left" color="primaryBlue" my={10}>
+        <Heading as="h2" size="md" textAlign="left" color="primaryBlue" my={10}>
           Car Tip & Advice
         </Heading>
         <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={10}>

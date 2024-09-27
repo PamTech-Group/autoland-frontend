@@ -35,21 +35,21 @@ function Footer() {
         color="text"
       >
         <Flex
-          my="10rem"
+          my={{ base: "5rem", md: "10rem" }}
           mx="auto"
           px={{ base: 4, md: 8 }}
-          py="6rem"
+          py={{ base: "4rem", md: "6rem" }}
           direction={{ base: "column", md: "row" }}
           align="center"
           justify="space-between"
           bg="#F0F8FF"
           position="relative"
         >
-          <Box maxW={{ base: "100%", md: "50%" }} mb={{ base: 6, md: 0 }} pl={12}>
-            <Text fontSize="xl" fontWeight={400} mb={2}>
+          <Box maxW={{ base: "100%", md: "50%" }} mb={{ base: 6, md: 0 }} pl={{ base: 4, md: 12 }}>
+            <Text fontSize={{ base: "lg", md: "xl" }} fontWeight={400} mb={2}>
               Prefer booking on an app?
             </Text>
-            <Text fontSize="xl" mb={4} fontWeight={600}>
+            <Text fontSize={{ base: "lg", md: "xl" }} mb={4} fontWeight={600}>
               <Text as="span" color="buttonOrange">
                 Download
               </Text>{" "}
@@ -68,9 +68,10 @@ function Footer() {
           </Box>
           <Box
             maxW={{ base: "100%", md: "50%" }}
-            position="absolute"
-            top="-25%"
-            right="8%"
+            position={{ base: "static", md: "absolute" }}
+            top={{ md: "-25%" }}
+            right={{ md: "8%" }}
+            mt={{ base: 6, md: 0 }}
           >
             <Image
               src={phoneImage}
@@ -100,11 +101,12 @@ function Footer() {
           py={{ base: 5, md: 10 }}
           justify="space-between"
           align="start"
+          gap={{base: '2rem', lg:'0rem'}}
           direction={{ base: "column", md: "row" }}
         >
-          <VStack align="start" spacing={4}>
+          <VStack align="start" spacing={4} mb={{base: '2rem', lg:'0'}}>
             {/* Logo */}
-            <Box>
+            <Box >
               <Link href="/">
                 <Image src={logo} alt="Pamtech Logo" height={logoSize} />
               </Link>
