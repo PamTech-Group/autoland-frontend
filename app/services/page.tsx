@@ -20,7 +20,7 @@ function Services() {
           base: "0.5rem 0.5rem",
           sm: "0.75rem 2rem",
           md: "1rem 4rem",
-          lg: "1rem 4rem",
+          lg: "1rem 8rem",
         }}
        
       >
@@ -107,30 +107,26 @@ function Services() {
              isReverse={true} 
           />
            <SectionComponent
-            title="AC / Electrical Repairs"
-            description="At AutoLand, we take a detail-oriented approach to AC and electrical repairs, ensuring reliable vehicle function. Our services enhance comfort, improve safety, and boost 
-             efficiency. Using the latest technology and best practices, we deliver precise repairs. Trust our expertise to keep your car's systems in expert hands, from diagnosis to repair."
+            title="Mechanical Repair"
+            description={`We focus on customer-centered mechanical repair services to keep your vehicle running smoothly. Our skilled technicians diagnose and resolve issues efficiently, enhancing performance and safety. Using advanced tools and techniques, we deliver reliable repairs every time. Trust our expertise to handle your car’s mechanical needs with precision and care.`}
             imageSrc2={wedo2} 
              isReverse={false} 
           />
            <SectionComponent
-            title="AC / Electrical Repairs"
-            description="At AutoLand, we take a detail-oriented approach to AC and electrical repairs, ensuring reliable vehicle function. Our services enhance comfort, improve safety, and boost 
-             efficiency. Using the latest technology and best practices, we deliver precise repairs. Trust our expertise to keep your car's systems in expert hands, from diagnosis to repair."
+            title="Body Shop /Vehicle Upgrade"
+            description={`Our state of the art customer-centered body shop services for top-quality care and upgrades. Our solutions enhance aesthetics, improve functionality, and restore your vehicle. Using cutting-edge techniques and industry best practices, we ensure a flawless finish. Trust our expertise to manage your car’s repairs and upgrades with precision and care.`}
             imageSrc2={wedo2} 
              isReverse={true} 
           />
            <SectionComponent
-            title="AC / Electrical Repairs"
-            description="At AutoLand, we take a detail-oriented approach to AC and electrical repairs, ensuring reliable vehicle function. Our services enhance comfort, improve safety, and boost 
-             efficiency. Using the latest technology and best practices, we deliver precise repairs. Trust our expertise to keep your car's systems in expert hands, from diagnosis to repair."
+            title="Auto Diagnostics"
+            description={`We offer precision-driven auto diagnostics to ensure your vehicle receives expert care. Our services swiftly identify and resolve issues, enhancing reliability and safety. With advanced technology and best practices, we deliver accurate, data-driven results. Trust us to care for your car from diagnosis to repair.`}
             imageSrc2={wedo2} 
              isReverse={false} 
           />
            <SectionComponent
-            title="AC / Electrical Repairs"
-            description="At AutoLand, we take a detail-oriented approach to AC and electrical repairs, ensuring reliable vehicle function. Our services enhance comfort, improve safety, and boost 
-             efficiency. Using the latest technology and best practices, we deliver precise repairs. Trust our expertise to keep your car's systems in expert hands, from diagnosis to repair."
+            title="Wheel Alignment"
+            description="At AutoLand, we specialize in precision wheel alignment for a smooth, safe ride. Our services enhance handling, extend tire life, and improve fuel efficiency. Trust us for accurate adjustments, ensuring your wheels are perfectly aligned every time."
             imageSrc2={wedo2} 
              isReverse={true} 
           />

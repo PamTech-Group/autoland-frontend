@@ -28,7 +28,7 @@ const SectionComponentOne: React.FC<SectionComponentOneProps> = ({
   return (
     <VStack align="center">
       {isReverse ? (
-        <Grid templateColumns="repeat(5, 1fr)"  placeItems="center">
+        <Grid templateColumns="repeat(5, 1fr)" placeItems="center">
           <GridItem colSpan={2}>
             <Box>
               <Image
@@ -44,31 +44,38 @@ const SectionComponentOne: React.FC<SectionComponentOneProps> = ({
             </Box>
           </GridItem>
 
-          <GridItem placeItems='center'  colSpan={2}  height="100%">
-            <Heading color="secondaryBlue" fontSize="lg" fontWeight={500}>
-              {" "}
-              {title}
-            </Heading>
-            <Text color="text" fontSize="sm">
-              {description}
-            </Text>
-            <Button
-              as="a"
-              href="/socials"
-              fontSize="sm" // Responsive font size
-              padding={theme.buttonPadding}
-              bgColor="buttonOrange"
-              _hover={{
-                bgColor: "#961615",
-              }}
-              _active={{
-                bgColor: "#bf1e1d",
-              }}
+          <GridItem colSpan={2} height="100%">
+            <Flex
+              flexDirection="column"
+              justifyContent="space-evenly"
+              height="100%"
             >
-              Book an Appointment
-            </Button>
+              <Heading color="secondaryBlue" fontSize="lg" fontWeight={500}>
+                {" "}
+                {title}
+              </Heading>
+              <Text color="text" fontSize="md">
+                {description}
+              </Text>
+              <Button
+                as="a"
+                width="fit-content"
+                href="/socials"
+                fontSize="sm" // Responsive font size
+                padding={theme.buttonPadding}
+                bgColor="buttonOrange"
+                _hover={{
+                  bgColor: "#961615",
+                }}
+                _active={{
+                  bgColor: "#bf1e1d",
+                }}
+              >
+                Book an Appointment
+              </Button>
+            </Flex>
           </GridItem>
-          <GridItem height="100%" colSpan={1} >
+          <GridItem height="100%" colSpan={1}>
             <Flex gap="1rem" alignItems="start" height="100%">
               <Box
                 bgColor="primaryBlue"
@@ -98,32 +105,39 @@ const SectionComponentOne: React.FC<SectionComponentOneProps> = ({
               <Box height="100%" width="5px" bgColor="black" />
             </Flex>
           </GridItem>
-          <GridItem  colSpan={2} height="100%">
-            <Heading color="secondaryBlue" fontSize="lg" fontWeight={500}>
-              {" "}
-              {title}
-            </Heading>
-            <Text color="text" fontSize="sm">
-              {description}
-            </Text>
-            <Button
-              as="a"
-              href="/socials"
-              fontSize="sm" // Responsive font size
-              padding={theme.buttonPadding}
-              bgColor="buttonOrange"
-              _hover={{
-                bgColor: "#961615",
-              }}
-              _active={{
-                bgColor: "#bf1e1d",
-              }}
+          <GridItem colSpan={2} height="100%">
+            <Flex
+              flexDirection="column"
+              justifyContent="space-evenly"
+              height="100%"
             >
-              Book an Appointment
-            </Button>
+              <Heading color="secondaryBlue" fontSize="lg" fontWeight={500}>
+                {" "}
+                {title}
+              </Heading>
+              <Text color="text" fontSize="md" >
+                {description}
+              </Text>
+              <Button
+                as="a"
+                width="fit-content"
+                href="/socials"
+                fontSize="sm" // Responsive font size
+                padding={theme.buttonPadding}
+                bgColor="buttonOrange"
+                _hover={{
+                  bgColor: "#961615",
+                }}
+                _active={{
+                  bgColor: "#bf1e1d",
+                }}
+              >
+                Book an Appointment
+              </Button>
+            </Flex>
           </GridItem>
           <GridItem colSpan={2}>
-            <Box >
+            <Box>
               <Image
                 style={{
                   height: "auto",

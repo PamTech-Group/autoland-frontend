@@ -49,6 +49,7 @@ import { useState } from "react";
 
 function Body() {
   const [selectedCountry, setSelectedCountry] = useState('japanese');
+  type CountryKey = 'japanese' | 'american' | 'german';
 
   const services = [
     { image: service1, title: "Computerised Auto Diagnosis" },
@@ -111,7 +112,8 @@ function Body() {
         base: "0.5rem 0.5rem",
         sm: "0.75rem 2rem",
         md: "1rem 4rem",
-        lg: "1rem 4rem",
+        lg: "1rem 6rem",
+        myxl: "1rem 8rem",
       }}
      m='0 auto'
     >
@@ -204,7 +206,7 @@ function Body() {
           </Flex>
 
           <Grid mt='2rem' templateColumns="repeat(5, 1fr)" gap={6} placeItems='center' justifyContent='center'>
-            {carBrands[selectedCountry].map((brand, index) => (
+          {carBrands[selectedCountry as CountryKey].map((brand, index) => (
               <Image
                 key={index}
                 src={brand.image}
