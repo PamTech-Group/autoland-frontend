@@ -67,11 +67,11 @@ function Footer() {
             </Box>
           </Box>
           <Box
-            maxW={{ base: "100%", md: "50%" }}
-            position={{ base: "static", md: "absolute" }}
-            top={{ md: "-25%" }}
-            right={{ md: "8%" }}
-            mt={{ base: 6, md: 0 }}
+            maxW={{ base: "100%", lg: "50%" }}
+            position={{ base: "static", lg: "absolute" }}
+            top={{ lg: "-17%", myxl:"-20%", dxl:'-25%' }}
+            right={{ lg: "2%", myxl: '4%', dxl:'8%' }}
+            mt={{ base: 6, lg: 0 }}
           >
             <Image
               src={phoneImage}
@@ -95,7 +95,7 @@ function Footer() {
         }}
       >
         <Flex
-          // maxW="1200px"
+          
           mx="auto"
           px={{ base: 5, md: 10 }}
           py={{ base: 5, md: 10 }}
