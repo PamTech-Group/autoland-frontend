@@ -73,7 +73,7 @@ function About() {
         </SimpleGrid>
         <Box my={theme.vmargin}  px={{ base: 4, md: 8 }}
           py="6rem" textAlign="left"  bgColor='#F0F8FF'>
-          <Heading fontSize="lg" fontWeight={600} color="primaryBlue" mb="2rem">
+          <Heading fontSize="lg" fontWeight={600} color="secondaryBlue" mb="2rem">
             See What Others Are <br/> Saying About Us
           </Heading>
           <Flex justifyContent='right'>
@@ -84,7 +84,7 @@ function About() {
               aria-label="Previous Testimonial"
             />
              <IconButton
-              icon={<FaArrowRightLong  color='black' fontSize='1.5rem' />}
+              icon={<FaArrowRightLong  color='text' fontSize='1.5rem' />}
               onClick={handleNextClick}
               aria-label="Next Testimonial"
             />

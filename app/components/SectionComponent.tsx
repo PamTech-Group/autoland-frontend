@@ -7,6 +7,7 @@ import {
   Heading,
   Grid,
   GridItem,
+  VStack,
 } from "@chakra-ui/react";
 import theme from "../theme";
 import Image, { StaticImageData } from "next/image";
@@ -25,16 +26,11 @@ const SectionComponentOne: React.FC<SectionComponentOneProps> = ({
   isReverse,
 }) => {
   return (
-    <Box>
+    <VStack align="center">
       {isReverse ? (
-        <Grid
-          templateColumns="repeat(6, 1fr)"
-          gap="2rem"
-          my="2rem"
-          placeItems="center"
-        >
+        <Grid templateColumns="repeat(5, 1fr)"  placeItems="center">
           <GridItem colSpan={2}>
-            <Box height="600px">
+            <Box>
               <Image
                 style={{
                   height: "auto",
@@ -48,7 +44,7 @@ const SectionComponentOne: React.FC<SectionComponentOneProps> = ({
             </Box>
           </GridItem>
 
-          <GridItem rowSpan={1} colSpan={2} height="100%">
+          <GridItem placeItems='center'  colSpan={2}  height="100%">
             <Heading color="secondaryBlue" fontSize="lg" fontWeight={500}>
               {" "}
               {title}
@@ -72,7 +68,7 @@ const SectionComponentOne: React.FC<SectionComponentOneProps> = ({
               Book an Appointment
             </Button>
           </GridItem>
-          <GridItem height="100%" colSpan={1}>
+          <GridItem height="100%" colSpan={1} >
             <Flex gap="1rem" alignItems="start" height="100%">
               <Box
                 bgColor="primaryBlue"
@@ -86,7 +82,7 @@ const SectionComponentOne: React.FC<SectionComponentOneProps> = ({
         </Grid>
       ) : (
         <Grid
-          templateColumns="repeat(6, 1fr)"
+          templateColumns="repeat(5, 1fr)"
           gap="2rem"
           my="2rem"
           placeItems="center"
@@ -102,7 +98,7 @@ const SectionComponentOne: React.FC<SectionComponentOneProps> = ({
               <Box height="100%" width="5px" bgColor="black" />
             </Flex>
           </GridItem>
-          <GridItem rowSpan={1} colSpan={2} height="100%">
+          <GridItem  colSpan={2} height="100%">
             <Heading color="secondaryBlue" fontSize="lg" fontWeight={500}>
               {" "}
               {title}
@@ -127,7 +123,7 @@ const SectionComponentOne: React.FC<SectionComponentOneProps> = ({
             </Button>
           </GridItem>
           <GridItem colSpan={2}>
-            <Box height="600px">
+            <Box >
               <Image
                 style={{
                   height: "auto",
@@ -142,7 +138,7 @@ const SectionComponentOne: React.FC<SectionComponentOneProps> = ({
           </GridItem>
         </Grid>
       )}
-    </Box>
+    </VStack>
   );
 };
 
