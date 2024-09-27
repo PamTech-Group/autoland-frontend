@@ -45,12 +45,13 @@ function About() {
       <Flex
     
       flexDirection='column'
-        padding={{
-          base: "0.5rem 0.5rem",
-          sm: "0.75rem 2rem",
-          md: "1rem 4rem",
-          lg: "1rem 4rem",
-        }}
+      padding={{
+        base: "0.5rem 0.5rem",
+        sm: "0.75rem 2rem",
+        md: "1rem 4rem",
+        lg: "1rem 6rem",
+        myxl: "1rem 8rem",
+      }}
       >
         <SimpleGrid columns={2} placeItems='center'    my={theme.vmargin} >
           <Box width='fit-content'>

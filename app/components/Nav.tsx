@@ -42,12 +42,13 @@ function Nav() {
         //   zIndex={999}
         bg={"transparent"}
 
-          padding={{
-            base: "0.5rem 0.5rem",
-            sm: "0.75rem 2rem",
-            md: "1rem 4rem",
-            lg: "1rem 4rem",
-          }}
+        padding={{
+          base: "0.5rem 0.5rem",
+          sm: "0.75rem 2rem",
+          md: "1rem 4rem",
+          lg: "1rem 6rem",
+          myxl: "1rem 8rem",
+        }}
       >
         <Flex
           h={{
@@ -65,28 +66,30 @@ function Nav() {
           </Box>
 
           {/* Desktop Menu */}
-          <HStack
-            as={"nav"}
-            spacing={navSpacing}
-            display={{ base: "none", xl: "flex" }} // Show from medium screens and above
-            //   fontWeight={theme.fontWeights.medium}
-            color="white"
-            padding='1rem 1.5rem'
-            borderRadius='lg'
-            bgColor='rgba(243, 243, 243, 0.13)'
-          >
-            <Link className="scaler" href="/about">
-              About Us
-            </Link>
+          <Flex
+              as={"nav"}
+              
+              gap={navSpacing}
+              display={{ base: "none", xl: "flex" }} // Show from medium screens and above
+              //   fontWeight={theme.fontWeights.medium}
+              color="text"
+              padding='1rem 1.5rem'
+              borderRadius='lg'
+              bgColor='rgba(243, 243, 243, 0.13)'
 
-            <Link className="scaler" href="/services">
-              Our Services
-            </Link>
-
-            <Link className="scaler" href="/autoclub">
-              Autoclub
-            </Link>
-          </HStack>
+           fontSize='md' >
+              <Link fontSize='md' fontWeight={500} href="/about">
+                About Us
+              </Link>
+  
+              <Link fontSize='md'  fontWeight={500} href="/services">
+                Our Services
+              </Link>
+  
+              <Link fontSize='md' fontWeight={500} href="/autoclub">
+                Autoclub
+              </Link>
+            </Flex>
 
           {/* Mobile Menu Button */}
           <IconButton
@@ -108,7 +111,7 @@ function Nav() {
             
               as="a"
               href="/booking"
-              fontSize='sm' // Responsive font size
+              fontSize='md' 
               padding={theme.buttonPadding}
               bgColor="buttonOrange"
               _hover={{

@@ -31,7 +31,7 @@ import {
   
     // Use breakpoints for responsive design
     const logoSize = useBreakpointValue({ base: 25, sm: 30 });
-    const navSpacing = useBreakpointValue({ base: 2, sm: 4, md: 6, lg: 8 });
+    const navSpacing = useBreakpointValue({ base: 2, sm: 4, md: 6, lg: 20 });
     return (
       <>
         <Box
@@ -43,12 +43,13 @@ import {
           //   zIndex={999}
           bg={"transparent"}
   
-            padding={{
-              base: "0.5rem 0.5rem",
-              sm: "0.75rem 2rem",
-              md: "1rem 4rem",
-              lg: "1rem 4rem",
-            }}
+          padding={{
+            base: "0.5rem 0.5rem",
+            sm: "0.75rem 2rem",
+            md: "1rem 4rem",
+            lg: "1rem 6rem",
+            myxl: "1rem 8rem",
+          }}
         >
           <Flex
             h={{
@@ -66,28 +67,29 @@ import {
             </Box>
   
             {/* Desktop Menu */}
-            <HStack
+            <Flex
               as={"nav"}
-              spacing={navSpacing}
+              
+              gap={navSpacing}
               display={{ base: "none", xl: "flex" }} // Show from medium screens and above
               //   fontWeight={theme.fontWeights.medium}
               color="text"
               padding='1rem 1.5rem'
               borderRadius='lg'
               bgColor='rgba(243, 243, 243, 0.75)'
-            >
-              <Link className="scaler" href="/about">
+           fontSize='md' >
+              <Link fontSize='md' fontWeight={500} href="/about">
                 About Us
               </Link>
   
-              <Link className="scaler" href="/services">
+              <Link fontSize='md'  fontWeight={500} href="/services">
                 Our Services
               </Link>
   
-              <Link className="scaler" href="/autoclub">
+              <Link fontSize='md' fontWeight={500} href="/autoclub">
                 Autoclub
               </Link>
-            </HStack>
+            </Flex>
   
             {/* Mobile Menu Button */}
             <IconButton
@@ -97,10 +99,10 @@ import {
               onClick={onMobileMenuOpen}
               variant="ghost"
               color={"white"}
-              fontSize={{ base: "1.2rem", sm: "1.5rem" }}
+              fontSize={{ base: "1.2rem", lg: "1.5rem" }}
             />
   
-            {/* Contact and Social Buttons */}
+          
             <HStack
               spacing={4}
               display={{ base: "none", xl: "flex" }} // Show from medium screens
@@ -109,7 +111,7 @@ import {
               
                 as="a"
                 href="/booking"
-                fontSize='sm' // Responsive font size
+                fontSize='md' 
                 padding={theme.buttonPadding}
                 bgColor="buttonOrange"
                 _hover={{
