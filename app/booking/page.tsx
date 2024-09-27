@@ -1,17 +1,19 @@
 'use client'
 import { Box, Flex, Heading, Text, Input, Select, Textarea, Checkbox, Button, VStack, HStack, FormControl, FormLabel } from "@chakra-ui/react"
 import NavWhite from "../components/NavWhite"
+import theme from "../theme"
+import Footer from "../components/Footer"
 
 function Booking(){
     return (
       <Box bgColor="backgroundWhite">
         <NavWhite />
-        <Flex flexDirection='column' bgColor='primaryBlue' color='white' padding='1.5rem 2rem 1rem 2rem'>
-          <Text>
+        <Flex gap='1.5rem' width='100%'  flexDirection='column' bgColor='primaryBlue' color='white' padding='6rem 9rem'>
+          <Text fontWeight={700} fontSize='md'>
             Booking
           </Text>
-          <Heading>Book an Appointment Now</Heading>
-          <Text>{`Schedule your appointment today for personalized 
+          <Heading fontWeight={700} >Book an Appointment Now</Heading>
+          <Text fontSize='md' fontWeight={600}>{`Schedule your appointment today for personalized 
           service and expert support. It's quick, easy, and convenient`}</Text>
         </Flex>
         <Box
@@ -19,25 +21,26 @@ function Booking(){
             base: "0.5rem 0.5rem",
             sm: "0.75rem 2rem",
             md: "1rem 4rem",
-            lg: "1rem 4rem",
+            lg: "1rem 6rem",
+            myxl: "1rem 8rem",
           }}
         >
-          <VStack spacing={4} align="stretch" color='text'>
-            <HStack spacing={10}>
+          <VStack my={theme.vmargin} spacing={10} align="stretch" color='text'>
+            <HStack spacing={12}>
               <FormControl>
-                <FormLabel>Car make</FormLabel>
-                <Input paddingY='1.5rem' bg='inputBg' _placeholder={{
+                <FormLabel fontWeight={500}>Car make</FormLabel>
+                <Input paddingY='2rem' bg='inputBg' _placeholder={{
                     color: '#00000080'
                 }} placeholder="Toyota" borderRadius='0'  focusBorderColor="transparent"  />
               </FormControl>
               <FormControl>
                 <FormLabel>Model</FormLabel>
-                <Input paddingY='1.5rem' bg='inputBg' _placeholder={{
+                <Input paddingY='2rem' bg='inputBg' _placeholder={{
                     color: '#00000080'
                 }} placeholder="Toyota" borderRadius='0'  focusBorderColor="transparent"  />
               </FormControl>
             </HStack>
-            <HStack spacing={4}>
+            <HStack spacing={12}>
               <FormControl>
                 <FormLabel>Year</FormLabel>
                 <Select placeholder="2008" bgColor='inputBg' focusBorderColor="transparent">
@@ -46,15 +49,15 @@ function Booking(){
               </FormControl>
               <FormControl>
                 <FormLabel>Engine Type:</FormLabel>
-                <Input paddingY='1.5rem' bg='inputBg' _placeholder={{
+                <Input paddingY='2rem' bg='inputBg' _placeholder={{
                     color: '#00000080'
                 }} placeholder="Toyota" borderRadius='0'  focusBorderColor="transparent"  />
               </FormControl>
             </HStack>
-            <HStack spacing={4}>
+            <HStack spacing={12}>
               <FormControl>
                 <FormLabel>City</FormLabel>
-                <Input paddingY='1.5rem' bg='inputBg' _placeholder={{
+                <Input paddingY='2rem' bg='inputBg' _placeholder={{
                     color: '#00000080'
                 }} placeholder="Toyota" borderRadius='0'  focusBorderColor="transparent"  />
               </FormControl>
@@ -65,39 +68,52 @@ function Booking(){
                 </Select>
               </FormControl>
             </HStack>
-            <HStack spacing={4}>
+            <HStack spacing={12}>
               <FormControl>
                 <FormLabel>Full Name</FormLabel>
-                <Input paddingY='1.5rem' bg='inputBg' _placeholder={{
+                <Input paddingY='2rem' bg='inputBg' _placeholder={{
                     color: '#00000080'
                 }} placeholder="Toyota" borderRadius='0'  focusBorderColor="transparent"  />
               </FormControl>
               <FormControl>
                 <FormLabel>Phone NO:</FormLabel>
-                <Input paddingY='1.5rem' bg='inputBg' _placeholder={{
+                <Input paddingY='2rem' bg='inputBg' _placeholder={{
                     color: '#00000080'
                 }} placeholder="Toyota" borderRadius='0'  focusBorderColor="transparent"  />
               </FormControl>
             </HStack>
             <FormControl>
               <FormLabel>Email</FormLabel>
-              <Input paddingY='1.5rem' bg='inputBg' _placeholder={{
+              <Input paddingY='2rem' bg='inputBg' _placeholder={{
                     color: '#00000080'
                 }} placeholder="Toyota" borderRadius='0'  focusBorderColor="transparent"  />
             </FormControl>
             <FormControl>
               <FormLabel>Report an issue with your car</FormLabel>
-              <Textarea bgColor='inputBg' placeholder="The issues you have with your vehicle" rows={4} />
+              <Textarea bgColor='inputBg' _placeholder={{
+                    color: '#00000080'
+                }} placeholder="The issues you have with your vehicle" rows={4} />
             </FormControl>
-            <Checkbox>
-              I hereby confirm that I have read and I agree to the Jumia seller contract, Jumia codes, policies and
-              guidelines and Privacy Notice and Cookie Notice referenced therein.
+            <Checkbox defaultChecked >
+              I hereby confirm that I agree to Pamtech Terms and Conditions
             </Checkbox>
-            <Button colorScheme="red" size="lg">
+            <Button 
+             borderRadius='lg'
+              fontSize='md' 
+              padding={'2rem'}
+              bgColor="buttonOrange"
+              _hover={{
+                bgColor: "#961615",
+              }}
+              _active={{
+                bgColor: "#bf1e1d",
+              }} >
               Submit
             </Button>
           </VStack>
         </Box>
+
+        <Footer/>
       </Box>
     )
 }
