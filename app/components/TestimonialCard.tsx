@@ -17,7 +17,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({ name, testimonial, ra
       padding="1.5rem 1rem"
       bgColor="#FAF9F6"
       boxShadow="md"
-       maxWidth="60%"
+       maxWidth={{base: '100%', md:'80%', dxl:'60%'}}
       // margin="auto"
     >
       <Heading fontSize="md" color='text' fontWeight="600" mb="0.5rem">

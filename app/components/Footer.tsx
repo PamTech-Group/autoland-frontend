@@ -39,17 +39,17 @@ function Footer() {
           mx="auto"
           px={{ base: 4, md: 8 }}
           py={{ base: "4rem", md: "6rem" }}
-          direction={{ base: "column", md: "row" }}
+          direction={{ base: "column", lg: "row" }}
           align="center"
           justify="space-between"
           bg="#F0F8FF"
           position="relative"
         >
-          <Box maxW={{ base: "100%", md: "50%" }} mb={{ base: 6, md: 0 }} pl={{ base: 4, md: 12 }}>
-            <Text fontSize={{ base: "lg", md: "xl" }} fontWeight={400} mb={2}>
+          <Box maxW={{ base: "100%", lg: "50%" }} mb={{ base: 6, lg: 0 }} pl={{ base: 4, lg: 12 }}>
+            <Text fontSize={{ base: "lg", lg: "xl" }} fontWeight={400} mb={2}>
               Prefer booking on an app?
             </Text>
-            <Text fontSize={{ base: "lg", md: "xl" }} mb={4} fontWeight={600}>
+            <Text fontSize={{ base: "lg", lg: "xl" }} mb={4} fontWeight={600}>
               <Text as="span" color="buttonOrange">
                 Download
               </Text>{" "}
@@ -57,7 +57,7 @@ function Footer() {
             </Text>
             <Box
               textAlign="center"
-              width="fit-content"
+              width={{base: '100%', lg: 'fit=content'}}
               color="white"
               p=".5rem 1rem"
               borderRadius="md"

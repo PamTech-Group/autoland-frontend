@@ -78,15 +78,15 @@ function Nav() {
               bgColor='rgba(243, 243, 243, 0.13)'
 
            fontSize='md' >
-              <Link fontSize='md' fontWeight={500} href="/about">
+              <Link fontSize='md' fontWeight={400} href="/about">
                 About Us
               </Link>
   
-              <Link fontSize='md'  fontWeight={500} href="/services">
+              <Link fontSize='md'  fontWeight={400} href="/services">
                 Our Services
               </Link>
   
-              <Link fontSize='md' fontWeight={500} href="/autoclub">
+              <Link fontSize='md' fontWeight={400} href="/autoclub">
                 Autoclub
               </Link>
             </Flex>

@@ -99,7 +99,7 @@ function Body() {
   ];
   const opts = {
     height: "250",
-    width: "350",
+    width: "320",
     playerVars: {
       autoplay: 0,
     },
@@ -119,12 +119,12 @@ function Body() {
     >
        <Flex
         justifyContent="center"
-        m='-4rem auto'
+        
         gap={{ base: "1rem", md: "2rem" }}
         alignItems={{base:"left", lg: 'center'}}
         flexDirection={{ base: "column", lg: "row" }}
-        p={4}
-        // mt={{ base: "-4rem", md: "-6rem", lg: "-8rem" }}
+        p={2}
+        m={{ base: "0 auto 0 auto", md: "-6rem auto 0 auto ", dxl: "-8rem auto 0 auto " }}
       >
         <Flex alignItems="center" gap={2}>
           <Icon as={FaUsers} boxSize={8} mb={2} />
@@ -160,7 +160,7 @@ function Body() {
               borderRadius="md"
               overflow="hidden"
               boxShadow="md"
-              height="fit-content"
+              maxHeight="27rem"
             >
               <Box  width='100%'>
                 <Image
@@ -363,7 +363,7 @@ function Body() {
         <Heading as="h2" size="md" textAlign="left" color="primaryBlue" my={10}>
           Our Customers Love Us
         </Heading>
-        <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={10}>
+        <SimpleGrid columns={{ base: 1, md: 2, xl: 3 }} spacing={10} justifyContent='center'>
           {testimonials.map((videoId, index) => (
             <YouTube key={index} videoId={videoId} opts={opts} />
           ))}
@@ -374,7 +374,7 @@ function Body() {
         <Heading as="h2" size="md" textAlign="left" color="primaryBlue" my={10}>
           Car Tip & Advice
         </Heading>
-        <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={10}>
+        <SimpleGrid columns={{ base: 1, md: 2, xl: 3 }} spacing={10} justifyContent='center'>
           {carTips.map((videoId, index) => (
             <YouTube key={index} videoId={videoId} opts={opts} />
           ))}

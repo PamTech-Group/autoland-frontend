@@ -53,8 +53,9 @@ function About() {
         myxl: "1rem 8rem",
       }}
       >
-        <SimpleGrid columns={2} placeItems='center'    my={theme.vmargin} >
-          <Box width='fit-content'>
+        <SimpleGrid columns={{ base: 1, lg: 2 }} 
+          spacing={{ base: 8, lg: 16 }}  placeItems='center'    my={theme.vmargin} >
+          <Box width='fit-content' maxWidth='500px' mx="auto">
             <Image src={about_hero} alt="about us" />
           </Box>
           <Flex flexDir="column" gap={4} textAlign="left">
@@ -64,7 +65,7 @@ function About() {
             <Heading fontWeight={700} color="secondaryBlue">
               About Autoland
             </Heading>
-            <Text width="80%" color="text">
+            <Text width={{base:'100%', lg:'80%' }} color="text">
               Pamtech Autoland is your top choice for quality auto parts,
               maintenance, and repairs. We care for your car to keep it safe and
               in great shape, using the latest technology for all your
@@ -73,11 +74,11 @@ function About() {
           </Flex>
         </SimpleGrid>
         <Box my={theme.vmargin}  px={{ base: 4, md: 8 }}
-          py="6rem" textAlign="left"  bgColor='#F0F8FF'>
+          py={{base:'2rem', md:'4rem', dxl:'6rem'}} textAlign="left"  bgColor='#F0F8FF'>
           <Heading fontSize="lg" fontWeight={600} color="secondaryBlue" mb="2rem">
             See What Others Are <br/> Saying About Us
           </Heading>
-          <Flex justifyContent='right'>
+          <Flex justifyContent='right' mb={4}>
 
           <IconButton
               icon={<FaArrowLeftLong  fontSize='1.5rem' color='black'/>}
@@ -85,7 +86,7 @@ function About() {
               aria-label="Previous Testimonial"
             />
              <IconButton
-              icon={<FaArrowRightLong  color='text' fontSize='1.5rem' />}
+              icon={<FaArrowRightLong  color='black' fontSize='1.5rem' />}
               onClick={handleNextClick}
               aria-label="Next Testimonial"
             />
