@@ -115,7 +115,7 @@ function Booking(){
               borderRadius='lg'
               fontSize='md' 
               padding={{ base: '1.5rem', md: '2rem' }}
-              width={{ base: '100%', md: 'auto' }}
+              width={{ base: '100%', xl: 'fit-content' }}
               bgColor="buttonOrange"
               _hover={{
                 bgColor: "#961615",
