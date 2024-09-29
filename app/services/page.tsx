@@ -35,18 +35,19 @@ function Services() {
             color="text"
             fontWeight={600}
             fontSize="xl"
-            width="50%"
+            width={{base:'100%', md:'90%', lg:'70%', dxl:'50%'}}
           >
             Your vehicle deserves top-notch care, and at AutoLand, we deliver
             just that.
           </Text>
           </Flex>
           <Flex justify="center" position="relative">
-            <Box>
+            <Box display={{base: 'none', xl:'block'}}>
               <Image
                 flexGrow={1}
                 src={servicesHero}
                 alt="service technicians"
+
                 style={{ height: "auto", width: "auto" }}
               />
             </Box>
@@ -57,9 +58,9 @@ function Services() {
               borderRadius="xl"
               maxW="470px"
               maxH="450px"
-              position="absolute"
-              top="12%"
-              left="20%"
+              position={{base:"unset", xl:'absolute'}}
+              top={{ base:'initial', xl:'12%'}}
+              left={{base:'initial', xl:'7%'}}
               zIndex={2}
             >
               <Image
@@ -67,7 +68,7 @@ function Services() {
                 alt="quote"
                 style={{ height: "auto", width: "auto" }}
               />
-              <Text padding="2rem 2.5rem" fontSize="lg">
+              <Text padding={{base:"1rem 1.5rem", dxl:"2rem 2.5rem"}} fontSize="lg">
                 {`Whether it's regular maintenance or significant repairs, we    
                 approach every task with attention to detail 
                 and dedication.`}
@@ -82,7 +83,7 @@ function Services() {
             <Heading color="secondaryBlue" fontWeight={700} fontSize="xl">
               What we do{" "}
             </Heading>
-            <Text color="text" fontSize="md" width="50%">
+            <Text color="text" fontSize="md" width={{base:'100%', md:'90%', lg:'70%', dxl:'50%'}}>
               Your vehicle deserves top-notch care, and at AutoLand, we deliver
               just that. Our skilled technicians focus on your safety by
               providing high-quality services customized for your car.
