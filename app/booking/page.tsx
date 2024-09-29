@@ -1,5 +1,5 @@
 'use client'
-import { Box, Flex, Heading, Text, Input, Select, Textarea, Checkbox, Button, VStack, HStack, FormControl, FormLabel } from "@chakra-ui/react"
+import { Box, Flex, Heading, Text, Input, Select, Textarea, Checkbox, Button, VStack,  FormControl, FormLabel, SimpleGrid } from "@chakra-ui/react"
 import NavWhite from "../components/NavWhite"
 import theme from "../theme"
 import Footer from "../components/Footer"
@@ -8,39 +8,46 @@ function Booking(){
     return (
       <Box bgColor="backgroundWhite">
         <NavWhite />
-        <Flex gap='1.5rem' width='100%'  flexDirection='column' bgColor='primaryBlue' color='white' padding='6rem 9rem'>
+        <Flex 
+          gap='1.5rem' 
+          width='100%'  
+          flexDirection='column' 
+          bgColor='primaryBlue' 
+          color='white' 
+          padding={{ base: '3rem 1.5rem', md: '4rem 3rem', lg: '6rem 9rem' }}
+        >
           <Text fontWeight={700} fontSize='md'>
             Booking
           </Text>
-          <Heading fontWeight={700} >Book an Appointment Now</Heading>
+          <Heading fontWeight={700} fontSize={{ base: '2xl'}}>Book an Appointment Now</Heading>
           <Text fontSize='md' fontWeight={600}>{`Schedule your appointment today for personalized 
           service and expert support. It's quick, easy, and convenient`}</Text>
         </Flex>
         <Box
           padding={{
-            base: "0.5rem 0.5rem",
-            sm: "0.75rem 2rem",
-            md: "1rem 4rem",
-            lg: "1rem 6rem",
-            myxl: "1rem 8rem",
+            base: "1rem",
+            sm: "1.5rem",
+            md: "2rem",
+            lg: "3rem",
+            xl: "4rem",
           }}
         >
-          <VStack my={theme.vmargin} spacing={10} align="stretch" color='text'>
-            <HStack spacing={12}>
+          <VStack my={theme.vmargin} spacing={{ base: 6, md: 8, lg: 10 }} align="stretch" color='text'>
+            <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 6, md: 8, lg: 12 }}>
               <FormControl>
                 <FormLabel fontWeight={500}>Car make</FormLabel>
-                <Input paddingY='2rem' bg='inputBg' _placeholder={{
+                <Input paddingY='2rem' bg='inputBg'  _placeholder={{
                     color: '#00000080'
-                }} placeholder="Toyota" borderRadius='0'  focusBorderColor="transparent"  />
+                }} placeholder="Toyota" borderRadius='md'  focusBorderColor="transparent"  />
               </FormControl>
               <FormControl>
                 <FormLabel fontWeight={500}>Model</FormLabel>
                 <Input paddingY='2rem' bg='inputBg' _placeholder={{
                     color: '#00000080'
-                }} placeholder="Highlander" borderRadius='0'  focusBorderColor="transparent"  />
+                }} placeholder="Highlander" borderRadius='md'  focusBorderColor="transparent"  />
               </FormControl>
-            </HStack>
-            <HStack spacing={12}>
+            </SimpleGrid>
+            <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 6, md: 8, lg: 12 }}>
               <FormControl>
                 <FormLabel fontWeight={500}>Year</FormLabel>
                 <Select paddingY='2rem' placeholder="2008" bgColor='inputBg' focusBorderColor="transparent">
@@ -51,63 +58,72 @@ function Booking(){
                 <FormLabel fontWeight={500}>Engine Type:</FormLabel>
                 <Input paddingY='2rem' bg='inputBg' _placeholder={{
                     color: '#00000080'
-                }} placeholder="Toyota" borderRadius='0'  focusBorderColor="transparent"  />
+                }} placeholder="2GR" borderRadius='md'  focusBorderColor="transparent"  />
               </FormControl>
-            </HStack>
-            <HStack spacing={12}>
+            </SimpleGrid>
+            <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 6, md: 8, lg: 12 }}>
               <FormControl>
                 <FormLabel fontWeight={500}>City</FormLabel>
                 <Input paddingY='2rem' bg='inputBg' _placeholder={{
                     color: '#00000080'
-                }} placeholder="Toyota" borderRadius='0'  focusBorderColor="transparent"  />
+                }} placeholder="Enter your city" borderRadius='md'  focusBorderColor="transparent"  />
               </FormControl>
               <FormControl>
                 <FormLabel fontWeight={500}>Workshop Centre</FormLabel>
-                <Select placeholder="Owerri" bgColor='inputBg' focusBorderColor="transparent">
+                <Select paddingY='2rem' placeholder="Owerri" bgColor='inputBg' focusBorderColor="transparent">
                   {/* Add more workshop options here */}
                 </Select>
               </FormControl>
-            </HStack>
-            <HStack spacing={12}>
+            </SimpleGrid>
+            <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 6, md: 8, lg: 12 }}>
               <FormControl>
                 <FormLabel fontWeight={500}>Full Name</FormLabel>
                 <Input paddingY='2rem' bg='inputBg' _placeholder={{
                     color: '#00000080'
-                }} placeholder="Toyota" borderRadius='0'  focusBorderColor="transparent"  />
+                }} placeholder="Enter your full name" borderRadius='md'  focusBorderColor="transparent"  />
               </FormControl>
               <FormControl>
                 <FormLabel fontWeight={500}>Phone NO:</FormLabel>
                 <Input paddingY='2rem' bg='inputBg' _placeholder={{
                     color: '#00000080'
-                }} placeholder="Toyota" borderRadius='0'  focusBorderColor="transparent"  />
+                }} placeholder="Enter your phone number" borderRadius='md'  focusBorderColor="transparent"  />
               </FormControl>
-            </HStack>
+            </SimpleGrid>
             <FormControl>
               <FormLabel fontWeight={500}>Email</FormLabel>
               <Input paddingY='2rem' bg='inputBg' _placeholder={{
                     color: '#00000080'
-                }} placeholder="Toyota" borderRadius='0'  focusBorderColor="transparent"  />
+                }} placeholder="Enter your email" borderRadius='md'  focusBorderColor="transparent"  />
             </FormControl>
             <FormControl>
               <FormLabel>Report an issue with your car</FormLabel>
-              <Textarea bgColor='inputBg' _placeholder={{
-                    color: '#00000080'
-                }} placeholder="The issues you have with your vehicle" rows={4} />
+              <Textarea 
+                bgColor='inputBg' 
+                _placeholder={{
+                  color: '#00000080'
+                }} 
+                placeholder="The issues you have with your vehicle" 
+                rows={4} 
+                borderRadius='md'
+                focusBorderColor="transparent"
+              />
             </FormControl>
             <Checkbox colorScheme="gray" defaultChecked >
               I hereby confirm that I agree to Pamtech Terms and Conditions
             </Checkbox>
             <Button 
-             borderRadius='lg'
+              borderRadius='lg'
               fontSize='md' 
-              padding={'2rem'}
+              padding={{ base: '1.5rem', md: '2rem' }}
+              width={{ base: '100%', md: 'auto' }}
               bgColor="buttonOrange"
               _hover={{
                 bgColor: "#961615",
               }}
               _active={{
                 bgColor: "#bf1e1d",
-              }} >
+              }} 
+            >
               Submit
             </Button>
           </VStack>
@@ -119,8 +135,3 @@ function Booking(){
 }
 
 export default Booking
-
-
-// 2GR
-// 1ZZ
-// 2AZ

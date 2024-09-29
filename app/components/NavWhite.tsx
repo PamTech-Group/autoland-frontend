@@ -98,7 +98,7 @@ import {
               display={{ base: "flex", xl: "none" }} // Display on small screens
               onClick={onMobileMenuOpen}
               variant="ghost"
-              color={"white"}
+              color={"primaryBlue"}
               fontSize={{ base: "1.2rem", lg: "1.5rem" }}
             />
   
