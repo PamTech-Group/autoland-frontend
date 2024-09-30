@@ -67,7 +67,7 @@ const SectionComponentOne: React.FC<SectionComponentOneProps> = ({
            <Button
              as="a"
              width="fit-content"
-             href="/socials"
+             href="/booking"
              fontSize="sm"
              padding={theme.buttonPadding}
              bgColor="buttonOrange"

@@ -32,7 +32,7 @@ function Nav() {
   const logoSize = useBreakpointValue({ base: 25, sm: 30 });
   const navSpacing = useBreakpointValue({ base: 2, sm: 4, md: 6, lg: 8 });
   return (
-    <>
+
       <Box
       width='100%'
         //   position="fixed"
@@ -158,7 +158,7 @@ function Nav() {
           </Drawer>
         </Flex>
       </Box>
-    </>
+  
   );
 }
 

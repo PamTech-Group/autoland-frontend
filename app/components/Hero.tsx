@@ -8,6 +8,7 @@ import {
   Button,
   VStack,
   HStack,
+  Hide,
 } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 import Image from "next/image";
@@ -15,18 +16,18 @@ import heroImage from "../assets/heroImage.webp";
 import Nav from "./Nav";
 function Hero() {
   return (
-    <>
-      <Box color="whiteText" height={{base:'fit-content', lg:'110vh'}} >
+   
+      <Box color="whiteText" height={{base:'fit-content', xl:'110vh'}} >
         <Flex
           flexDirection="column"
           zIndex={1}
           height="90%"
           bg="primaryBlue"
-          direction={{ base: "column", lg: "row" }}
+          direction={{ base: "column", xl: "row" }}
           alignItems="center"
           clipPath={{
             base: "none",
-            lg: "polygon(100% 0%, 0% 0%, 0% 100%, 4% 98%, 8% 96%, 12% 94%, 16% 92%, 20% 90%, 24% 89%, 28% 88%, 32% 87%, 36% 86%, 40% 85%, 44% 85%, 48% 85%, 52% 85%, 56% 86%, 60% 87%, 64% 88%, 68% 90%, 72% 92%, 76% 94%, 80% 96%, 84% 98%, 88% 99%, 92% 100%, 96% 100%, 100% 100%)",
+            xl: "polygon(100% 0%, 0% 0%, 0% 100%, 4% 98%, 8% 96%, 12% 94%, 16% 92%, 20% 90%, 24% 89%, 28% 88%, 32% 87%, 36% 86%, 40% 85%, 44% 85%, 48% 85%, 52% 85%, 56% 86%, 60% 87%, 64% 88%, 68% 90%, 72% 92%, 76% 94%, 80% 96%, 84% 98%, 88% 99%, 92% 100%, 96% 100%, 100% 100%)",
           }}
           position="relative"
         >
@@ -51,10 +52,10 @@ function Hero() {
               width={{base: '100%', xl:'55%'}}
               // mb={{ base: 8, lg: 0 }}
             >
-              <Heading as="h1" size="2xl">
+              <Heading as="h1" size={{base:'md', md:'lg', xl:'2xl'}}>
                 Car Repair & Servicing Made Easy
               </Heading>
-              <Text fontSize="xl">
+              <Text fontSize={{base:'sm', md:'md', xl:'xl'}}>
                 A fair price in seconds, mechanics you can trust, day service at
                 your door
               </Text>
@@ -88,7 +89,9 @@ function Hero() {
                   </Button>
                 </Flex>
               </Flex>
-              <HStack spacing={8}>
+              <Hide below="lg">
+
+              <HStack spacing={8}  >
                 <VStack align="flex-start">
                   <Text>1000+ Google Reviews</Text>
                   <HStack>
@@ -112,6 +115,7 @@ function Hero() {
                   </HStack>
                 </VStack>
               </HStack>
+              </Hide>
             </VStack>
             {/* Right side image and icons */}
             <Box mt={{base:'1rem', lg:'none'}}>
@@ -120,7 +124,7 @@ function Hero() {
           </Flex>
         </Flex>
       </Box>
-    </>
+
   );
 }
 

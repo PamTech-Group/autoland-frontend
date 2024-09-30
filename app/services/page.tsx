@@ -4,6 +4,10 @@ import servicesHero from "../assets/servicesHero.webp";
 import quote from "../assets/services_quotes.webp";
 import wedo1 from "../assets/wedo1.webp";
 import wedo2 from "../assets/wedo2.webp";
+import wedo3 from "../assets/wedo3.webp"
+import wedo4 from "../assets/wedo4.webp"
+import wedo5 from "../assets/wedo5.webp"
+import wedo6 from "../assets/wedo6.webp"
 import { Image } from "@chakra-ui/next-js";
 
 import NavWhite from "../components/NavWhite";
@@ -111,25 +115,25 @@ function Services() {
            <SectionComponent
             title="Mechanical Repair"
             description={`We focus on customer-centered mechanical repair services to keep your vehicle running smoothly. Our skilled technicians diagnose and resolve issues efficiently, enhancing performance and safety. Using advanced tools and techniques, we deliver reliable repairs every time. Trust our expertise to handle your car’s mechanical needs with precision and care.`}
-            imageSrc2={wedo2} 
+            imageSrc2={wedo3} 
              isReverse={false} 
           />
            <SectionComponent
             title="Body Shop /Vehicle Upgrade"
             description={`Our state of the art customer-centered body shop services for top-quality care and upgrades. Our solutions enhance aesthetics, improve functionality, and restore your vehicle. Using cutting-edge techniques and industry best practices, we ensure a flawless finish. Trust our expertise to manage your car’s repairs and upgrades with precision and care.`}
-            imageSrc2={wedo2} 
+            imageSrc2={wedo4} 
              isReverse={true} 
           />
            <SectionComponent
             title="Auto Diagnostics"
             description={`We offer precision-driven auto diagnostics to ensure your vehicle receives expert care. Our services swiftly identify and resolve issues, enhancing reliability and safety. With advanced technology and best practices, we deliver accurate, data-driven results. Trust us to care for your car from diagnosis to repair.`}
-            imageSrc2={wedo2} 
+            imageSrc2={wedo5} 
              isReverse={false} 
           />
            <SectionComponent
             title="Wheel Alignment"
             description="At AutoLand, we specialize in precision wheel alignment for a smooth, safe ride. Our services enhance handling, extend tire life, and improve fuel efficiency. Trust us for accurate adjustments, ensuring your wheels are perfectly aligned every time."
-            imageSrc2={wedo2} 
+            imageSrc2={wedo6} 
              isReverse={true} 
           />
         </Flex>
