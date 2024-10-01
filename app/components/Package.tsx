@@ -64,6 +64,9 @@ const PackagesSection = () => {
     
       
           <Flex
+          flexDirection={{base: 'column', md:'row'}}
+          alignItems='center'
+          flexWrap='wrap'
          justifyContent='center'
          gap='1rem' py={4}
           >
@@ -71,22 +74,22 @@ const PackagesSection = () => {
               <PackageCard
                 title="SILVER PACKAGE"
                 description="Japanese Vehicle (Semi Synthetic Oil) 6litrs - 5litrs"
-                buttonText="Buy Now"
+                buttonText="Join Now"
               />
               <PackageCard
                 title="GOLD PACKAGE"
                 description="Japanese Vehicle (Full Synthetic Oil) 5litrs"
-                buttonText="Buy Now"
+                buttonText="Join Now"
               />
               <PackageCard
                 title="DIAMOND PACKAGE"
                 description="Japanese Vehicle (Full Synthetic Oil) 6litrs - 8litrs"
-                buttonText="Buy Now"
+                buttonText="Join Now"
               />
               <PackageCard
                 title="PREMIUM PACKAGE"
                 description="Range Rovers & Benz (Full Synthetic Oil) 6litrs - 8litrs"
-                buttonText="Buy Now"
+                buttonText="Join Now"
               />
            
           </Flex>
