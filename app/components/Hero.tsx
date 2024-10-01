@@ -9,13 +9,69 @@ import {
   VStack,
   HStack,
   Hide,
-  Show,
+  Modal,
+  Spinner,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalBody,
+  ModalFooter,
+  FormControl,
 } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 import Image from "next/image";
 import heroImage from "../assets/heroImage.webp";
+import modalImage from "../assets/modalImage.webp";
 import Nav from "./Nav";
+import { useState } from "react";
+
+interface Engine {
+  configurationCylinder: string;
+  manufacturerEngineCode: string;
+}
+
+interface Transmission {
+  name: string;
+  transmissionType: string;
+}
+
+interface VehicleData {
+  make: string;
+  model: string;
+  year: number;
+  engine: Engine;
+  transmission: Transmission;
+  driveWheels: string;
+  vehicleType: string;
+}
 function Hero() {
+  const [vincode, setVincode] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [vehicleData, setVehicleData] =  useState<VehicleData | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleSearch = async () => {
+    if(!vincode) return
+      
+    setLoading(true);
+    setVehicleData(null);
+    try {
+      
+      const response = await fetch(
+        `https://autoland-admin-backend.onrender.com/api/check/vin/${vincode}`
+      );
+      const data = await response.json();
+      setVehicleData(data);
+      setIsModalOpen(true);
+      console.log(data);
+    } catch (error) {
+      console.error("Error fetching vehicle data:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <Box color="whiteText" height={{ base: "fit-content", xl: "100vh" }}>
       <Flex
@@ -31,7 +87,7 @@ function Hero() {
         // }}
         position="relative"
       >
-        <Box display={{base:'none',xl:'flex', dxl:'none'}} >
+        <Box display={{ base: "none", xl: "flex", dxl: "none" }}>
           <svg
             viewBox="0 0 1440 320"
             style={{
@@ -49,7 +105,7 @@ function Hero() {
             ></path>
           </svg>
         </Box>
-        <Box display={{base:'none',xl:'none', dxl:'flex'}}>
+        <Box display={{ base: "none", xl: "none", dxl: "flex" }}>
           <svg
             viewBox="0 0 1440 320"
             style={{
@@ -101,6 +157,8 @@ function Hero() {
                 Buying a Used Car?
               </Text>
               <Flex gap="1rem" alignItems="center">
+                <FormControl isRequired>
+
                 <Input
                   placeholder="4Y1SL65848Z411439"
                   _placeholder={{ color: "#a3a3a3" }}
@@ -110,8 +168,12 @@ function Hero() {
                   borderRadius="12rem"
                   borderColor="backgroundWhite"
                   focusBorderColor="white"
+                  value={vincode}
+                  onChange={(e) => setVincode(e.target.value)}
                 />
+                </FormControl>
                 <Button
+                type="submit"
                   borderRadius="12rem"
                   bgColor="white"
                   padding="1rem 2.5rem"
@@ -121,6 +183,7 @@ function Hero() {
                   _hover={{
                     bgColor: "gray.300",
                   }}
+                  onClick={handleSearch}
                 >
                   Search VIN
                 </Button>
@@ -159,6 +222,63 @@ function Hero() {
           </Box>
         </Flex>
       </Flex>
+      {/* Loader */}
+      {loading && (
+        <Box
+          position="absolute"
+          top='50%'
+          left='50%'
+         
+          bg="rgba(0, 0, 0, 0.5)"
+          zIndex={20}
+        >
+          <Spinner size="xl" color="white" />
+        </Box>
+      )}
+
+      {/* Modal for displaying vehicle data */}
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+        <ModalOverlay />
+        <ModalContent bgColor="backgroundWhite" color="text">
+          <ModalHeader m="0 auto">
+            <Image src={modalImage} alt="vehicle details" />
+          </ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            {vehicleData ? (
+              <VStack spacing={4} align="flex-start">
+                <Text fontWeight={600}>Engine:</Text>
+                <Text borderRadius="md" p={4} width="full" bgColor="#F8F8F8">
+                  {vehicleData?.engine?.configurationCylinder} (
+                  {vehicleData?.engine?.manufacturerEngineCode})
+                </Text>
+                <Text fontWeight={600}>Make:</Text>
+                <Text borderRadius="md" p={4} width="full" bgColor="#F8F8F8"> {vehicleData?.make}</Text>
+                <Text fontWeight={600}>Model:</Text>
+                <Text borderRadius="md" p={4} width="full" bgColor="#F8F8F8"> {vehicleData?.model}</Text>
+                <Text fontWeight={600}>Year:</Text>
+                <Text borderRadius="md" p={4} width="full" bgColor="#F8F8F8"> {vehicleData?.year}</Text>
+                <Text fontWeight={600}>Transmission:</Text>
+                <Text borderRadius="md" p={4} width="full" bgColor="#F8F8F8">
+                  {vehicleData?.transmission?.name} (
+                  {vehicleData?.transmission?.transmissionType})
+                </Text>
+                <Text fontWeight={600}>Drive Wheels:</Text>
+                <Text borderRadius="md" p={4} width="full" bgColor="#F8F8F8">{vehicleData?.driveWheels}</Text>
+                <Text fontWeight={600}> Vehicle Type:</Text>
+                <Text borderRadius="md" p={4} width="full" bgColor="#F8F8F8">{vehicleData?.vehicleType}</Text>
+              </VStack>
+            ) : (
+              <Text>No data found for this VIN.</Text>
+            )}
+          </ModalBody>
+          <ModalFooter>
+            <Button bgColor='primaryBlue' color="white" colorScheme="blue" onClick={() => setIsModalOpen(false)}>
+              Close
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
     </Box>
   );
 }
