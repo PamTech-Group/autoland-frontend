@@ -33,7 +33,7 @@ import {
     const logoSize = useBreakpointValue({ base: 25, sm: 30 });
     const navSpacing = useBreakpointValue({ base: 2, sm: 4, md: 6, lg: 20 });
     return (
-      <>
+    
         <Box
         width='100%'
           //   position="fixed"
@@ -78,15 +78,15 @@ import {
               borderRadius='lg'
               bgColor='rgba(243, 243, 243, 0.75)'
            fontSize='md' >
-              <Link fontSize='md' fontWeight={400} href="/about">
+              <Link style={{textDecoration:'none'}}  fontSize='md' fontWeight={400} href="/about">
                 About Us
               </Link>
   
-              <Link fontSize='md'  fontWeight={400} href="/services">
+              <Link style={{textDecoration:'none'}}  fontSize='md'  fontWeight={400} href="/services">
                 Our Services
               </Link>
   
-              <Link fontSize='md' fontWeight={400} href="/autoclub">
+              <Link style={{textDecoration:'none'}}  fontSize='md' fontWeight={400} href="/autoclub">
                 Autoclub
               </Link>
             </Flex>
@@ -133,7 +133,7 @@ import {
               onClose={onMobileMenuClose}
             >
               <DrawerOverlay />
-              <DrawerContent bgColor="#0F1010">
+              <DrawerContent  bgColor="primaryBlue" color='white'>
                 <DrawerCloseButton />
   
                 <DrawerBody pt="6rem">
@@ -158,7 +158,7 @@ import {
             </Drawer>
           </Flex>
         </Box>
-      </>
+   
     );
   }
   

@@ -78,15 +78,15 @@ function Nav() {
               bgColor='rgba(243, 243, 243, 0.13)'
 
            fontSize='md' >
-              <Link fontSize='md' fontWeight={400} href="/about">
+              <Link style={{textDecoration:'none'}} fontSize='md' fontWeight={400} href="/about">
                 About Us
               </Link>
   
-              <Link fontSize='md'  fontWeight={400} href="/services">
+              <Link style={{textDecoration:'none'}}  fontSize='md'  fontWeight={400} href="/services">
                 Our Services
               </Link>
   
-              <Link fontSize='md' fontWeight={400} href="/autoclub">
+              <Link style={{textDecoration:'none'}}  fontSize='md' fontWeight={400} href="/autoclub">
                 Autoclub
               </Link>
             </Flex>
@@ -102,7 +102,7 @@ function Nav() {
             fontSize={{ base: "1.2rem", sm: "1.5rem" }}
           />
 
-          {/* Contact and Social Buttons */}
+          
           <HStack
             spacing={4}
             display={{ base: "none", xl: "flex" }} // Show from medium screens
@@ -133,7 +133,7 @@ function Nav() {
             onClose={onMobileMenuClose}
           >
             <DrawerOverlay />
-            <DrawerContent bgColor="#0F1010">
+            <DrawerContent bgColor="primaryBlue" color='white'>
               <DrawerCloseButton />
 
               <DrawerBody pt="6rem">

@@ -25,10 +25,10 @@ const Privacy = () => {
   const textFontSize = useBreakpointValue({ base: "1rem", md: "1.1rem", lg: "1.2rem" });
 
   return (
-    <Box bg="#FFFFFF">
+    <Box bg="backgroundWhite">
       <NavWhite />
       <Flex
-        color="textGrey"
+        color="text"
         flexDirection="column"
         justifyContent="left"
         padding={contentPadding}

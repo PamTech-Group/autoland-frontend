@@ -139,7 +139,7 @@ function Autoclub() {
                 <Box flexShrink={0} mr={4}>
                   <Icon as={FaWrench} boxSize={7} color="buttonOrange" />
                 </Box>
-                <Box>
+                <Box pb={2} borderBottom='2px solid #FF0000' >
                   <Text fontWeight="bold" fontSize="md" mb={2} color="text">
                     Express Lube Service:
                   </Text>
@@ -157,7 +157,7 @@ function Autoclub() {
                 <Box flexShrink={0} mr={4}>
                   <Icon as={FaCar} boxSize={7} color="buttonOrange" />
                 </Box>
-                <Box>
+                <Box pb={2} borderBottom='2px solid #FF0000'>
                   <Text fontWeight="bold" fontSize="md" mb={2} color="text">
                     Comprehensive Vehicle Scanning:
                   </Text>
@@ -175,7 +175,7 @@ function Autoclub() {
                 <Box flexShrink={0} mr={4}>
                   <Icon as={FaGasPump} boxSize={7} color="buttonOrange" />
                 </Box>
-                <Box>
+                <Box pb={2} borderBottom='2px solid #FF0000'>
                   <Text fontWeight="bold" fontSize="md" mb={2} color="text">
                     Discounted Fuel Rates
                   </Text>
@@ -193,7 +193,7 @@ function Autoclub() {
                 <Box flexShrink={0} mr={4}>
                   <Icon as={FaCarSide} boxSize={7} color="buttonOrange" />
                 </Box>
-                <Box>
+                <Box pb={2} borderBottom='2px solid #FF0000'>
                   <Text fontWeight="bold" fontSize="md" mb={2} color="text">
                     Valet Pick-up & Delivery
                   </Text>
@@ -207,11 +207,12 @@ function Autoclub() {
                 flexBasis={{ base: "100%", md: "48%" }}
                 mb={8}
                 alignItems="center"
+                width='100%'
               >
                 <Box flexShrink={0} mr={4}>
                   <Icon as={FaBell} boxSize={7} color="buttonOrange" />
                 </Box>
-                <Box>
+                <Box pb={2} borderWidth='100%' borderBottom='2px solid #FF0000'>
                   <Text fontWeight="bold" fontSize="md" mb={2} color="text">
                     Service Reminders:
                   </Text>
