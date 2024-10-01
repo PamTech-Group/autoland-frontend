@@ -7,6 +7,7 @@ import {
   Icon,
   Progress,
   SimpleGrid,
+  Skeleton,
   Text,
 
 } from "@chakra-ui/react";
@@ -48,7 +49,18 @@ import theme from "../theme";
 import { useState } from "react";
 
 function Body() {
+  const [loadingTestimonials, setLoadingTestimonials] = useState(true); 
+  const [loadingCarTips, setLoadingCarTips] = useState(true); 
   const [selectedCountry, setSelectedCountry] = useState('japanese');
+
+  const handleTestimonialsReady = () => {
+    setLoadingTestimonials(false); // Set loading to false when testimonials are ready
+  };
+
+  const handleCarTipsReady = () => {
+    setLoadingCarTips(false); // Set loading to false when car tips are ready
+  };
+
   type CountryKey = 'japanese' | 'american' | 'german';
 
   const services = [
@@ -106,6 +118,7 @@ function Body() {
   };
   return (
     <Flex 
+    zIndex={50}
     flexDirection='column' 
       color="text"
       padding={{
@@ -124,7 +137,7 @@ function Body() {
         alignItems={{base:"left", lg: 'center'}}
         flexDirection={{ base: "column", lg: "row" }}
         p={2}
-        m={{ base: "0 auto 0 auto", xl: "-6rem auto 0 auto ", dxl: "-8rem auto 0 auto " }}
+        m={{ base: "0 auto 0 auto", xl: "3rem auto 0 auto ", dxl: "4rem auto 0 auto " }}
       >
         <Flex alignItems="center" gap={2}>
           <Icon as={FaUsers} boxSize={8} mb={2} />
@@ -364,10 +377,13 @@ function Body() {
           Our Customers Love Us
         </Heading>
         <SimpleGrid columns={{ base: 1, md: 2, xl: 3 }} spacing={10} justifyContent='center'>
+          {loadingTestimonials && (
+            <Skeleton height="250px" width="100%" />
+          )}
           {testimonials.map((videoId, index) => (
-            <YouTube key={index} videoId={videoId} opts={opts} />
+            <YouTube key={index} videoId={videoId} opts={opts} onReady={handleTestimonialsReady} />
           ))}
-        </SimpleGrid>
+          </SimpleGrid>
       </Box>
 
       <Box>
@@ -375,8 +391,11 @@ function Body() {
           Car Tip & Advice
         </Heading>
         <SimpleGrid columns={{ base: 1, md: 2, xl: 3 }} spacing={10} justifyContent='center'>
+          {loadingCarTips && (
+            <Skeleton height="250px" width="100%" />
+          )}
           {carTips.map((videoId, index) => (
-            <YouTube key={index} videoId={videoId} opts={opts} />
+            <YouTube key={index} videoId={videoId} opts={opts} onReady={handleCarTipsReady} />
           ))}
         </SimpleGrid>
       </Box>

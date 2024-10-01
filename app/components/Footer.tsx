@@ -22,7 +22,7 @@ function Footer() {
   const logoSize = useBreakpointValue({ base: 25, sm: 30 });
 
   return (
-    <>
+    <Box>
       {/* DOWNLOAD APP SECTION */}
       <Box
         padding={{
@@ -164,7 +164,7 @@ function Footer() {
           </Text>
         </Box>
       </Box>
-    </>
+    </Box>
   );
 }
 

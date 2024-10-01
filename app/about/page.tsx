@@ -15,14 +15,14 @@ const testimonials = [
       rating: 4.8,
     },
     {
-      name: "Ms. Jane Doe",
-      testimonial: "PamTech Autoland provided excellent service. They were quick, efficient, and very professional. Highly recommend!",
+      name: "Mr. Adebayo",
+      testimonial: "I had car trouble on my way to a business presentation, and I thought I'd never make it. I remembered PamTech Autoland and quickly booked a repair through their app. In no time, the team was on-site, and my car was back on the road. Thanks to PamTech Autoland, I arrived just in time. Truly a lifesaver!",
       rating: 4.9,
     },
     {
-      name: "Mr. John Smith",
-      testimonial: "Great experience with PamTech Autoland. They fixed my car in no time and the customer service was top-notch.",
-      rating: 4.7,
+      name: "Mrs. Chinyere",
+      testimonial: "My car started acting up during a busy day, and I had no time to waste. I booked a repair through PamTech Autoland's app, and within minutes, they sent help. My car was fixed so quickly, I barely missed a beat in my schedule. PamTech Autoland really made things stress-free!",
+      rating: 4.9,
     },
   ];
 function About() {
