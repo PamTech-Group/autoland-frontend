@@ -146,7 +146,7 @@ import {
                     <Link href="/services" onClick={onMobileMenuClose}>
                       Our Services
                     </Link>
-                    <Link href="/e-solution" onClick={onMobileMenuClose}>
+                    <Link href="/autoclub" onClick={onMobileMenuClose}>
                     Join Autoclub
 
                     </Link>
