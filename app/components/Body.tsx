@@ -163,7 +163,7 @@ function Body() {
         }} color="primaryBlue">
           Our Services
         </Heading>
-        <SimpleGrid placeItems='center'  columns={{ base: 1, sm: 2, lg: 3 }} gap={6} rowGap={12}>
+        <SimpleGrid placeItems='center'  columns={{ base: 1, md: 2, xl: 3 }} gap={6} rowGap={12}>
           {services.map((service, index) => (
             <Flex
             flexDirection='column'
