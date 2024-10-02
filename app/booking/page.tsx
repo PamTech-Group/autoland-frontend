@@ -14,16 +14,108 @@ import {
   FormLabel,
   SimpleGrid,
   IconButton,
+  useToast,
 } from "@chakra-ui/react";
 import NavWhite from "../components/NavWhite";
 import theme from "../theme";
 import Footer from "../components/Footer";
 import { FaPhone, FaWhatsapp } from "react-icons/fa6";
+import { useState } from "react";
+import axios from "axios";
+
+interface FormData {
+  customerName: string;
+  customerEmail: string;
+  customerPhone: string;
+  carModel: string;
+  carMake: string;
+  carYear: number;
+  engineType: string;
+  userState: string;
+  workshopBranch: string;
+  carDescription: string;
+}
 
 function Booking() {
+  const toast = useToast();
+  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] =  useState<FormData>({
+    customerName: "",
+    customerEmail: "",
+    customerPhone: "",
+    carModel: "",
+    carMake: "",
+    carYear: 2008,
+    engineType: "",
+    userState: "",
+    workshopBranch: "",
+    carDescription: "",
+  });
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
+    const { name, value } = e.target;
+  
+  const updatedValue = name === "carYear" ? Number(value) : value;
+  setFormData({ ...formData, [name]: updatedValue });
+};
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!formData) {
+      toast({
+        title: "details missing",
+        description: "plwease fill all the details",
+        status: "error",
+        duration: 4000,
+        isClosable: true,
+        position: "top-right",
+      });
+    } else {
+      setLoading(true);
+      try {
+        const response = await axios.post(
+          "https://autoland-admin-backend.onrender.com/api/bookings",
+          formData,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        // Handle success (e.g., show a success message)
+        if (response.status === 201) {
+          setLoading(false);
+          toast({
+            title: "Booked Successfully.",
+            description: "You'll hear from us soon",
+            status: "success",
+            duration: 4000,
+            isClosable: true,
+            position: "top-right",
+          });
+        }
+        console.log(response);
+        
+      } catch (error) {
+        setLoading(false);
+        // Handle error (e.g., show an error message)
+        toast({
+          title: "An Error Occurred.",
+          description: "please try again",
+          status: "error",
+          duration: 4000,
+          isClosable: true,
+          position: "top-right",
+        });
+      }
+    }
+  };
   return (
     <Box bgColor="backgroundWhite">
-           <Flex
+      <Flex
         zIndex={5000}
         gap={3}
         position="fixed"
@@ -87,11 +179,11 @@ function Booking() {
           spacing={{ base: 6, md: 8, lg: 10 }}
           align="stretch"
           color="text"
-          mx='auto'
+          mx="auto"
           maxWidth={{
-            base: '100%',
-            myxl: '80%',
-            dxl: '65%',
+            base: "100%",
+            myxl: "80%",
+            dxl: "65%",
           }}
         >
           <SimpleGrid
@@ -101,6 +193,8 @@ function Booking() {
             <FormControl>
               <FormLabel fontWeight={500}>Car make</FormLabel>
               <Input
+                name="carMake" // Add name attribute
+                onChange={handleChange}
                 paddingY="1.5rem"
                 bg="inputBg"
                 _placeholder={{
@@ -114,6 +208,8 @@ function Booking() {
             <FormControl>
               <FormLabel fontWeight={500}>Model</FormLabel>
               <Input
+                name="carModel" // Add name attribute
+                onChange={handleChange}
                 paddingY="1.5rem"
                 bg="inputBg"
                 _placeholder={{
@@ -132,35 +228,71 @@ function Booking() {
             <FormControl>
               <FormLabel fontWeight={500}>Year</FormLabel>
               <Select
-              colorScheme="whiteAlpha"
+              
+                name="carYear" // Add name attribute
+                onChange={handleChange}
+                colorScheme="whiteAlpha"
                 size="lg"
                 _placeholder={{ color: "#00000080" }}
-               
                 bgColor="inputBg"
                 focusBorderColor="transparent"
-                color= "#00000080"
+                color="#00000080"
               >
-                <option style={{backgroundColor:'#33333333'}} value="2008">2008</option>
-                <option style={{backgroundColor:'#33333333'}} value="2009">2009</option>
-                <option style={{backgroundColor:'#33333333'}} value="2010">2010</option>
-                <option style={{backgroundColor:'#33333333'}} value="2011">2011</option>
-                <option style={{backgroundColor:'#33333333'}} value="2012">2012 </option>
-                <option style={{backgroundColor:'#33333333'}} value="2013">2013</option>
-                <option style={{backgroundColor:'#33333333'}} value="2014">2014</option>
-                <option style={{backgroundColor:'#33333333'}} value="2015">2015</option>
-                <option style={{backgroundColor:'#33333333'}} value="2016">2016</option>
-                <option style={{backgroundColor:'#33333333'}} value="2017">2017</option>
-                <option style={{backgroundColor:'#33333333'}} value="2018">2018</option>
-                <option style={{backgroundColor:'#33333333'}} value="2019">2019</option>
-                <option style={{backgroundColor:'#33333333'}} value="2020">2020</option>
-                <option style={{backgroundColor:'#33333333'}} value="2021">2021</option>
-                <option style={{backgroundColor:'#33333333'}} value="2022">2022</option>
-                <option style={{backgroundColor:'#33333333'}} value="2023">2023</option>
+                <option style={{ backgroundColor: "#33333333" }} value="2008">
+                  2008
+                </option>
+                <option style={{ backgroundColor: "#33333333" }} value="2009">
+                  2009
+                </option>
+                <option style={{ backgroundColor: "#33333333" }} value="2010">
+                  2010
+                </option>
+                <option style={{ backgroundColor: "#33333333" }} value="2011">
+                  2011
+                </option>
+                <option style={{ backgroundColor: "#33333333" }} value="2012">
+                  2012{" "}
+                </option>
+                <option style={{ backgroundColor: "#33333333" }} value="2013">
+                  2013
+                </option>
+                <option style={{ backgroundColor: "#33333333" }} value="2014">
+                  2014
+                </option>
+                <option style={{ backgroundColor: "#33333333" }} value="2015">
+                  2015
+                </option>
+                <option style={{ backgroundColor: "#33333333" }} value="2016">
+                  2016
+                </option>
+                <option style={{ backgroundColor: "#33333333" }} value="2017">
+                  2017
+                </option>
+                <option style={{ backgroundColor: "#33333333" }} value="2018">
+                  2018
+                </option>
+                <option style={{ backgroundColor: "#33333333" }} value="2019">
+                  2019
+                </option>
+                <option style={{ backgroundColor: "#33333333" }} value="2020">
+                  2020
+                </option>
+                <option style={{ backgroundColor: "#33333333" }} value="2021">
+                  2021
+                </option>
+                <option style={{ backgroundColor: "#33333333" }} value="2022">
+                  2022
+                </option>
+                <option style={{ backgroundColor: "#33333333" }} value="2023">
+                  2023
+                </option>
               </Select>
             </FormControl>
             <FormControl>
               <FormLabel fontWeight={500}>Engine Type:</FormLabel>
               <Input
+                name="engineType" // Add name attribute
+                onChange={handleChange}
                 paddingY="1.5rem"
                 bg="inputBg"
                 _placeholder={{
@@ -179,6 +311,8 @@ function Booking() {
             <FormControl>
               <FormLabel fontWeight={500}>City</FormLabel>
               <Input
+                name="userState" // Add name attribute
+                onChange={handleChange}
                 paddingY="1.5rem"
                 bg="inputBg"
                 _placeholder={{
@@ -192,14 +326,19 @@ function Booking() {
             <FormControl>
               <FormLabel fontWeight={500}>Workshop Centre</FormLabel>
               <Select
-              
+                name="workshopBranch" // Add name attribute
+                onChange={handleChange}
                 size="lg"
-               color= "#00000080"
+                color="#00000080"
                 bgColor="inputBg"
                 focusBorderColor="transparent"
               >
-                 <option style={{backgroundColor:'#33333333'}} value="owerri">Owerri</option>
-                 <option style={{backgroundColor:'#33333333'}} value="ph">Portharcourt</option>
+                <option style={{ backgroundColor: "#33333333" }} value="Autoland Owerri">
+                  Owerri
+                </option>
+                <option style={{ backgroundColor: "#33333333" }} value="Autoland PH">
+                  Portharcourt
+                </option>
               </Select>
             </FormControl>
           </SimpleGrid>
@@ -210,6 +349,8 @@ function Booking() {
             <FormControl>
               <FormLabel fontWeight={500}>Full Name</FormLabel>
               <Input
+                name="customerName" // Add name attribute
+                onChange={handleChange} // Add onChange handler
                 paddingY="1.5rem"
                 bg="inputBg"
                 _placeholder={{
@@ -223,6 +364,8 @@ function Booking() {
             <FormControl>
               <FormLabel fontWeight={500}>Phone NO:</FormLabel>
               <Input
+                name="customerPhone" // Add name attribute
+                onChange={handleChange}
                 paddingY="1.5rem"
                 bg="inputBg"
                 _placeholder={{
@@ -237,6 +380,9 @@ function Booking() {
           <FormControl>
             <FormLabel fontWeight={500}>Email</FormLabel>
             <Input
+              type="email"
+              name="customerEmail" // Add name attribute
+              onChange={handleChange}
               paddingY="1.5rem"
               bg="inputBg"
               _placeholder={{
@@ -250,6 +396,8 @@ function Booking() {
           <FormControl>
             <FormLabel>Report an issue with your car</FormLabel>
             <Textarea
+              name="carDescription" // Add name attribute
+              onChange={handleChange}
               bgColor="inputBg"
               _placeholder={{
                 color: "#00000080",
@@ -264,6 +412,8 @@ function Booking() {
             I hereby confirm that I agree to Pamtech Terms and Conditions
           </Checkbox>
           <Button
+            isLoading={loading}
+            onClick={handleSubmit}
             borderRadius="lg"
             fontSize="md"
             padding={{ base: "1.5rem", md: "2rem" }}

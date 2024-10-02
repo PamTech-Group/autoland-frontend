@@ -173,7 +173,6 @@ function Hero() {
                   />
                 </FormControl>
                 <Button
-                  type="submit"
                   borderRadius="12rem"
                   bgColor="white"
                   padding="1rem 2.5rem"
@@ -183,6 +182,7 @@ function Hero() {
                   _hover={{
                     bgColor: "gray.300",
                   }}
+                  isLoading={loading}
                   onClick={handleSearch}
                 >
                   Search VIN
@@ -271,6 +271,21 @@ function Hero() {
         <ModalContent bgColor="backgroundWhite" color="text">
           <ModalHeader m="0 auto">
             <Image src={modalImage} alt="vehicle details" />
+            <Flex flexDirection="column">
+              <Text
+                textTransform="uppercase"
+                textAlign="center"
+                my=".7rem"
+                color="secondaryBlue"
+                fontWeight={600}
+                fontSize="lg"
+              >
+                {vehicleData?.year} {vehicleData?.make} {vehicleData?.model}
+              </Text>
+              <Text textAlign="center" fontWeight={500} fontSize="sm">
+                {vincode}
+              </Text>
+            </Flex>
           </ModalHeader>
           <ModalCloseButton />
           <ModalBody>

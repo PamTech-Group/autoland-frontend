@@ -10,6 +10,7 @@ import {
   Select,
   Skeleton,
   Text,
+  useToast,
   VStack,
 } from "@chakra-ui/react";
 import Nav from "../components/Nav";
@@ -22,9 +23,24 @@ import { Image } from "@chakra-ui/next-js";
 import PackagesSection from "../components/Package";
 import Footer from "../components/Footer";
 import { useState } from "react";
+import axios from "axios";
+
+interface RegistrationData {
+  fullName: string;
+  email: string;
+  phoneNumber: string;
+  membershipPackage: string;
+}
 function Autoclub() {
   const [loading, setLoading] = useState<boolean>(true); // Add state for loading
-
+  const [buttonloading, setbuttonLoading] = useState<boolean>(false); // Add state for loading
+const toast = useToast()
+  const [registrationData, setRegistrationData] = useState<RegistrationData>({
+    fullName: "",
+    email: "",
+    phoneNumber: "",
+    membershipPackage: "",
+  });
   const opts = {
     height: "320px",
     width: "350px",
@@ -35,7 +51,63 @@ function Autoclub() {
   const handleReady = () => {
     setLoading(false); // Set loading to false when video is ready
   };
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setRegistrationData({ ...registrationData, [name]: value });
+  };
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!registrationData) {
+      toast({
+        title: "details missing",
+        description: "plwease fill all the details",
+        status: "error",
+        duration: 4000,
+        isClosable: true,
+        position: "top-right",
+      });
+    } else {
+      setbuttonLoading(true);
+      try {
+        const response = await axios.post(
+          "https://autoland-admin-backend.onrender.com/api/autoclub/join",
+          registrationData,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        // Handle success (e.g., show a success message)
+        if (response.status === 201) {
+          setbuttonLoading(false);
+          toast({
+            title: "Booked Successfully.",
+            description: "You'll hear from us soon",
+            status: "success",
+            duration: 4000,
+            isClosable: true,
+            position: "top-right",
+          });
+        }
+      
+        
+      } catch (error) {
+        setbuttonLoading(false);
+        
+        // Handle error (e.g., show an error message)
+        toast({
+          title: "An Error Occurred.",
+          description: "please try again",
+          status: "error",
+          duration: 4000,
+          isClosable: true,
+          position: "top-right",
+        });
+      }
+    }
+  };
   return (
     <Box bgColor="backgroundWhite">
       <Box color="whiteText" height={{ base: "fit-content", xl: "100vh" }}>
@@ -304,6 +376,7 @@ function Autoclub() {
               <Flex flexDir="column" as="form" gap="2rem">
                 <Flex gap="2rem" flexDirection={{ base: "column", lg: "row" }}>
                   <Input
+                    name="fullName"
                     width="100%"
                     placeholder="Enter Your Full Name"
                     bg="whiteAlpha.100"
@@ -311,40 +384,49 @@ function Autoclub() {
                     borderColor="whiteAlpha.300"
                     color="white"
                     _placeholder={{ color: "whiteAlpha.500" }}
+                    onChange={handleChange}
                   />
                   <Input
+                    name="email"
                     placeholder="Enter Your E-Mail"
                     bg="whiteAlpha.100"
                     border="1px solid"
                     borderColor="whiteAlpha.300"
                     color="white"
                     _placeholder={{ color: "whiteAlpha.500" }}
+                    onChange={handleChange}
                   />
                 </Flex>
                 <Flex gap="2rem" flexDirection={{ base: "column", lg: "row" }}>
                   <Input
+                    name="phoneNumber"
                     placeholder="Enter Your Phone Number"
                     bg="whiteAlpha.100"
                     border="1px solid"
                     borderColor="whiteAlpha.300"
                     color="white"
                     _placeholder={{ color: "whiteAlpha.500" }}
+                    onChange={handleChange}
                   />
                   <Select
-                    placeholder="What membership are you interested in?"
-                    bg="whiteAlpha.100"
-                    border="1px solid"
-                    borderColor="whiteAlpha.300"
-                    color="white.500"
-                    _placeholder={{ color: "whiteAlpha.200", opacity: "0.5" }}
+                         name="membershipPackage"
+                         placeholder="What membership are you interested in?"
+                         bg="whiteAlpha.100"
+                         border="1px solid"
+                         borderColor="whiteAlpha.300"
+                         color="white"
+                         _placeholder={{ color: "whiteAlpha.200", opacity: "0.5" }}
+                         onChange={handleChange}
                   >
-                    <option style={{backgroundColor:'#0D2B57'}} value="silver">Silver Package</option>
-                    <option style={{backgroundColor:'#0D2B57'}} value="gold">Gold Package</option>
-                    <option style={{backgroundColor:'#0D2B57'}} value="diamond">Diamond Package</option>
-                    <option style={{backgroundColor:'#0D2B57'}} value="premium">Premium Package</option>
+                    <option style={{backgroundColor:'#0D2B57'}} value="Silver package">Silver Package</option>
+                    <option style={{backgroundColor:'#0D2B57'}} value="Gold package">Gold Package</option>
+                    <option style={{backgroundColor:'#0D2B57'}} value="Diamond package">Diamond Package</option>
+                    <option style={{backgroundColor:'#0D2B57'}} value="Premium Package">Premium Package</option>
                   </Select>
                 </Flex>
                 <Button
+                  isLoading={buttonloading}
+                  onClick={handleSubmit}
                   mt="3rem"
                   type="submit"
                   width="full"

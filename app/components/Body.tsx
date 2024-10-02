@@ -163,7 +163,7 @@ function Body() {
         }} color="primaryBlue">
           Our Services
         </Heading>
-        <SimpleGrid  columns={{ base: 1, sm: 2, lg: 3 }} gap={6} rowGap={12}>
+        <SimpleGrid placeItems='center'  columns={{ base: 1, sm: 2, lg: 3 }} gap={6} rowGap={12}>
           {services.map((service, index) => (
             <Flex
             flexDirection='column'
@@ -376,7 +376,7 @@ function Body() {
         <Heading as="h2" size="md" textAlign="left" color="primaryBlue" my={10}>
           Our Customers Love Us
         </Heading>
-        <SimpleGrid columns={{ base: 1, md: 2, xl: 3 }} spacing={10} justifyContent='center'>
+        <SimpleGrid placeItems='center' columns={{ base: 1, md: 2, xl: 3 }} spacing={10} justifyContent='center'>
           {loadingTestimonials && (
             <Skeleton height="250px" width="100%" />
           )}
@@ -390,7 +390,7 @@ function Body() {
         <Heading as="h2" size="md" textAlign="left" color="primaryBlue" my={10}>
           Car Tip & Advice
         </Heading>
-        <SimpleGrid columns={{ base: 1, md: 2, xl: 3 }} spacing={10} justifyContent='center'>
+        <SimpleGrid placeItems='center' columns={{ base: 1, md: 2, xl: 3 }} spacing={10} justifyContent='center'>
           {loadingCarTips && (
             <Skeleton height="250px" width="100%" />
           )}
