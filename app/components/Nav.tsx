@@ -35,11 +35,7 @@ function Nav() {
 
       <Box
       width='100%'
-        //   position="fixed"
-        //   top={0}
-        //   left={0}
-        //   right={0}
-        //   zIndex={999}
+       
         bg={"transparent"}
 
         padding={{
@@ -87,7 +83,7 @@ function Nav() {
               </Link>
   
               <Link style={{textDecoration:'none'}}  fontSize='md' fontWeight={400} href="/autoclub">
-                Autoclub
+                Join Autoclub
               </Link>
             </Flex>
 
@@ -146,7 +142,8 @@ function Nav() {
                     Our Services
                   </Link>
                   <Link href="/autoclub" onClick={onMobileMenuClose}>
-                    Autoclub
+                  Join Autoclub
+
                   </Link>
 
                   <Link href="/booking" onClick={onMobileMenuClose}>

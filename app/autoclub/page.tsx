@@ -5,6 +5,7 @@ import {
   Flex,
   Heading,
   Icon,
+  IconButton,
   Input,
   Select,
   Skeleton,
@@ -16,7 +17,7 @@ import bgImage from "../assets/autoclubBg.webp";
 import benefit from "../assets/autoclubImage.webp";
 import YouTube from "react-youtube";
 import { FaCarSide } from "react-icons/fa";
-import { FaBell, FaCar, FaGasPump, FaWrench } from "react-icons/fa6";
+import { FaBell, FaCar, FaGasPump, FaPhone, FaWhatsapp, FaWrench } from "react-icons/fa6";
 import { Image } from "@chakra-ui/next-js";
 import PackagesSection from "../components/Package";
 import Footer from "../components/Footer";
@@ -94,6 +95,35 @@ function Autoclub() {
             </Box>
           </Flex>
         </Flex>
+        <Flex
+        zIndex={5000}
+        gap={3}
+        position="fixed"
+        bottom={5}
+        right={2}
+        flexDirection="column"
+      >
+        <IconButton
+          as="a"
+          href="tel:+2348115004000"
+          borderRadius="50%"
+          boxShadow="md"
+          colorScheme="blackAlpha"
+          aria-label="Call Us"
+          size="lg"
+          icon={<FaPhone size="1.5rem" color="#60D669" />}
+        />
+        <IconButton
+          as="a"
+          href="https://wa.me/+2348115004000"
+          borderRadius="50%"
+          boxShadow="md"
+          colorScheme="blackAlpha"
+          aria-label="contact Us"
+          size="lg"
+          icon={<FaWhatsapp size="1.5rem" color="#60D669" />}
+        />
+      </Flex>
       </Box>
       <Box
         padding={{
@@ -136,8 +166,8 @@ function Autoclub() {
                 mb={8}
                 alignItems="center"
               >
-                <Box flexShrink={0} mr={4}>
-                  <Icon as={FaWrench} boxSize={7} color="buttonOrange" />
+                <Box flexShrink={0} mr={4} bgColor='buttonOrange'>
+                  <Icon   p={2} boxSize={10} color="backgroundWhite" as={FaWrench}  />
                 </Box>
                 <Box pb={2} borderBottom='2px solid #FF0000' >
                   <Text fontWeight="bold" fontSize="md" mb={2} color="text">
@@ -154,8 +184,8 @@ function Autoclub() {
                 mb={8}
                 alignItems="center"
               >
-                <Box flexShrink={0} mr={4}>
-                  <Icon as={FaCar} boxSize={7} color="buttonOrange" />
+                <Box flexShrink={0} mr={4} bgColor='buttonOrange'>
+                  <Icon  p={2} boxSize={10} color="backgroundWhite" as={FaCar}  />
                 </Box>
                 <Box pb={2} borderBottom='2px solid #FF0000'>
                   <Text fontWeight="bold" fontSize="md" mb={2} color="text">
@@ -172,8 +202,8 @@ function Autoclub() {
                 mb={8}
                 alignItems="center"
               >
-                <Box flexShrink={0} mr={4}>
-                  <Icon as={FaGasPump} boxSize={7} color="buttonOrange" />
+                <Box flexShrink={0} mr={4} bgColor='buttonOrange'>
+                  <Icon  p={2} boxSize={10} color="backgroundWhite" as={FaGasPump}  />
                 </Box>
                 <Box pb={2} borderBottom='2px solid #FF0000'>
                   <Text fontWeight="bold" fontSize="md" mb={2} color="text">
@@ -190,8 +220,8 @@ function Autoclub() {
                 mb={8}
                 alignItems="center"
               >
-                <Box flexShrink={0} mr={4}>
-                  <Icon as={FaCarSide} boxSize={7} color="buttonOrange" />
+                <Box flexShrink={0} mr={4} bgColor='buttonOrange'>
+                  <Icon  p={2} boxSize={10} color="backgroundWhite" as={FaCarSide} />
                 </Box>
                 <Box pb={2} borderBottom='2px solid #FF0000'>
                   <Text fontWeight="bold" fontSize="md" mb={2} color="text">
@@ -209,8 +239,8 @@ function Autoclub() {
                 alignItems="center"
                 width='100%'
               >
-                <Box flexShrink={0} mr={4}>
-                  <Icon as={FaBell} boxSize={7} color="buttonOrange" />
+                <Box flexShrink={0} mr={4} bgColor='buttonOrange'>
+                  <Icon  p={2} boxSize={10} color="backgroundWhite" as={FaBell} />
                 </Box>
                 <Box pb={2} borderWidth='100%' borderBottom='2px solid #FF0000'>
                   <Text fontWeight="bold" fontSize="md" mb={2} color="text">
@@ -308,10 +338,10 @@ function Autoclub() {
                     color="white.500"
                     _placeholder={{ color: "whiteAlpha.200", opacity: "0.5" }}
                   >
-                    <option value="silver">Silver Package</option>
-                    <option value="gold">Gold Package</option>
-                    <option value="diamond">Diamond Package</option>
-                    <option value="premium">Premium Package</option>
+                    <option style={{backgroundColor:'#0D2B57'}} value="silver">Silver Package</option>
+                    <option style={{backgroundColor:'#0D2B57'}} value="gold">Gold Package</option>
+                    <option style={{backgroundColor:'#0D2B57'}} value="diamond">Diamond Package</option>
+                    <option style={{backgroundColor:'#0D2B57'}} value="premium">Premium Package</option>
                   </Select>
                 </Flex>
                 <Button

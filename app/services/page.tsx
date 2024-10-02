@@ -1,5 +1,5 @@
 "use client";
-import { Box, Heading, Text, Flex, VStack } from "@chakra-ui/react";
+import { Box, Heading, Text, Flex, VStack, IconButton } from "@chakra-ui/react";
 import servicesHero from "../assets/servicesHero.webp";
 import quote from "../assets/services_quotes.webp";
 import wedo1 from "../assets/wedo1.webp";
@@ -14,11 +14,41 @@ import NavWhite from "../components/NavWhite";
 import SectionComponent from "../components/SectionComponent";
 import Footer from "../components/Footer";
 import theme from "../theme";
+import { FaPhone, FaWhatsapp } from "react-icons/fa6";
 
 function Services() {
   return (
     <Box bgColor='backgroundWhite'>
       <NavWhite />
+      <Flex
+        zIndex={5000}
+        gap={3}
+        position="fixed"
+        bottom={5}
+        right={2}
+        flexDirection="column"
+      >
+        <IconButton
+          as="a"
+          href="tel:+2348115004000"
+          borderRadius="50%"
+          boxShadow="md"
+          colorScheme="blackAlpha"
+          aria-label="Call Us"
+          size="lg"
+          icon={<FaPhone size="1.5rem" color="#60D669" />}
+        />
+        <IconButton
+          as="a"
+          href="https://wa.me/+2348115004000"
+          borderRadius="50%"
+          boxShadow="md"
+          colorScheme="blackAlpha"
+          aria-label="contact Us"
+          size="lg"
+          icon={<FaWhatsapp size="1.5rem" color="#60D669" />}
+        />
+      </Flex>
       <Box
          padding={{
           base: "0.5rem 0.5rem",

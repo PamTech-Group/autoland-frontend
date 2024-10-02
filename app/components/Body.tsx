@@ -131,16 +131,16 @@ function Body() {
     justifyContent='center'
     >
        <Flex
-        justifyContent="center"
+        justifyContent="left"
         
         gap={{ base: "1rem", md: "2rem" }}
         alignItems={{base:"left", lg: 'center'}}
-        flexDirection={{ base: "column", lg: "row" }}
+        flexWrap='wrap'
         p={2}
         m={{ base: "0 auto 0 auto", xl: "3rem auto 0 auto ", dxl: "5rem auto 0 auto ", }}
       >
         <Flex alignItems="center" gap={2}>
-          <Icon as={FaUsers} boxSize={8} mb={2} />
+          <Icon as={FaUsers} boxSize={{base:5}} mb={2} />
           <Text fontWeight={400}>Qualified Professionals</Text>
         </Flex>
         <Flex alignItems="center" gap={2}>

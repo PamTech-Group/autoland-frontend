@@ -87,7 +87,8 @@ import {
               </Link>
   
               <Link style={{textDecoration:'none'}}  fontSize='md' fontWeight={400} href="/autoclub">
-                Autoclub
+              Join Autoclub
+
               </Link>
             </Flex>
   
@@ -146,7 +147,8 @@ import {
                       Our Services
                     </Link>
                     <Link href="/e-solution" onClick={onMobileMenuClose}>
-                      Autoclub
+                    Join Autoclub
+
                     </Link>
   
                     <Link href="/booking" onClick={onMobileMenuClose}>

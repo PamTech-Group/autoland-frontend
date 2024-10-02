@@ -5,7 +5,7 @@ import { Image } from "@chakra-ui/next-js";
 import about_hero from "../assets/about_hero.webp";
 import TestimonialCard from "../components/TestimonialCard";
 import { useState } from "react";
-import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
+import { FaArrowLeftLong, FaArrowRightLong, FaPhone, FaWhatsapp } from "react-icons/fa6";
 import Footer from "../components/Footer";
 import theme from "../theme";
 const testimonials = [
@@ -42,6 +42,35 @@ function About() {
   return (
     <Box bgColor="backgroundWhite" >
       <NavWhite />
+      <Flex
+        zIndex={5000}
+        gap={3}
+        position="fixed"
+        bottom={5}
+        right={2}
+        flexDirection="column"
+      >
+        <IconButton
+          as="a"
+          href="tel:+2348115004000"
+          borderRadius="50%"
+          boxShadow="md"
+          colorScheme="blackAlpha"
+          aria-label="Call Us"
+          size="lg"
+          icon={<FaPhone size="1.5rem" color="#60D669" />}
+        />
+        <IconButton
+          as="a"
+          href="https://wa.me/+2348115004000"
+          borderRadius="50%"
+          boxShadow="md"
+          colorScheme="blackAlpha"
+          aria-label="contact Us"
+          size="lg"
+          icon={<FaWhatsapp size="1.5rem" color="#60D669" />}
+        />
+      </Flex>
       <Flex
     
       flexDirection='column'

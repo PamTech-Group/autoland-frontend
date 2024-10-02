@@ -57,7 +57,7 @@ function Footer() {
             </Text>
             <Box
               textAlign="center"
-              width={{base: '100%', lg: 'fit=content'}}
+              width={{base: '100%', lg: 'fit-content'}}
               color="white"
               p=".5rem 1rem"
               borderRadius="md"

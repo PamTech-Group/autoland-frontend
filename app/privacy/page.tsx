@@ -3,6 +3,7 @@ import {
   Box,
   Flex,
   Heading,
+  IconButton,
   Text,
   VStack,
   useBreakpointValue,
@@ -11,6 +12,7 @@ import Link from "next/link";
 import React from "react";
 import NavWhite from "../components/NavWhite";
 import Footer from "../components/Footer";
+import { FaPhone, FaWhatsapp } from "react-icons/fa6";
 
 
 const Privacy = () => {
@@ -27,6 +29,35 @@ const Privacy = () => {
   return (
     <Box bg="backgroundWhite">
       <NavWhite />
+      <Flex
+        zIndex={5000}
+        gap={3}
+        position="fixed"
+        bottom={5}
+        right={2}
+        flexDirection="column"
+      >
+        <IconButton
+          as="a"
+          href="tel:+2348115004000"
+          borderRadius="50%"
+          boxShadow="md"
+          colorScheme="blackAlpha"
+          aria-label="Call Us"
+          size="lg"
+          icon={<FaPhone size="1.5rem" color="#60D669" />}
+        />
+        <IconButton
+          as="a"
+          href="https://wa.me/+2348115004000"
+          borderRadius="50%"
+          boxShadow="md"
+          colorScheme="blackAlpha"
+          aria-label="contact Us"
+          size="lg"
+          icon={<FaWhatsapp size="1.5rem" color="#60D669" />}
+        />
+      </Flex>
       <Flex
         color="text"
         flexDirection="column"

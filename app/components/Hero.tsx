@@ -18,6 +18,7 @@ import {
   ModalBody,
   ModalFooter,
   FormControl,
+  IconButton,
 } from "@chakra-ui/react";
 import { StarIcon } from "@chakra-ui/icons";
 import Image from "next/image";
@@ -25,6 +26,7 @@ import heroImage from "../assets/heroImage.webp";
 import modalImage from "../assets/modalImage.webp";
 import Nav from "./Nav";
 import { useState } from "react";
+import { FaPhone, FaWhatsapp } from "react-icons/fa6";
 
 interface Engine {
   configurationCylinder: string;
@@ -48,16 +50,15 @@ interface VehicleData {
 function Hero() {
   const [vincode, setVincode] = useState("");
   const [loading, setLoading] = useState(false);
-  const [vehicleData, setVehicleData] =  useState<VehicleData | null>(null);
+  const [vehicleData, setVehicleData] = useState<VehicleData | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleSearch = async () => {
-    if(!vincode) return
-      
+    if (!vincode) return;
+
     setLoading(true);
     setVehicleData(null);
     try {
-      
       const response = await fetch(
         `https://autoland-admin-backend.onrender.com/api/check/vin/${vincode}`
       );
@@ -158,22 +159,21 @@ function Hero() {
               </Text>
               <Flex gap="1rem" alignItems="center">
                 <FormControl isRequired>
-
-                <Input
-                  placeholder="4Y1SL65848Z411439"
-                  _placeholder={{ color: "#a3a3a3" }}
-                  // bg="white"
-                  color="white"
-                  padding="1.5rem 2.5rem"
-                  borderRadius="12rem"
-                  borderColor="backgroundWhite"
-                  focusBorderColor="white"
-                  value={vincode}
-                  onChange={(e) => setVincode(e.target.value)}
-                />
+                  <Input
+                    placeholder="4Y1SL65848Z411439"
+                    _placeholder={{ color: "#a3a3a3" }}
+                    // bg="white"
+                    color="white"
+                    padding="1.5rem 2.5rem"
+                    borderRadius="12rem"
+                    borderColor="backgroundWhite"
+                    focusBorderColor="white"
+                    value={vincode}
+                    onChange={(e) => setVincode(e.target.value)}
+                  />
                 </FormControl>
                 <Button
-                type="submit"
+                  type="submit"
                   borderRadius="12rem"
                   bgColor="white"
                   padding="1rem 2.5rem"
@@ -222,13 +222,42 @@ function Hero() {
           </Box>
         </Flex>
       </Flex>
+
+      <Flex
+        zIndex={5000}
+        gap={3}
+        position="fixed"
+        bottom={5}
+        right={2}
+        flexDirection="column"
+      >
+        <IconButton
+          as="a"
+          href="tel:+2348115004000"
+          borderRadius="50%"
+          boxShadow="md"
+          colorScheme="blackAlpha"
+          aria-label="Call Us"
+          size="lg"
+          icon={<FaPhone size="1.5rem" color="#60D669" />}
+        />
+        <IconButton
+          as="a"
+          href="https://wa.me/+2348115004000"
+          borderRadius="50%"
+          boxShadow="md"
+          colorScheme="blackAlpha"
+          aria-label="contact Us"
+          size="lg"
+          icon={<FaWhatsapp size="1.5rem" color="#60D669" />}
+        />
+      </Flex>
       {/* Loader */}
       {loading && (
         <Box
           position="absolute"
-          top='50%'
-          left='50%'
-         
+          top="50%"
+          left="50%"
           bg="rgba(0, 0, 0, 0.5)"
           zIndex={20}
         >
@@ -253,27 +282,45 @@ function Hero() {
                   {vehicleData?.engine?.manufacturerEngineCode})
                 </Text>
                 <Text fontWeight={600}>Make:</Text>
-                <Text borderRadius="md" p={4} width="full" bgColor="#F8F8F8"> {vehicleData?.make}</Text>
+                <Text borderRadius="md" p={4} width="full" bgColor="#F8F8F8">
+                  {" "}
+                  {vehicleData?.make}
+                </Text>
                 <Text fontWeight={600}>Model:</Text>
-                <Text borderRadius="md" p={4} width="full" bgColor="#F8F8F8"> {vehicleData?.model}</Text>
+                <Text borderRadius="md" p={4} width="full" bgColor="#F8F8F8">
+                  {" "}
+                  {vehicleData?.model}
+                </Text>
                 <Text fontWeight={600}>Year:</Text>
-                <Text borderRadius="md" p={4} width="full" bgColor="#F8F8F8"> {vehicleData?.year}</Text>
+                <Text borderRadius="md" p={4} width="full" bgColor="#F8F8F8">
+                  {" "}
+                  {vehicleData?.year}
+                </Text>
                 <Text fontWeight={600}>Transmission:</Text>
                 <Text borderRadius="md" p={4} width="full" bgColor="#F8F8F8">
                   {vehicleData?.transmission?.name} (
                   {vehicleData?.transmission?.transmissionType})
                 </Text>
                 <Text fontWeight={600}>Drive Wheels:</Text>
-                <Text borderRadius="md" p={4} width="full" bgColor="#F8F8F8">{vehicleData?.driveWheels}</Text>
+                <Text borderRadius="md" p={4} width="full" bgColor="#F8F8F8">
+                  {vehicleData?.driveWheels}
+                </Text>
                 <Text fontWeight={600}> Vehicle Type:</Text>
-                <Text borderRadius="md" p={4} width="full" bgColor="#F8F8F8">{vehicleData?.vehicleType}</Text>
+                <Text borderRadius="md" p={4} width="full" bgColor="#F8F8F8">
+                  {vehicleData?.vehicleType}
+                </Text>
               </VStack>
             ) : (
               <Text>No data found for this VIN.</Text>
             )}
           </ModalBody>
           <ModalFooter>
-            <Button bgColor='primaryBlue' color="white" colorScheme="blue" onClick={() => setIsModalOpen(false)}>
+            <Button
+              bgColor="primaryBlue"
+              color="white"
+              colorScheme="blue"
+              onClick={() => setIsModalOpen(false)}
+            >
               Close
             </Button>
           </ModalFooter>
