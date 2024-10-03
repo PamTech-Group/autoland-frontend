@@ -48,7 +48,7 @@ import {
             sm: "0.75rem 2rem",
             md: "1rem 4rem",
             lg: "1rem 6rem",
-            myxl: "1rem 8rem",
+            dxl: "1rem 8rem",
           }}
         >
           <Flex

@@ -126,18 +126,18 @@ function Body() {
         sm: "0.75rem 2rem",
         md: "1rem 4rem",
         lg: "1rem 6rem",
-        myxl: "1rem 8rem",
+        dxl: "1rem 8rem",
       }}
     justifyContent='center'
     >
        <Flex
-        justifyContent="left"
+        justifyContent="center"
         fontSize={{base:'xs', md:'sm'}}
         gap={{ base: "1rem", md: "2rem" }}
         alignItems={{base:"left", lg: 'center'}}
         flexWrap='wrap'
         p={2}
-        m={{ base: "0 auto 0 auto", xl: "3rem auto 0 auto ", dxl: "5rem auto 0 auto ", }}
+        m={{ base: "0 auto 0 auto", xl: "5rem auto 0 auto ", dxl: "5rem auto 0 auto ", }}
       >
         <Flex alignItems="center" gap={2}>
           <Icon as={FaUsers} boxSize={{base:5, md:8}} mb={2} />
