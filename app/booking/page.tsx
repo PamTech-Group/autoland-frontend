@@ -193,7 +193,7 @@ function Booking() {
             <FormControl>
               <FormLabel fontWeight={500}>Car make</FormLabel>
               <Input
-                name="carMake" // Add name attribute
+                name="carMake" 
                 onChange={handleChange}
                 paddingY="1.5rem"
                 bg="inputBg"
@@ -208,7 +208,7 @@ function Booking() {
             <FormControl>
               <FormLabel fontWeight={500}>Model</FormLabel>
               <Input
-                name="carModel" // Add name attribute
+                name="carModel" 
                 onChange={handleChange}
                 paddingY="1.5rem"
                 bg="inputBg"
@@ -229,7 +229,7 @@ function Booking() {
               <FormLabel fontWeight={500}>Year</FormLabel>
               <Select
               
-                name="carYear" // Add name attribute
+                name="carYear" 
                 onChange={handleChange}
                 colorScheme="whiteAlpha"
                 size="lg"
@@ -326,12 +326,13 @@ function Booking() {
             <FormControl>
               <FormLabel fontWeight={500}>Workshop Centre</FormLabel>
               <Select
-                name="workshopBranch" // Add name attribute
+                name="workshopBranch" 
                 onChange={handleChange}
                 size="lg"
                 color="#00000080"
                 bgColor="inputBg"
                 focusBorderColor="transparent"
+               
               >
                 <option style={{ backgroundColor: "#33333333" }} value="Autoland Owerri">
                   Owerri
@@ -349,7 +350,7 @@ function Booking() {
             <FormControl>
               <FormLabel fontWeight={500}>Full Name</FormLabel>
               <Input
-                name="customerName" // Add name attribute
+                name="customerName" 
                 onChange={handleChange} // Add onChange handler
                 paddingY="1.5rem"
                 bg="inputBg"
@@ -364,7 +365,7 @@ function Booking() {
             <FormControl>
               <FormLabel fontWeight={500}>Phone NO:</FormLabel>
               <Input
-                name="customerPhone" // Add name attribute
+                name="customerPhone" 
                 onChange={handleChange}
                 paddingY="1.5rem"
                 bg="inputBg"
@@ -381,7 +382,7 @@ function Booking() {
             <FormLabel fontWeight={500}>Email</FormLabel>
             <Input
               type="email"
-              name="customerEmail" // Add name attribute
+              name="customerEmail" 
               onChange={handleChange}
               paddingY="1.5rem"
               bg="inputBg"
@@ -396,7 +397,7 @@ function Booking() {
           <FormControl>
             <FormLabel>Report an issue with your car</FormLabel>
             <Textarea
-              name="carDescription" // Add name attribute
+              name="carDescription" 
               onChange={handleChange}
               bgColor="inputBg"
               _placeholder={{
