@@ -74,7 +74,7 @@ function Hero() {
   };
 
   return (
-    <Box color="whiteText" height={{ base: "fit-content", xl: "100vh" }}>
+    <Box color="whiteText" height={{ base: "fit-content", xl: "120vh", dxl: '100vh' }}>
       <Flex
         flexDirection="column"
         zIndex={1}
@@ -88,7 +88,7 @@ function Hero() {
         // }}
         position="relative"
       >
-        <Box display={{ base: "none", xl: "flex", dxl: "none" }}>
+        {/* <Box display={{ base: "none", myxl: "flex", dxl: "none" }}>
           <svg
             viewBox="0 0 1440 320"
             style={{
@@ -105,8 +105,8 @@ function Hero() {
               d="M0,128L30,138.7C60,149,120,171,180,170.7C240,171,300,149,360,144C420,139,480,149,540,160C600,171,660,181,720,170.7C780,160,840,128,900,117.3C960,107,1020,117,1080,128C1140,139,1200,149,1260,160C1320,171,1380,181,1410,186.7L1440,192L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320H0Z"
             ></path>
           </svg>
-        </Box>
-        <Box display={{ base: "none", xl: "none", dxl: "flex" }}>
+        </Box> */}
+        <Box display={{ base: "none", myxl: "none", dxl: "flex" }}>
           <svg
             viewBox="0 0 1440 320"
             style={{
@@ -129,7 +129,7 @@ function Hero() {
             viewBox="0 0 1440 320"
             style={{
               position: "absolute",
-              bottom: "-10%",
+              bottom: "-30%",
               left: 0,
               width: "100%",
               height: "auto",
@@ -161,13 +161,14 @@ function Hero() {
           <VStack
             align="flex-start"
             spacing={6}
+            mt={{base:'2rem', myxl:'0rem'}}
             width={{ base: "100%", xl: "55%" }}
             // mb={{ base: 8, lg: 0 }}
           >
-            <Heading as="h1" size={{ base: "md", md: "lg", xl: "2xl" }}>
+            <Heading as="h1" size={{ base: "sm", md: "lg", xl: "xl", dxl:'2xl'}}>
               Car Repair & Servicing Made Easy
             </Heading>
-            <Text fontSize={{ base: "sm", md: "md", xl: "xl" }}>
+            <Text fontSize={{ base: "xs", md: "md", xl: "lg" }}>
               A fair price in seconds, mechanics you can trust, day service at
               your door
             </Text>
@@ -235,7 +236,7 @@ function Hero() {
             </Hide>
           </VStack>
           {/* Right side image and icons */}
-          <Box mt={{ base: "1rem", lg: "none" }}>
+          <Box mt={{ base: "1rem", lg: "none" }}  >
             <Image src={heroImage} alt="Mechanic with tools" />
           </Box>
         </Flex>
@@ -271,7 +272,7 @@ function Hero() {
         />
       </Flex>
       {/* Loader */}
-      {loading && (
+      {/* {loading && (
         <Box
           position="absolute"
           top="50%"
@@ -281,7 +282,7 @@ function Hero() {
         >
           <Spinner size="xl" color="white" />
         </Box>
-      )}
+      )} */}
 
       {/* Modal for displaying vehicle data */}
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>

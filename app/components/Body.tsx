@@ -9,7 +9,6 @@ import {
   SimpleGrid,
   Skeleton,
   Text,
-
 } from "@chakra-ui/react";
 import { FaCar, FaComments, FaUsers } from "react-icons/fa6";
 import service1 from "../assets/service1.webp";
@@ -163,9 +162,11 @@ function Body() {
         }} color="primaryBlue">
           Our Services
         </Heading>
-        <SimpleGrid placeItems='center'  columns={{ base: 1, md: 2, xl: 3 }} gap={6} rowGap={12}>
+        <SimpleGrid placeItems='center'  columns={{ base: 1, md: 2, myxl: 3 }} gap={6} rowGap={12}>
           {services.map((service, index) => (
             <Flex
+            as='a'
+            href="/services"
             flexDirection='column'
               key={index}
               bg="white"
@@ -239,6 +240,7 @@ function Body() {
                 key={index}
                 src={brand.image}
                 alt={brand.name}
+                height={60} width={70}
               />
             ))}
           </Grid>
@@ -257,8 +259,8 @@ function Body() {
         </Heading>
         <Flex flexDirection={{ base: "column", lg: "row" }} gap={{ base: "2rem", lg: "0" }} justifyContent="space-around" alignItems="center">
           <Box>
-            <SimpleGrid  columns={{ base: 1, md: 2 }} rowGap={12} textColor="text">
-              <Flex alignItems="center" gap={5}>
+            <SimpleGrid  columns={{ base: 1, md: 2 }} rowGap={8} textColor="text">
+              <Flex alignItems="center" gap={2}>
                 <Icon
                   bgColor="primaryBlue"
                   color="white"
@@ -270,7 +272,7 @@ function Body() {
                 />
                 <Text>Efficiency & Speed</Text>
               </Flex>
-              <Flex alignItems="center" gap={5}>
+              <Flex alignItems="center" gap={2}>
                 <Icon
                   bgColor="primaryBlue"
                   color="white"
@@ -282,7 +284,7 @@ function Body() {
                 />
                 <Text>Professional & Creative Staff</Text>
               </Flex>
-              <Flex alignItems="center" gap={5}>
+              <Flex alignItems="center" gap={2}>
                 <Icon
                   bgColor="primaryBlue"
                   color="white"
@@ -294,7 +296,7 @@ function Body() {
                 />
                 <Text>Support</Text>
               </Flex>
-              <Flex alignItems="center" gap={5}>
+              <Flex alignItems="center" gap={2}>
                 <Icon
                   bgColor="primaryBlue"
                   color="white"
@@ -342,12 +344,12 @@ function Body() {
           <Image
             src={partner1}
             alt="partner1"
-            style={{ height: "35px", objectFit: "cover" }}
+            style={{ height: "35px", objectFit: "contain" }}
           />
           <Image
             src={partner2}
             alt="partner2"
-            style={{ height: "35px", objectFit: "cover" }}
+            style={{ height: "35px", objectFit: "contain" }}
           />
           <Image
             src={partner3}
@@ -357,24 +359,24 @@ function Body() {
           <Image
             src={partner4}
             alt="partner4"
-            style={{ height: "35px", objectFit: "cover" }}
+            style={{ height: "35px", objectFit: "contain" }}
           />
           <Image
             src={partner5}
             alt="partner5"
-            style={{ height: "35px", objectFit: "cover" }}
+            style={{ height: "35px", objectFit: "contain" }}
           />
           <Image
             src={partner6}
             alt="partner6"
-            style={{ height: "35px", objectFit: "cover" }}
+            style={{ height: "35px", objectFit: "contain" }}
           />
         </Flex>
       </Box>
         {/* VIDEO SECTION */}
         <Box>
         <Heading as="h2" size="md" textAlign="left" color="primaryBlue" my={10}>
-          Our Customers Love Us
+        Customers love us
         </Heading>
         <SimpleGrid placeItems='center' columns={{ base: 1, md: 2, xl: 3 }} spacing={10} justifyContent='center'>
           {loadingTestimonials && (
@@ -388,7 +390,7 @@ function Body() {
 
       <Box>
         <Heading as="h2" size="md" textAlign="left" color="primaryBlue" my={10}>
-          Car Tip & Advice
+          Car Tips & Advice
         </Heading>
         <SimpleGrid placeItems='center' columns={{ base: 1, md: 2, xl: 3 }} spacing={10} justifyContent='center'>
           {loadingCarTips && (
