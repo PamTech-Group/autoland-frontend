@@ -22,6 +22,8 @@ import {
 import { StarIcon } from "@chakra-ui/icons";
 import Image from "next/image";
 import heroImage from "../assets/heroImage.webp";
+import heroImageSmall from "../assets/heroImageSmall.webp";
+
 import modalImage from "../assets/modalImage.webp";
 import Nav from "./Nav";
 import { useState } from "react";
@@ -235,8 +237,11 @@ function Hero() {
             </Hide>
           </VStack>
           {/* Right side image and icons */}
-          <Box mt={{ base: "1rem", xl: "2rem" }}  >
+          <Box display={{base: 'none', dxl:'block'}} mt={{ base: "1rem", xl: "2rem" }}   >
             <Image src={heroImage} alt="Mechanic with tools"  />
+          </Box>
+          <Box display={{base: 'block', dxl:'none'}} mx='auto' mt={{ base: "1rem", xl: "2rem" }}   >
+            <Image src={heroImageSmall} alt="Mechanic with tools"  />
           </Box>
         </Flex>
       </Flex>
