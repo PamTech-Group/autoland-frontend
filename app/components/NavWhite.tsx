@@ -30,7 +30,7 @@ import {
     } = useDisclosure();
   
     // Use breakpoints for responsive design
-    const logoSize = useBreakpointValue({ base: 25, sm: 30 });
+    const logoSize = useBreakpointValue({ base: 25, sm: 35 });
     const navSpacing = useBreakpointValue({ base: 2, sm: 4, md: 6, lg: 20 });
     return (
     
@@ -74,7 +74,7 @@ import {
               display={{ base: "none", xl: "flex" }} // Show from medium screens and above
               //   fontWeight={theme.fontWeights.medium}
               color="text"
-              padding='1rem 1.5rem'
+              padding='.7rem 1.5rem'
               borderRadius='lg'
               bgColor='rgba(243, 243, 243, 0.75)'
            fontSize='md' >

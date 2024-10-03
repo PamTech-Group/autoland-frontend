@@ -238,7 +238,7 @@ const toast = useToast()
             alignItems="center"
             mb="2rem"
           >
-            <Flex flexDirection="column">
+            <Flex flexDirection="column" width={{base:'100%', lg: '40%'}}>
               <Flex
                 flexBasis={{ base: "100%", lg: "48%" }}
                 mb={8}

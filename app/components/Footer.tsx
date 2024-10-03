@@ -35,6 +35,7 @@ function Footer() {
         color="text"
       >
         <Flex
+          borderRadius='lg'
           my={{ base: "5rem", md: "10rem" }}
           mx="auto"
           px={{ base: 4, md: 8 }}
