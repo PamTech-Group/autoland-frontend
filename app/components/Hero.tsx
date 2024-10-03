@@ -165,7 +165,7 @@ function Hero() {
             // mb={{ base: 8, lg: 0 }}
           >
             <Heading as="h1" size={{ base: "sm", md: "lg", xl: "xl", dxl:'2xl'}}>
-              Car Repair & Servicing Made Easy
+              Car Repair & Servicing <br/> Made Easy
             </Heading>
             <Text fontSize={{ base: "xs", md: "md", xl: "lg" }}>
               A fair price in seconds, mechanics you can trust, day service at

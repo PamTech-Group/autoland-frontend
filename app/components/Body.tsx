@@ -117,6 +117,7 @@ function Body() {
   };
   return (
     <Flex 
+    // maxWidth
     zIndex={50}
     flexDirection='column' 
       color="text"
@@ -152,7 +153,7 @@ function Body() {
         </Flex>
       </Flex>
       {/* OUR SERVICES */}
-      <Box my={theme.vmargin} >
+      <Box my={theme.vmargin} mx='auto' >
         <Heading textAlign='left' as="h2" size="md" mt={{
           base: 12,
           md: 6
@@ -247,7 +248,7 @@ function Body() {
         </Box>
       </Box>
       {/* WHY CHOOSE US */}
-      <Box my={theme.vmargin}>
+      <Box my={theme.vmargin} >
         <Heading as="h2" size="md" textAlign="left" mt={{
           base: 0,
           md: 6
@@ -257,7 +258,7 @@ function Body() {
         }}  color="primaryBlue">
           Why Choose Us
         </Heading>
-        <Flex flexDirection={{ base: "column", lg: "row" }} gap={{ base: "2rem", lg: "0" }} justifyContent="space-around" alignItems="center">
+        <Flex flexDirection={{ base: "column", lg: "row" }} gap={{ base: "2rem", lg: "0" }} justifyContent="space-between" alignItems="center">
           <Box>
             <SimpleGrid  columns={{ base: 1, md: 2 }} rowGap={8} textColor="text">
               <Flex alignItems="center" gap={2}>
@@ -374,11 +375,11 @@ function Body() {
         </Flex>
       </Box>
         {/* VIDEO SECTION */}
-        <Box>
+        <Box m='0 auto'>
         <Heading as="h2" size="md" textAlign="left" color="primaryBlue" my={10}>
         Customers love us
         </Heading>
-        <SimpleGrid placeItems='center' columns={{ base: 1, md: 2, xl: 3 }} spacing={10} justifyContent='center'>
+        <SimpleGrid  columns={{ base: 1, md: 2, xl: 3 }} spacing={10} justifyContent='center'>
           {loadingTestimonials && (
             <Skeleton height="250px" width="100%" />
           )}
@@ -388,7 +389,7 @@ function Body() {
           </SimpleGrid>
       </Box>
 
-      <Box>
+      <Box m='0 auto'>
         <Heading as="h2" size="md" textAlign="left" color="primaryBlue" my={10}>
           Car Tips & Advice
         </Heading>
