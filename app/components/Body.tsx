@@ -138,7 +138,7 @@ function Body() {
         alignItems={{base:"left", lg: 'center'}}
         flexWrap='wrap'
         p={2}
-        m={{ base: "0 auto 0 auto", xl: "6rem auto 0 auto ", dxl: "1rem auto 0 auto ", }}
+        m={{ base: "0 auto 0 auto", xl: "-2rem auto 0 auto ", dxl: "-1rem auto 0 auto ", }}
       >
         <Flex alignItems="center" gap={2}>
           <Icon as={FaUsers} boxSize={{base:5, md:8}} mb={2} />
