@@ -192,7 +192,7 @@ function Body() {
         </SimpleGrid>
       </Box>
       {/** Car MAKE WE SERVICE */}
-      <Box my={theme.vmargin} bgColor='#F0F8FF' padding={{ base: '3rem 1rem', lg: '4rem 2rem', xl: '6rem 3rem' }}>
+      <Box my={theme.vmargin} borderRadius='lg' bgColor='#F0F8FF' padding={{ base: '3rem 1rem', lg: '4rem 2rem', xl: '6rem 3rem' }}>
         <Box>
           <Heading as="h2" size="md" mb='2.5rem' textAlign="left" color="primaryBlue">
             Car Make We Service
@@ -206,6 +206,7 @@ function Body() {
             bgColor='rgba(0, 32, 79, 0.05)'
             flexWrap={{ base: 'wrap', md: 'nowrap' }}>
             <Button 
+            size={{base: 'sm', xl:'md'}}
               color={selectedCountry === 'japanese' ? 'white' : 'text'} 
               onClick={() => setSelectedCountry('japanese')}
               bgColor={selectedCountry === 'japanese' ? 'primaryBlue' : 'transparent'}

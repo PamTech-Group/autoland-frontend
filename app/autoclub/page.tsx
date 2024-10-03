@@ -141,7 +141,7 @@ const toast = useToast()
               width={{ base: "100%", xl: "50%" }}
               // mb={{ base: 8, lg: 0 }}
             >
-              <Heading as="h1" size={{ base: "md", md: "lg", xl: "2xl" }}>
+              <Heading as="h1" size={{ base: "md", md: "lg", myxl: "2xl" }}>
                 Join our Auto-Club Team To Experience The Freedom of The Road.
               </Heading>
               <Text fontSize={{ base: "md", xl: "xl" }}>
@@ -229,6 +229,7 @@ const toast = useToast()
           <Flex
             flexDirection={{ base: "column", lg: "row" }}
             justifyContent="space-between"
+            gap={{base: '2rem', myxl:'0'}}
             alignItems="center"
             mb="2rem"
           >
@@ -344,8 +345,9 @@ const toast = useToast()
         <PackagesSection />
       </Box>
       {/**JOIN AUTOCLUB SECTION */}
-      <Box my="2rem">
+      <Box my="2rem" >
         <Box
+        borderRadius='lg'
           bgColor="primaryBlue"
           py={{
             base: 10,
