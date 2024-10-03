@@ -134,19 +134,19 @@ function Nav() {
 
               <DrawerBody pt="6rem">
                 <VStack spacing={6} align="start">
-                  <Link href="/about" onClick={onMobileMenuClose}>
+                  <Link style={{textDecoration:'none'}} href="/about" onClick={onMobileMenuClose}>
                     About Us
                   </Link>
 
-                  <Link href="/services" onClick={onMobileMenuClose}>
+                  <Link style={{textDecoration:'none'}} href="/services" onClick={onMobileMenuClose}>
                     Our Services
                   </Link>
-                  <Link href="/autoclub" onClick={onMobileMenuClose}>
+                  <Link style={{textDecoration:'none'}} href="/autoclub" onClick={onMobileMenuClose}>
                   Join Autoclub
 
                   </Link>
 
-                  <Link href="/booking" onClick={onMobileMenuClose}>
+                  <Link style={{textDecoration:'none'}} href="/booking" onClick={onMobileMenuClose}>
                     Book an Appointment
                   </Link>
                 </VStack>

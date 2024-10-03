@@ -43,7 +43,7 @@ const toast = useToast()
   });
   const opts = {
     height: "320px",
-    width: "350px",
+    width: "330px",
     playerVars: {
       autoplay: 0,
     },
