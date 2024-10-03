@@ -131,7 +131,7 @@ function Body() {
     justifyContent='center'
     >
        <Flex
-       zIndex={5}
+       zIndex={50}
         justifyContent="center"
         fontSize={{base:'xs', md:'sm'}}
         gap={{ base: "1rem", md: "2rem" }}
@@ -154,8 +154,8 @@ function Body() {
         </Flex>
       </Flex>
       {/* OUR SERVICES */}
-      <Box my={theme.vmargin} mx='auto' >
-        <Heading textAlign='left' as="h2" size="md" mt={{
+      <Box my={theme.vmargin} mx='auto'>
+        <Heading zIndex={20} textAlign='left' as="h2" size="md" mt={{
           base: 12,
           md: 6
         }} mb={{
@@ -193,7 +193,7 @@ function Body() {
         </SimpleGrid>
       </Box>
       {/** Car MAKE WE SERVICE */}
-      <Box my={theme.vmargin} borderRadius='lg' bgColor='#F0F8FF' padding={{ base: '3rem 1rem', lg: '4rem 2rem', xl: '6rem 3rem' }}>
+      <Box my={theme.vmargin} borderRadius='lg' bgColor='#F0F8FF' padding={{ base: '3rem 1rem', lg: '4rem 2rem', xl: '6rem 3rem' }} mx='auto' width='100%' maxWidth='80.25em'>
         <Box>
           <Heading as="h2" size="md" mb='2.5rem' textAlign="left" color="primaryBlue">
             Car Make We Service
@@ -250,7 +250,7 @@ function Body() {
         </Box>
       </Box>
       {/* WHY CHOOSE US */}
-      <Box my={theme.vmargin} >
+      <Box my={theme.vmargin} mx='auto' width='100%' maxWidth='80.25em' >
         <Heading as="h2" size="md" textAlign="left" mt={{
           base: 0,
           md: 6
