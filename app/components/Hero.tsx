@@ -92,7 +92,7 @@ function Hero() {
             viewBox="0 0 1440 320"
             style={{
               position: "absolute",
-              bottom: "-28%",
+              bottom: "-23%",
               left: 0,
               width: "100%",
               height: "auto",
@@ -151,7 +151,7 @@ function Hero() {
             md: "1rem 4rem",
             lg: "1rem 4rem",
           }}
-          height="75%"
+          height="80%"
           width="100%"
           alignItems="center"
           justifyContent="space-around"

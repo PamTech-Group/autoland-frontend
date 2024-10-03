@@ -122,23 +122,24 @@ const toast = useToast()
         >
           <Nav />
           <Flex
+         
             flexDirection={{ base: "column", xl: "row" }}
             padding={{
               base: "0.5rem 0.5rem",
               sm: "0.75rem 2rem",
               md: "1rem 4rem",
-              lg: "1rem 4rem",
+              lg: "1rem 6rem",
             }}
             height="100%"
-            width="100%"
+             width="100%"
             alignItems="center"
             justifyContent="space-around"
-          >
+            >
             {/* Left side content */}
             <VStack
               align="flex-start"
               spacing={6}
-              width={{ base: "100%", xl: "50%" }}
+              width={{ base: "100%", xl: "55%" }}
               // mb={{ base: 8, lg: 0 }}
             >
               <Heading as="h1" size={{ base: "md", md: "lg", myxl: "xl" }}>
@@ -150,10 +151,13 @@ const toast = useToast()
               </Text>
             </VStack>
             {/* Right side video and  */}
-            <Box my={{ base: "2rem", lg: "none" }} mx='auto' >
+            <Box my={{ base: "2rem", lg: "none" }} mx={{
+              base:'auto',
+              xl:'inherit'
+            }} >
               {loading && (
                 <Box
-                  height={{base: '250px', md:'300px', dxl:'400px'}} width={{base: '320px', md:'370px', dxl:'420px'}}
+                  height={{base: '250px', md:'300px', dxl:'400px'}} 
                 >
                   {/* Skeleton loader */}
                   <Skeleton height="100%" width="100%" />
@@ -228,8 +232,8 @@ const toast = useToast()
           </Text>
           <Flex
           flexWrap='wrap'
-            flexDirection={{ base: "column", lg: "row" }}
-            justifyContent={{ base: "center", myxl: "space-between" }}
+            flexDirection={{ base: "column", xl: "row" }}
+            justifyContent={{ base: "center", xl: "space-between" }}
             gap={{base: '2rem',}}
             alignItems="center"
             mb="2rem"
