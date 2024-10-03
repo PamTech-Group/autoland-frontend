@@ -26,6 +26,7 @@ import modalImage from "../assets/modalImage.webp";
 import Nav from "./Nav";
 import { useState } from "react";
 import { FaPhone, FaWhatsapp } from "react-icons/fa6";
+import axios from "axios";
 
 interface Engine {
   configurationCylinder: string;
@@ -55,21 +56,20 @@ function Hero() {
   const handleSearch = async () => {
     if (!vincode) return;
 
-    setLoading(true);
-    setVehicleData(null);
-    try {
-      const response = await fetch(
-        `https://autoland-admin-backend.onrender.com/api/check/vin/${vincode}`
-      );
-      const data = await response.json();
-      setVehicleData(data);
-      setIsModalOpen(true);
-      console.log(data);
-    } catch (error) {
-      console.error("Error fetching vehicle data:", error);
-    } finally {
-      setLoading(false);
-    }
+  setLoading(true);
+  setVehicleData(null);
+  try {
+    const response = await axios.get(
+      `https://autoland-admin-backend.onrender.com/api/check/vin/${vincode}`
+    );
+    setVehicleData(response.data); // Update to use response.data
+    setIsModalOpen(true);
+    console.log(response.data); // Update to log response.data
+  } catch (error) {
+    console.error("Error fetching vehicle data:", error);
+  } finally {
+    setLoading(false);
+  }
   };
 
   return (
@@ -92,7 +92,7 @@ function Hero() {
             viewBox="0 0 1440 320"
             style={{
               position: "absolute",
-              bottom: "-23%",
+              bottom: "-19%",
               left: 0,
               width: "100%",
               height: "auto",
@@ -153,18 +153,18 @@ function Hero() {
           }}
           height="80%"
           width="100%"
-          alignItems="center"
+          alignItems="start"
           justifyContent="space-around"
         >
           {/* Left side content */}
           <VStack
             align="flex-start"
             spacing={6}
-            mt={{base:'2rem', myxl:'0rem'}}
+            mt={{base:'2rem', myxl:'3rem'}}
             width={{ base: "100%", xl: "55%" }}
             // mb={{ base: 8, lg: 0 }}
           >
-            <Heading as="h1" size={{ base: "sm", md: "lg", xl: "xl", dxl:'2xl'}}>
+            <Heading as="h1" size={{ base: "sm", md: "lg", xl: "xl", dxl:'xl'}}>
               Car Repair & Servicing <br/> Made Easy
             </Heading>
             <Text fontSize={{ base: "xs", md: "md", xl: "lg" }}>
@@ -235,8 +235,8 @@ function Hero() {
             </Hide>
           </VStack>
           {/* Right side image and icons */}
-          <Box mt={{ base: "1rem", lg: "none" }}  >
-            <Image src={heroImage} alt="Mechanic with tools" />
+          <Box mt={{ base: "1rem", xl: "2rem" }}  >
+            <Image src={heroImage} alt="Mechanic with tools"  />
           </Box>
         </Flex>
       </Flex>
