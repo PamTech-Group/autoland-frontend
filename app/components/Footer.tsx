@@ -152,7 +152,7 @@ function Footer() {
               <Link href="mailto:info@pamtechautoland.com" isExternal>
                 <Icon as={FaEnvelope} boxSize={5} />
               </Link>
-              <Link href="https://x.com/thepamtechgroup" isExternal>
+              <Link href="https://www.youtube.com/channel/UCjJ-fWJYIhpViYWr97-yWNw/addons" isExternal>
                 <Icon as={FaYoutube} boxSize={5} />
               </Link>
             </HStack>
