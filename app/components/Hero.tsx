@@ -170,8 +170,7 @@ function Hero() {
               Car Repair & Servicing <br/> Made Easy
             </Heading>
             <Text fontSize={{ base: "xs", md: "md", xl: "lg" }}>
-              A fair price in seconds, mechanics you can trust, day service at
-              your door
+            Get the best price, reliable mechanics you can trust, <br/> and extra care that your car deserves
             </Text>
             <Flex w="full" flexDir="column" gap=".5rem">
               <Text color="white" mb={2}>

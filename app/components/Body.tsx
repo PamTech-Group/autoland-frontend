@@ -155,7 +155,7 @@ function Body() {
       </Flex>
       {/* OUR SERVICES */}
       <Box my={theme.vmargin} mx='auto'>
-        <Heading zIndex={20} textAlign='left' as="h2" size="md" mt={{
+        <Heading zIndex={200000} textAlign='left' as="h2" size="md" mt={{
           base: 12,
           md: 6
         }} mb={{

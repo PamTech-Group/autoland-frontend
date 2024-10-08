@@ -121,8 +121,7 @@ function Footer() {
             </Text>
             <Link href="/about">About us</Link>
             <Link href="/services">Our Services</Link>
-            <Link href="/contact">Contact us</Link>
-            <Link href="/appointment">Book an Appointment</Link>
+            <Link href="/booking">Book an Appointment</Link>
             <Link href="/privacy">Privacy Policy</Link>
           </VStack>
 
