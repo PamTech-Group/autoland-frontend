@@ -157,7 +157,9 @@ function Body() {
       <Box my={theme.vmargin} mx='auto'>
         <Heading zIndex={200000} textAlign='left' as="h2" size="md" mt={{
           base: 12,
-          md: 6
+          md: 6,
+          myxl: 10,
+          dxl: 6
         }} mb={{
           base: 9,
           md: 6
