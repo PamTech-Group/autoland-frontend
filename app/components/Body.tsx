@@ -158,7 +158,7 @@ function Body() {
         <Heading zIndex={200000} textAlign='left' as="h2" size="md" mt={{
           base: 12,
           md: 6,
-          myxl: 10,
+          xl: 10,
           dxl: 6
         }} mb={{
           base: 9,
