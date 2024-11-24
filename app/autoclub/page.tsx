@@ -18,7 +18,14 @@ import bgImage from "../assets/autoclubBg.webp";
 import benefit from "../assets/autoclubImage.webp";
 import YouTube from "react-youtube";
 import { FaCarSide } from "react-icons/fa";
-import { FaBell, FaCar, FaGasPump, FaPhone, FaWhatsapp, FaWrench } from "react-icons/fa6";
+import {
+  FaBell,
+  FaCar,
+  FaGasPump,
+  FaPhone,
+  FaWhatsapp,
+  FaWrench,
+} from "react-icons/fa6";
 import { Image } from "@chakra-ui/next-js";
 import PackagesSection from "../components/Package";
 import Footer from "../components/Footer";
@@ -34,7 +41,7 @@ interface RegistrationData {
 function Autoclub() {
   const [loading, setLoading] = useState<boolean>(true); // Add state for loading
   const [buttonloading, setbuttonLoading] = useState<boolean>(false); // Add state for loading
-const toast = useToast()
+  const toast = useToast();
   const [registrationData, setRegistrationData] = useState<RegistrationData>({
     fullName: "",
     email: "",
@@ -51,7 +58,9 @@ const toast = useToast()
   const handleReady = () => {
     setLoading(false); // Set loading to false when video is ready
   };
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     setRegistrationData({ ...registrationData, [name]: value });
   };
@@ -91,11 +100,9 @@ const toast = useToast()
             position: "top-right",
           });
         }
-      
-        
       } catch (error) {
         setbuttonLoading(false);
-        
+
         // Handle error (e.g., show an error message)
         toast({
           title: "An Error Occurred.",
@@ -116,13 +123,14 @@ const toast = useToast()
           zIndex={1}
           height="100%"
           bgImage={bgImage.src}
+          bgSize="cover"
+          bgRepeat="no-repeat"
           direction={{ base: "column", xl: "row" }}
           alignItems="center"
           position="relative"
         >
           <Nav />
           <Flex
-         
             flexDirection={{ base: "column", xl: "row" }}
             padding={{
               base: "0.5rem 0.5rem",
@@ -131,15 +139,15 @@ const toast = useToast()
               lg: "1rem 6rem",
             }}
             height="100%"
-             width="100%"
+            width="100%"
             alignItems="center"
             justifyContent="space-around"
-            >
+          >
             {/* Left side content */}
             <VStack
               align="flex-start"
               spacing={6}
-              width={{ base: "100%", xl: "55%" }}
+              width={{ base: "100%", xl: "45%" }}
               // mb={{ base: 8, lg: 0 }}
             >
               <Heading as="h1" size={{ base: "md", md: "lg", myxl: "xl" }}>
@@ -151,14 +159,15 @@ const toast = useToast()
               </Text>
             </VStack>
             {/* Right side video and  */}
-            <Box my={{ base: "2rem", lg: "none" }} mx={{
-              base:'auto',
-              xl:'inherit'
-            }} >
+            <Box
+              my={{ base: "2rem", lg: "none" }}
+              mx={{
+                base: "auto",
+                xl: "inherit",
+              }}
+            >
               {loading && (
-                <Box
-                  height={{base: '250px', md:'300px', dxl:'400px'}} 
-                >
+                <Box height={{ base: "250px", md: "300px", dxl: "400px" }}>
                   {/* Skeleton loader */}
                   <Skeleton height="100%" width="100%" />
                 </Box>
@@ -172,34 +181,34 @@ const toast = useToast()
           </Flex>
         </Flex>
         <Flex
-        zIndex={5000}
-        gap={3}
-        position="fixed"
-        bottom={5}
-        right={2}
-        flexDirection="column"
-      >
-        <IconButton
-          as="a"
-          href="tel:+2348115004000"
-          borderRadius="50%"
-          boxShadow="md"
-          colorScheme="blackAlpha"
-          aria-label="Call Us"
-          size="lg"
-          icon={<FaPhone size="1.5rem" color="#60D669" />}
-        />
-        <IconButton
-          as="a"
-          href="https://wa.me/+2348115004000"
-          borderRadius="50%"
-          boxShadow="md"
-          colorScheme="blackAlpha"
-          aria-label="contact Us"
-          size="lg"
-          icon={<FaWhatsapp size="1.5rem" color="#60D669" />}
-        />
-      </Flex>
+          zIndex={5000}
+          gap={3}
+          position="fixed"
+          bottom={5}
+          right={2}
+          flexDirection="column"
+        >
+          <IconButton
+            as="a"
+            href="tel:+2348115004000"
+            borderRadius="50%"
+            boxShadow="md"
+            colorScheme="blackAlpha"
+            aria-label="Call Us"
+            size="lg"
+            icon={<FaPhone size="1.5rem" color="#60D669" />}
+          />
+          <IconButton
+            as="a"
+            href="https://wa.me/+2348115004000"
+            borderRadius="50%"
+            boxShadow="md"
+            colorScheme="blackAlpha"
+            aria-label="contact Us"
+            size="lg"
+            icon={<FaWhatsapp size="1.5rem" color="#60D669" />}
+          />
+        </Flex>
       </Box>
       <Box
         padding={{
@@ -231,23 +240,28 @@ const toast = useToast()
             Benefits:
           </Text>
           <Flex
-          flexWrap='wrap'
+            flexWrap="wrap"
             flexDirection={{ base: "column", xl: "row" }}
             justifyContent={{ base: "center", xl: "space-between" }}
-            gap={{base: '2rem',}}
+            gap={{ base: "2rem" }}
             alignItems="center"
             mb="2rem"
           >
-            <Flex flexDirection="column" width={{base:'100%', lg: '40%'}}>
+            <Flex flexDirection="column" width={{ base: "100%", lg: "40%" }}>
               <Flex
                 flexBasis={{ base: "100%", lg: "48%" }}
                 mb={8}
                 alignItems="center"
               >
-                <Box flexShrink={0} mr={4} bgColor='buttonOrange'>
-                  <Icon   p={2} boxSize={10} color="backgroundWhite" as={FaWrench}  />
+                <Box flexShrink={0} mr={4} bgColor="buttonOrange">
+                  <Icon
+                    p={2}
+                    boxSize={10}
+                    color="backgroundWhite"
+                    as={FaWrench}
+                  />
                 </Box>
-                <Box pb={2} borderBottom='2px solid #FF0000' >
+                <Box pb={2} borderBottom="2px solid #FF0000">
                   <Text fontWeight="bold" fontSize="md" mb={2} color="text">
                     Express Lube Service:
                   </Text>
@@ -262,10 +276,10 @@ const toast = useToast()
                 mb={8}
                 alignItems="center"
               >
-                <Box flexShrink={0} mr={4} bgColor='buttonOrange'>
-                  <Icon  p={2} boxSize={10} color="backgroundWhite" as={FaCar}  />
+                <Box flexShrink={0} mr={4} bgColor="buttonOrange">
+                  <Icon p={2} boxSize={10} color="backgroundWhite" as={FaCar} />
                 </Box>
-                <Box pb={2} borderBottom='2px solid #FF0000'>
+                <Box pb={2} borderBottom="2px solid #FF0000">
                   <Text fontWeight="bold" fontSize="md" mb={2} color="text">
                     Comprehensive Vehicle Scanning:
                   </Text>
@@ -280,10 +294,15 @@ const toast = useToast()
                 mb={8}
                 alignItems="center"
               >
-                <Box flexShrink={0} mr={4} bgColor='buttonOrange'>
-                  <Icon  p={2} boxSize={10} color="backgroundWhite" as={FaGasPump}  />
+                <Box flexShrink={0} mr={4} bgColor="buttonOrange">
+                  <Icon
+                    p={2}
+                    boxSize={10}
+                    color="backgroundWhite"
+                    as={FaGasPump}
+                  />
                 </Box>
-                <Box pb={2} borderBottom='2px solid #FF0000'>
+                <Box pb={2} borderBottom="2px solid #FF0000">
                   <Text fontWeight="bold" fontSize="md" mb={2} color="text">
                     Discounted Fuel Rates
                   </Text>
@@ -298,10 +317,15 @@ const toast = useToast()
                 mb={8}
                 alignItems="center"
               >
-                <Box flexShrink={0} mr={4} bgColor='buttonOrange'>
-                  <Icon  p={2} boxSize={10} color="backgroundWhite" as={FaCarSide} />
+                <Box flexShrink={0} mr={4} bgColor="buttonOrange">
+                  <Icon
+                    p={2}
+                    boxSize={10}
+                    color="backgroundWhite"
+                    as={FaCarSide}
+                  />
                 </Box>
-                <Box pb={2} borderBottom='2px solid #FF0000'>
+                <Box pb={2} borderBottom="2px solid #FF0000">
                   <Text fontWeight="bold" fontSize="md" mb={2} color="text">
                     Valet Pick-up & Delivery
                   </Text>
@@ -315,12 +339,17 @@ const toast = useToast()
                 flexBasis={{ base: "100%", md: "48%" }}
                 mb={8}
                 alignItems="center"
-                width='100%'
+                width="100%"
               >
-                <Box flexShrink={0} mr={4} bgColor='buttonOrange'>
-                  <Icon  p={2} boxSize={10} color="backgroundWhite" as={FaBell} />
+                <Box flexShrink={0} mr={4} bgColor="buttonOrange">
+                  <Icon
+                    p={2}
+                    boxSize={10}
+                    color="backgroundWhite"
+                    as={FaBell}
+                  />
                 </Box>
-                <Box pb={2} borderWidth='100%' borderBottom='2px solid #FF0000'>
+                <Box pb={2} borderWidth="100%" borderBottom="2px solid #FF0000">
                   <Text fontWeight="bold" fontSize="md" mb={2} color="text">
                     Service Reminders:
                   </Text>
@@ -350,9 +379,9 @@ const toast = useToast()
         <PackagesSection />
       </Box>
       {/**JOIN AUTOCLUB SECTION */}
-      <Box my="2rem" >
+      <Box my="2rem">
         <Box
-        borderRadius='lg'
+          borderRadius="lg"
           bgColor="primaryBlue"
           py={{
             base: 10,
@@ -416,19 +445,39 @@ const toast = useToast()
                     onChange={handleChange}
                   />
                   <Select
-                         name="membershipPackage"
-                         placeholder="What membership are you interested in?"
-                         bg="whiteAlpha.100"
-                         border="1px solid"
-                         borderColor="whiteAlpha.300"
-                         color="white"
-                         _placeholder={{ color: "whiteAlpha.200", opacity: "0.5" }}
-                         onChange={handleChange}
+                    name="membershipPackage"
+                    placeholder="What membership are you interested in?"
+                    bg="whiteAlpha.100"
+                    border="1px solid"
+                    borderColor="whiteAlpha.300"
+                    color="white"
+                    _placeholder={{ color: "whiteAlpha.200", opacity: "0.5" }}
+                    onChange={handleChange}
                   >
-                    <option style={{backgroundColor:'#0D2B57'}} value="Silver package">Silver Package</option>
-                    <option style={{backgroundColor:'#0D2B57'}} value="Gold package">Gold Package</option>
-                    <option style={{backgroundColor:'#0D2B57'}} value="Diamond package">Diamond Package</option>
-                    <option style={{backgroundColor:'#0D2B57'}} value="Premium Package">Premium Package</option>
+                    <option
+                      style={{ backgroundColor: "#0D2B57" }}
+                      value="Silver package"
+                    >
+                      Silver Package
+                    </option>
+                    <option
+                      style={{ backgroundColor: "#0D2B57" }}
+                      value="Gold package"
+                    >
+                      Gold Package
+                    </option>
+                    <option
+                      style={{ backgroundColor: "#0D2B57" }}
+                      value="Diamond package"
+                    >
+                      Diamond Package
+                    </option>
+                    <option
+                      style={{ backgroundColor: "#0D2B57" }}
+                      value="Premium Package"
+                    >
+                      Premium Package
+                    </option>
                   </Select>
                 </Flex>
                 <Button

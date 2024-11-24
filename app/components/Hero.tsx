@@ -58,24 +58,27 @@ function Hero() {
   const handleSearch = async () => {
     if (!vincode) return;
 
-  setLoading(true);
-  setVehicleData(null);
-  try {
-    const response = await axios.get(
-      `https://autoland-admin-backend.onrender.com/api/check/vin/${vincode}`
-    );
-    setVehicleData(response.data); // Update to use response.data
-    setIsModalOpen(true);
-    console.log(response.data); // Update to log response.data
-  } catch (error) {
-    console.error("Error fetching vehicle data:", error);
-  } finally {
-    setLoading(false);
-  }
+    setLoading(true);
+    setVehicleData(null);
+    try {
+      const response = await axios.get(
+        `https://autoland-admin-backend.onrender.com/api/check/vin/${vincode}`
+      );
+      setVehicleData(response.data); // Update to use response.data
+      setIsModalOpen(true);
+      console.log(response.data); // Update to log response.data
+    } catch (error) {
+      console.error("Error fetching vehicle data:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
-    <Box color="whiteText" height={{ base: "fit-content", xl: "120vh", dxl: '100vh' }}>
+    <Box
+      color="whiteText"
+      height={{ base: "fit-content", xl: "120vh", dxl: "100vh" }}
+    >
       <Flex
         flexDirection="column"
         zIndex={1}
@@ -89,7 +92,7 @@ function Hero() {
         // }}
         position="relative"
       >
-        <Box display={{ base: "none", xl: "flex", dxl: "none" }}>
+        {/* <Box display={{ base: "none", xl: "flex", dxl: "none" }}>
           <svg
             viewBox="0 0 1440 320"
             style={{
@@ -142,7 +145,7 @@ function Hero() {
               d="M0,128L30,138.7C60,149,120,171,180,170.7C240,171,300,149,360,144C420,139,480,149,540,160C600,171,660,181,720,170.7C780,160,840,128,900,117.3C960,107,1020,117,1080,128C1140,139,1200,149,1260,160C1320,171,1380,181,1410,186.7L1440,192L1440,320L1410,320C1380,320,1320,320,1260,320C1200,320,1140,320,1080,320C1020,320,960,320,900,320C840,320,780,320,720,320C660,320,600,320,540,320C480,320,420,320,360,320C300,320,240,320,180,320C120,320,60,320,30,320H0Z"
             ></path>
           </svg>
-        </Box>
+        </Box> */}
         <Nav />
         <Flex
           zIndex={10}
@@ -153,24 +156,28 @@ function Hero() {
             md: "1rem 4rem",
             lg: "1rem 4rem",
           }}
-          height="80%"
+          height="70%"
           width="100%"
-          alignItems="start"
+          alignItems="center"
           justifyContent="space-around"
         >
           {/* Left side content */}
           <VStack
             align="flex-start"
             spacing={6}
-            mt={{base:'2rem', myxl:'3rem'}}
+            mt={{ base: "2rem", myxl: "3rem" }}
             width={{ base: "100%", xl: "55%" }}
             // mb={{ base: 8, lg: 0 }}
           >
-            <Heading as="h1" size={{ base: "sm", md: "lg", xl: "xl", dxl:'xl'}}>
-              Car Repair & Servicing <br/> Made Easy
+            <Heading
+              as="h1"
+              size={{ base: "sm", md: "lg", xl: "xl", dxl: "2xl" }}
+            >
+              Car Repair & Servicing <br /> Made Easy
             </Heading>
-            <Text fontSize={{ base: "xs", md: "md", xl: "lg" }}>
-            Get the best price, reliable mechanics you can trust, <br/> and extra care that your car deserves
+            <Text fontSize={{ base: "xs", md: "md", dxl: "xl" }}>
+              Get the best price, reliable mechanics you can trust, <br /> and
+              extra care that your car deserves
             </Text>
             <Flex w="full" flexDir="column" gap=".5rem">
               <Text color="white" mb={2}>
@@ -236,11 +243,18 @@ function Hero() {
             </Hide>
           </VStack>
           {/* Right side image and icons */}
-          <Box display={{base: 'none', dxl:'block'}} mt={{ base: "1rem", xl: "2rem" }}   >
-            <Image src={heroImage} alt="Mechanic with tools"  />
+          <Box
+            display={{ base: "none", dxl: "block" }}
+            mt={{ base: "1rem", xl: "2rem" }}
+          >
+            <Image src={heroImage} alt="Mechanic with tools" />
           </Box>
-          <Box display={{base: 'block', dxl:'none'}} mx='auto' mt={{ base: "1rem", xl: "2rem" }}   >
-            <Image src={heroImageSmall} alt="Mechanic with tools"  />
+          <Box
+            display={{ base: "block", dxl: "none" }}
+            mx="auto"
+            mt={{ base: "1rem", xl: "2rem" }}
+          >
+            <Image src={heroImageSmall} alt="Mechanic with tools" />
           </Box>
         </Flex>
       </Flex>
@@ -274,18 +288,6 @@ function Hero() {
           icon={<FaWhatsapp size="1.5rem" color="#60D669" />}
         />
       </Flex>
-      {/* Loader */}
-      {/* {loading && (
-        <Box
-          position="absolute"
-          top="50%"
-          left="50%"
-          bg="rgba(0, 0, 0, 0.5)"
-          zIndex={20}
-        >
-          <Spinner size="xl" color="white" />
-        </Box>
-      )} */}
 
       {/* Modal for displaying vehicle data */}
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>

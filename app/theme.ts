@@ -22,7 +22,7 @@ const theme = extendTheme({
     dddxl: "125em", // 2000px
     xdxl: "175em", // 2800px
   },
-  vmargin: '2rem',
+  vmargin: "2rem",
   colors: {
     primaryBlue: "#00204F",
     secondaryBlue: "#0D2B57",
@@ -62,25 +62,11 @@ const theme = extendTheme({
     justifyContent: "center",
     alignItems: "center",
   },
-  gradientBg: {
-    bgColor: "#D3D7D5",
-    bgGradient:
-      "linear-gradient(120deg, rgba(1,11,21,1) 0%, rgba(4,4,121,1) 37%, rgba(0,15,130,1) 48%, rgba(11,1,45,1) 100%)",
-  },
-  greenGradient: {
-    bgColor: " rgb(10,245,125)",
-    bgGradient:
-      "linear-gradient(90deg, rgba(9,177,91,1) 20%, rgba(2,9,83,1) 73%)",
-  },
-  neonGradient: {
-    bgColor: "rgb(10,245,125)",
-    bgGradient:
-      "linear-gradient(90deg, rgba(57,255,20,1) 20%, rgba(138,43,226,1) 73%)",
-  },
+
   buttonRadius: {
     radius: "10px",
   },
-  buttonPadding: "1rem 1.5rem",
+  buttonPadding: "1.7rem 1.5rem",
   boxShadow: `0px 4px 6px 2px rgba(11, 1, 45, 0.5)`,
   customBoxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", // Added custom box shadow
   customBorderRadius: "0.5rem", // Added custom border radius
