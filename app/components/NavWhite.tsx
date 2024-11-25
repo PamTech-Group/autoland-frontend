@@ -119,7 +119,8 @@ function NavWhite() {
         >
           <Button
             as="a"
-            href="/autolandPH"
+            // href="/autolandPH"
+            href="/"
             fontSize="md"
             color="#333333"
             borderRadius="10px"

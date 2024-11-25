@@ -63,18 +63,7 @@ const ThreeDEffect = () => {
             </div>
           </div>
         </div>
-        {/* <div className="line">
-        <div className="left">
-          <div className="content">
-            <span className="spanFast">autoland</span>
-          </div>
-        </div>
-        <div className="right">
-          <div className="content">
-            <span className="spanFast">autoland</span>
-          </div>
-        </div>
-      </div> */}
+
         <div className="line">
           <div className="left">
             <div className="content">
