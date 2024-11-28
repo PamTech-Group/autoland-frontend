@@ -33,11 +33,6 @@ function NavWhite() {
   return (
     <Box
       width="100%"
-      //   position="fixed"
-      //   top={0}
-      //   left={0}
-      //   right={0}
-      //   zIndex={999}
       bg={"transparent"}
       padding={{
         base: "0.5rem 0.5rem",
@@ -121,9 +116,9 @@ function NavWhite() {
             as="a"
             // href="/autolandPH"
             href="/autolander"
-            fontSize="md"
+            fontSize="sm"
             color="#333333"
-            borderRadius="10px"
+            borderRadius="20px"
             outline="2px solid #ccc"
             padding={theme.buttonPadding}
             bgColor="#F0F8FF"
@@ -139,7 +134,8 @@ function NavWhite() {
           <Button
             as="a"
             href="/booking"
-            fontSize="md"
+            borderRadius="20px"
+            fontSize="sm"
             padding={theme.buttonPadding}
             bgColor="buttonOrange"
             _hover={{

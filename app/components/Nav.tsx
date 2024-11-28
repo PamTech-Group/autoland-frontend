@@ -111,9 +111,9 @@ function Nav() {
           <Button
             as="a"
             href="/autolander"
-            fontSize="md"
+            fontSize="sm"
             color="#333333"
-            borderRadius="10px"
+            borderRadius="20px"
             padding={theme.buttonPadding}
             bgColor="#F0F8FF"
             _hover={{
@@ -128,8 +128,8 @@ function Nav() {
           <Button
             as="a"
             href="/booking"
-            fontSize="md"
-            borderRadius="10px"
+            fontSize="sm"
+            borderRadius="20px"
             padding={theme.buttonPadding}
             bgColor="buttonOrange"
             _hover={{
