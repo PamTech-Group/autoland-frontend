@@ -120,7 +120,7 @@ function NavWhite() {
           <Button
             as="a"
             // href="/autolandPH"
-            href="/"
+            href="/autolander"
             fontSize="md"
             color="#333333"
             borderRadius="10px"
@@ -134,7 +134,7 @@ function NavWhite() {
               bgColor: "#F0F8FF",
             }}
           >
-            Workshop
+            Showroom
           </Button>
           <Button
             as="a"
@@ -187,7 +187,13 @@ function NavWhite() {
                 >
                   Join Autoclub
                 </Link>
-
+                <Link
+                  style={{ textDecoration: "none" }}
+                  href="/autolander"
+                  onClick={onMobileMenuClose}
+                >
+                  Showroom
+                </Link>
                 <Link
                   style={{ textDecoration: "none" }}
                   href="/booking"

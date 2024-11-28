@@ -114,7 +114,7 @@ function Nav() {
           <Button
             as="a"
             // href="/autolandPH"
-            href="/autolandPH"
+            href="/autolander"
             fontSize="md"
             color="#333333"
             borderRadius="10px"
@@ -127,7 +127,7 @@ function Nav() {
               bgColor: "#F0F8FF",
             }}
           >
-            Workshop
+            Showroom
           </Button>
           <Button
             as="a"
@@ -181,7 +181,13 @@ function Nav() {
                 >
                   Join Autoclub
                 </Link>
-
+                <Link
+                  style={{ textDecoration: "none" }}
+                  href="/autoclub"
+                  onClick={onMobileMenuClose}
+                >
+                  Showroom
+                </Link>
                 <Link
                   style={{ textDecoration: "none" }}
                   href="/booking"
