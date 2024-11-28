@@ -60,14 +60,18 @@ const ThreeDEffect = () => {
       block: "start",
     });
   };
+
   return (
     <>
-      <Box
-        className="wrap"
-        ref={containerRef}
-        bg="primaryBlue"
-        overflow="hidden"
-      >
+      <Box className="wrap" ref={containerRef} overflow="hidden">
+        <video
+          className="background-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          src="https://res.cloudinary.com/deau0cmc9/video/upload/x8gsbqfo8kzbr0pit0iw"
+        />
         <div className="line">
           <div className="left">
             <div className="content">
