@@ -100,20 +100,16 @@ function Nav() {
         <IconButton
           aria-label="Open Menu"
           icon={<HamburgerIcon />}
-          display={{ base: "flex", xl: "none" }} // Display on small screens
+          display={{ base: "flex", xl: "none" }}
           onClick={onMobileMenuOpen}
           variant="ghost"
           color={"white"}
           fontSize={{ base: "1.2rem", sm: "1.5rem" }}
         />
 
-        <HStack
-          spacing={2}
-          display={{ base: "none", xl: "flex" }} // Show from medium screens
-        >
+        <HStack spacing={2} display={{ base: "none", xl: "flex" }}>
           <Button
             as="a"
-            // href="/autolandPH"
             href="/autolander"
             fontSize="md"
             color="#333333"
