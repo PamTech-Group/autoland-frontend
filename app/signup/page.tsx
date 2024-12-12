@@ -13,6 +13,7 @@ import {
 import { motion } from "framer-motion";
 import { useState } from "react";
 import styled from "@emotion/styled";
+import axios from "axios";
 
 // Styled components for animated background
 const AnimatedBackground = styled.div`
@@ -58,23 +59,88 @@ const GlassMorphicCard = styled(motion.div)`
 `;
 
 const MotionBox = motion.div;
+interface SignupFormData {
+  fullName: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+  phoneNumber: string;
+}
 
-export default function LoginPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+export default function SignupPage() {
+  const [loading, setLoading] = useState<boolean>(false);
+  const [formData, setFormData] = useState<SignupFormData>({
+    fullName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    phoneNumber: "",
+  });
   const toast = useToast();
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast({
-      title: "Login Attempted",
-      description: "This is a demo login page",
-      status: "info",
-      duration: 3000,
-      isClosable: true,
-    });
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
 
+    // Validation checks
+    if (!formData.fullName || !formData.email || !formData.password) {
+      toast({
+        title: "Missing Details",
+        description: "Please fill in all fields",
+        status: "error",
+        duration: 4000,
+        isClosable: true,
+        position: "top-right",
+      });
+      return;
+    }
+
+    if (formData.password !== formData.confirmPassword) {
+      toast({
+        title: "Password Mismatch",
+        description: "Passwords do not match",
+        status: "error",
+        duration: 4000,
+        isClosable: true,
+        position: "top-right",
+      });
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const response = await axios.post("YOUR_API_ENDPOINT/signup", formData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (response.status === 201) {
+        toast({
+          title: "Account created successfully",
+          description: "Welcome to our platform!",
+          status: "success",
+          duration: 4000,
+          isClosable: true,
+          position: "top-right",
+        });
+        // Optional: Redirect to login or dashboard
+      }
+    } catch (error: any) {
+      toast({
+        title: "Registration Failed",
+        description: error.response?.data?.message || "Please try again",
+        status: "error",
+        duration: 4000,
+        isClosable: true,
+        position: "top-right",
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <Flex
       minH="100vh"
@@ -114,9 +180,41 @@ export default function LoginPage() {
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.4 }}
               >
+                <FormLabel>Fullname</FormLabel>
+
+                <Input
+                  name="fullname"
+                  type="text"
+                  placeholder="Fullname"
+                  size="lg"
+                  bg="rgba(255,255,255,0.1)"
+                  border="1px solid rgba(255,255,255,0.2)"
+                  color="white"
+                  _placeholder={{ color: "rgba(255,255,255,0.7)" }}
+                  _hover={{
+                    border: "1px solid rgba(255,255,255,0.4)",
+                    bg: "rgba(255,255,255,0.15)",
+                  }}
+                  _focus={{
+                    border: "1px solid rgba(255,255,255,0.6)",
+                    bg: "rgba(255,255,255,0.15)",
+                    boxShadow: "0 0 15px rgba(255,255,255,0.1)",
+                  }}
+                  value={formData.fullName}
+                  onChange={handleChange}
+                />
+              </MotionBox>
+            </FormControl>
+            <FormControl>
+              <MotionBox
+                initial={{ x: -50, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
+                transition={{ delay: 0.4 }}
+              >
                 <FormLabel>Email</FormLabel>
 
                 <Input
+                  name="email"
                   type="email"
                   placeholder="Email"
                   size="lg"
@@ -133,8 +231,8 @@ export default function LoginPage() {
                     bg: "rgba(255,255,255,0.15)",
                     boxShadow: "0 0 15px rgba(255,255,255,0.1)",
                   }}
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={formData.email}
+                  onChange={handleChange}
                 />
               </MotionBox>
             </FormControl>
@@ -147,6 +245,7 @@ export default function LoginPage() {
                 <FormLabel>Phone Number</FormLabel>
 
                 <Input
+                  name="phoneNumber"
                   type="tel"
                   placeholder="Phone number"
                   size="lg"
@@ -163,8 +262,8 @@ export default function LoginPage() {
                     bg: "rgba(255,255,255,0.15)",
                     boxShadow: "0 0 15px rgba(255,255,255,0.1)",
                   }}
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={formData.phoneNumber}
+                  onChange={handleChange}
                 />
               </MotionBox>
             </FormControl>
@@ -177,6 +276,7 @@ export default function LoginPage() {
               >
                 <FormLabel>Password</FormLabel>
                 <Input
+                  name="password"
                   type="password"
                   placeholder="Password"
                   size="lg"
@@ -193,8 +293,8 @@ export default function LoginPage() {
                     bg: "rgba(255,255,255,0.15)",
                     boxShadow: "0 0 15px rgba(255,255,255,0.1)",
                   }}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  value={formData.password}
+                  onChange={handleChange}
                 />
               </MotionBox>
             </FormControl>
@@ -206,6 +306,7 @@ export default function LoginPage() {
               >
                 <FormLabel>Confirm Password</FormLabel>
                 <Input
+                  name="confirmPassword"
                   type="password"
                   placeholder="Confirm Password"
                   size="lg"
@@ -222,8 +323,8 @@ export default function LoginPage() {
                     bg: "rgba(255,255,255,0.15)",
                     boxShadow: "0 0 15px rgba(255,255,255,0.1)",
                   }}
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  value={formData.confirmPassword}
+                  onChange={handleChange}
                 />
               </MotionBox>
             </FormControl>
@@ -234,6 +335,7 @@ export default function LoginPage() {
               style={{ width: "100%", textAlign: "center" }}
             >
               <Button
+                isLoading={loading}
                 w="fit-content"
                 borderRadius="20px"
                 size="lg"
