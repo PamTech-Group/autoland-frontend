@@ -13,6 +13,7 @@ import {
 import { motion } from "framer-motion";
 import { useState } from "react";
 import styled from "@emotion/styled";
+import { useRouter } from "next/navigation";
 
 // Styled components for animated background
 const AnimatedBackground = styled.div`
@@ -63,7 +64,7 @@ export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const toast = useToast();
-
+  const router = useRouter();
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
@@ -73,6 +74,7 @@ export default function LoginPage() {
       duration: 3000,
       isClosable: true,
     });
+    router.push("/dashboard");
   };
 
   return (

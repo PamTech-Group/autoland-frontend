@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 import {
   Box,
@@ -13,9 +15,9 @@ import {
   FormLabel,
   SimpleGrid,
   Checkbox,
-  useToast,
   Icon,
   Divider,
+  useToast,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useState } from "react";
@@ -23,8 +25,7 @@ import { FaTools, FaCarSide, FaClock, FaShieldAlt } from "react-icons/fa";
 import NavWhite from "../components/NavWhite";
 import Footer from "../components/Footer";
 
-const MotionBox = motion(Box);
-
+const MotionBox = motion(Box as any);
 interface QuoteFormData {
   name: string;
   email: string;

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import {
@@ -12,6 +13,8 @@ import {
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+
 import styled from "@emotion/styled";
 import axios from "axios";
 
@@ -77,6 +80,8 @@ export default function SignupPage() {
     phoneNumber: "",
   });
   const toast = useToast();
+  const router = useRouter();
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -111,11 +116,19 @@ export default function SignupPage() {
 
     setLoading(true);
     try {
-      const response = await axios.post("YOUR_API_ENDPOINT/signup", formData, {
-        headers: {
-          "Content-Type": "application/json",
+      const response = await axios.post(
+        "YOUR_API_ENDPOINT/signup",
+        {
+          fullName: formData.fullName,
+          email: formData.email,
+          password: formData.password,
         },
-      });
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       if (response.status === 201) {
         toast({
@@ -126,7 +139,10 @@ export default function SignupPage() {
           isClosable: true,
           position: "top-right",
         });
-        // Optional: Redirect to login or dashboard
+
+        // Add a slight delay before redirecting (optional)
+
+        router.push("/dashboard");
       }
     } catch (error: any) {
       toast({
@@ -137,6 +153,7 @@ export default function SignupPage() {
         isClosable: true,
         position: "top-right",
       });
+      router.push("/dashboard");
     } finally {
       setLoading(false);
     }
