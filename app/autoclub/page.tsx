@@ -92,7 +92,7 @@ function Autoclub() {
         if (response.status === 201) {
           setbuttonLoading(false);
           toast({
-            title: "Booked Successfully.",
+            title: "Submitted!",
             description: "You'll hear from us soon",
             status: "success",
             duration: 4000,

@@ -29,7 +29,13 @@ function NavWhite() {
 
   // Use breakpoints for responsive design
   const logoSize = useBreakpointValue({ base: 25, sm: 35 });
-  const navSpacing = useBreakpointValue({ base: 2, sm: 4, md: 6, lg: 20 });
+  const navSpacing = useBreakpointValue({
+    base: 2,
+    sm: 2,
+    lg: 3,
+    xl: 4,
+    ddxl: 8,
+  });
   return (
     <Box
       width="100%"
@@ -84,7 +90,7 @@ function NavWhite() {
             fontWeight={400}
             href="/services"
           >
-            Our Services
+            Services
           </Link>
 
           <Link
@@ -93,7 +99,24 @@ function NavWhite() {
             fontWeight={400}
             href="/autoclub"
           >
-            Join Autoclub
+            Autoclub
+          </Link>
+
+          <Link
+            style={{ textDecoration: "none" }}
+            fontSize="md"
+            fontWeight={400}
+            href="/autolander"
+          >
+            Showroom
+          </Link>
+          <Link
+            style={{ textDecoration: "none" }}
+            fontSize="md"
+            fontWeight={400}
+            href="/booking"
+          >
+            Book us
           </Link>
         </Flex>
 
@@ -114,8 +137,7 @@ function NavWhite() {
         >
           <Button
             as="a"
-            // href="/autolandPH"
-            href="/autolander"
+            href="/quote"
             fontSize="sm"
             color="#333333"
             borderRadius="20px"
@@ -129,11 +151,11 @@ function NavWhite() {
               bgColor: "#F0F8FF",
             }}
           >
-            Showroom
+            Get Quote
           </Button>
           <Button
             as="a"
-            href="/booking"
+            href="/login"
             borderRadius="20px"
             fontSize="sm"
             padding={theme.buttonPadding}
@@ -145,7 +167,7 @@ function NavWhite() {
               bgColor: "#bf1e1d",
             }}
           >
-            Book an Appointment
+            Login
           </Button>
         </HStack>
 
@@ -195,7 +217,21 @@ function NavWhite() {
                   href="/booking"
                   onClick={onMobileMenuClose}
                 >
-                  Book an Appointment
+                  Book us
+                </Link>
+                <Link
+                  style={{ textDecoration: "none" }}
+                  href="/quote"
+                  onClick={onMobileMenuClose}
+                >
+                  Get Quote
+                </Link>
+                <Link
+                  style={{ textDecoration: "none" }}
+                  href="/login"
+                  onClick={onMobileMenuClose}
+                >
+                  Login
                 </Link>
               </VStack>
             </DrawerBody>

@@ -28,17 +28,23 @@ function Nav() {
 
   // Use breakpoints for responsive design
   const logoSize = useBreakpointValue({ base: 25, sm: 35 });
-  const navSpacing = useBreakpointValue({ base: 2, sm: 4, md: 6, lg: 8 });
+  const navSpacing = useBreakpointValue({
+    base: 2,
+    sm: 2,
+    lg: 3,
+    xl: 4,
+    ddxl: 8,
+  });
   return (
     <Box
       width="100%"
       bg={"transparent"}
       padding={{
         base: "0.5rem 0.5rem",
-        sm: "0.75rem 2rem",
-        md: "1rem 4rem",
-        lg: "1rem 6rem",
-        dxl: "1rem 8rem",
+        sm: "0.75rem 1rem",
+        md: "1rem 2rem",
+        lg: "1rem 3rem",
+        dxl: "1rem 4rem",
       }}
     >
       <Flex
@@ -66,33 +72,47 @@ function Nav() {
           padding=".7rem 1.5rem"
           borderRadius="lg"
           bgColor="rgba(243, 243, 243, 0.13)"
-          fontSize="md"
+          fontSize="sm"
         >
           <Link
             style={{ textDecoration: "none" }}
-            fontSize="md"
+            fontSize="sm"
             fontWeight={400}
             href="/about"
           >
             About Us
           </Link>
-
           <Link
             style={{ textDecoration: "none" }}
-            fontSize="md"
+            fontSize="sm"
             fontWeight={400}
             href="/services"
           >
-            Our Services
+            Services
           </Link>
-
           <Link
             style={{ textDecoration: "none" }}
-            fontSize="md"
+            fontSize="sm"
             fontWeight={400}
             href="/autoclub"
           >
-            Join Autoclub
+            Autoclub
+          </Link>
+          <Link
+            style={{ textDecoration: "none" }}
+            fontSize="sm"
+            fontWeight={400}
+            href="/autolander"
+          >
+            Showroom
+          </Link>
+          <Link
+            style={{ textDecoration: "none" }}
+            fontSize="sm"
+            fontWeight={400}
+            href="/booking"
+          >
+            Book us
           </Link>
         </Flex>
 
@@ -110,7 +130,7 @@ function Nav() {
         <HStack spacing={2} display={{ base: "none", xl: "flex" }}>
           <Button
             as="a"
-            href="/autolander"
+            href="/quote"
             fontSize="sm"
             color="#333333"
             borderRadius="20px"
@@ -123,11 +143,11 @@ function Nav() {
               bgColor: "#F0F8FF",
             }}
           >
-            Showroom
+            Get Quote
           </Button>
           <Button
             as="a"
-            href="/booking"
+            href="/login"
             fontSize="sm"
             borderRadius="20px"
             padding={theme.buttonPadding}
@@ -139,7 +159,7 @@ function Nav() {
               bgColor: "#bf1e1d",
             }}
           >
-            Book an Appointment
+            Login
           </Button>
         </HStack>
 
@@ -179,17 +199,17 @@ function Nav() {
                 </Link>
                 <Link
                   style={{ textDecoration: "none" }}
-                  href="/autoclub"
+                  href="/quote"
                   onClick={onMobileMenuClose}
                 >
-                  Showroom
+                  Get Quote
                 </Link>
                 <Link
                   style={{ textDecoration: "none" }}
-                  href="/booking"
+                  href="/login"
                   onClick={onMobileMenuClose}
                 >
-                  Book an Appointment
+                  Login
                 </Link>
               </VStack>
             </DrawerBody>
