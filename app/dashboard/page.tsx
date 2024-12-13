@@ -158,6 +158,26 @@ const statsData = [
   },
 ];
 
+const recentServices = [
+  {
+    id: 1,
+    service: "Oil Change",
+    date: "2024-03-15",
+    status: "Completed",
+    cost: "$45.99",
+    vehicle: "Toyota Camry",
+  },
+  {
+    id: 2,
+    service: "Brake Inspection",
+    date: "2024-03-14",
+    status: "In Progress",
+    cost: "$89.99",
+    vehicle: "Honda Civic",
+  },
+  // Add more entries as needed
+];
+
 export default function Dashboard() {
   const logoSize = useBreakpointValue({ base: 25, sm: 35 });
 
@@ -246,12 +266,49 @@ export default function Dashboard() {
           <GlassCard mb={8}>
             <CardBody>
               <Flex justify="space-between" align="center" mb={4}>
-                <Heading size="md">Recent Services</Heading>
+                <Heading size="sm">Recent Services</Heading>
                 <Button variant="ghost" colorScheme="blue" size="sm">
                   View All
                 </Button>
               </Flex>
-              {/* Add recent services list here */}
+              <VStack spacing={4} align="stretch">
+                {recentServices.map((service) => (
+                  <Flex
+                    key={service.id}
+                    justify="space-between"
+                    align="center"
+                    p={3}
+                    borderRadius="md"
+                    bg="rgba(255, 255, 255, 0.05)"
+                    _hover={{ bg: "rgba(255, 255, 255, 0.1)" }}
+                  >
+                    <VStack align="start" spacing={1}>
+                      <Text fontWeight="bold">{service.service}</Text>
+                      <Text fontSize="sm" color="gray.400">
+                        {service.vehicle}
+                      </Text>
+                    </VStack>
+                    <HStack spacing={4}>
+                      <Text fontSize="sm" color="gray.400">
+                        {service.date}
+                      </Text>
+                      <Text
+                        fontSize="sm"
+                        color={
+                          service.status === "Completed"
+                            ? "green.400"
+                            : "yellow.400"
+                        }
+                      >
+                        {service.status}
+                      </Text>
+                      <Text fontSize="sm" color="blue.400">
+                        {service.cost}
+                      </Text>
+                    </HStack>
+                  </Flex>
+                ))}
+              </VStack>
             </CardBody>
           </GlassCard>
 
