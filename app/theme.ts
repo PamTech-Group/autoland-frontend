@@ -70,6 +70,27 @@ const theme = extendTheme({
   boxShadow: `0px 4px 6px 2px rgba(11, 1, 45, 0.5)`,
   customBoxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", // Added custom box shadow
   customBorderRadius: "0.5rem", // Added custom border radius
+  styles: {
+    global: {
+      "html, body": {
+        fontSize: "16px", // Set a base font size
+        WebkitTextSizeAdjust: "100%", // Prevent iOS text size adjust
+        textSizeAdjust: "100%",
+      },
+    },
+  },
+  space: {
+    px: "1px",
+    0.5: "0.125rem",
+    1: "0.25rem",
+    1.5: "0.375rem",
+    2: "0.5rem",
+    2.5: "0.625rem",
+    3: "0.75rem",
+    3.5: "0.875rem",
+    4: "1rem",
+    // ... add more as needed
+  },
 });
 
 export default theme;
