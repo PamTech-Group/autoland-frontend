@@ -152,7 +152,7 @@ export default function QuotePage() {
   };
 
   return (
-    <Box bg="backgroundWhite">
+    <Box bg="backgroundWhite" color="white">
       <NavWhite />
 
       {/* Hero Section */}
