@@ -24,6 +24,7 @@ import { useState } from "react";
 import { FaTools, FaCarSide, FaClock, FaShieldAlt } from "react-icons/fa";
 import NavWhite from "../components/NavWhite";
 import Footer from "../components/Footer";
+import axios from "axios";
 
 const MotionBox = motion(Box as any);
 interface QuoteFormData {
@@ -89,7 +90,65 @@ export default function QuotePage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Add your submission logic here
+    setLoading(true);
+
+    try {
+      // You can replace this URL with your actual API endpoint
+      const response = await axios.post("/api/quote", formData);
+
+      toast({
+        title: "Quote Submitted Successfully",
+        description: "We'll get back to you with a detailed quote soon.",
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+        position: "top-right",
+      });
+
+      // Reset form after successful submission
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        carBrand: "",
+        carModel: "",
+        year: "",
+        mileage: "",
+        services: [],
+      });
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to submit quote. Please try again.",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+        position: "top-right",
+      });
+      console.error("Error submitting quote:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleServiceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value, checked } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      services: checked
+        ? [...prev.services, value]
+        : prev.services.filter((service) => service !== value),
+    }));
   };
 
   return (
@@ -174,7 +233,11 @@ export default function QuotePage() {
               <FormControl>
                 <FormLabel>Car Brand</FormLabel>
                 <Input
-                  size="lg"
+                  name="carBrand"
+                  value={formData.carBrand}
+                  onChange={handleInputChange}
+                  size="md"
+                  color="gray.700"
                   bg="gray.50"
                   borderColor="gray.200"
                   _hover={{ borderColor: "buttonOrange" }}
@@ -185,7 +248,11 @@ export default function QuotePage() {
               <FormControl>
                 <FormLabel>Car Model</FormLabel>
                 <Input
-                  size="lg"
+                  name="carModel"
+                  value={formData.carModel}
+                  onChange={handleInputChange}
+                  size="md"
+                  color="gray.700"
                   bg="gray.50"
                   borderColor="gray.200"
                   _hover={{ borderColor: "buttonOrange" }}
@@ -198,7 +265,10 @@ export default function QuotePage() {
               <FormControl>
                 <FormLabel>Year</FormLabel>
                 <Select
-                  size="lg"
+                  name="year"
+                  value={formData.year}
+                  onChange={handleInputChange}
+                  size="md"
                   bg="gray.50"
                   borderColor="gray.200"
                   _hover={{ borderColor: "buttonOrange" }}
@@ -217,7 +287,11 @@ export default function QuotePage() {
               <FormControl>
                 <FormLabel>Current Mileage</FormLabel>
                 <Input
-                  size="lg"
+                  name="mileage"
+                  value={formData.mileage}
+                  onChange={handleInputChange}
+                  size="md"
+                  color="gray.700"
                   bg="gray.50"
                   borderColor="gray.200"
                   _hover={{ borderColor: "buttonOrange" }}
@@ -237,9 +311,12 @@ export default function QuotePage() {
               {serviceOptions.map((service) => (
                 <Checkbox
                   key={service.id}
-                  size="lg"
+                  size="md"
                   colorScheme="orange"
                   spacing={3}
+                  value={service.id}
+                  isChecked={formData.services.includes(service.id)}
+                  onChange={handleServiceChange}
                 >
                   {service.label}
                 </Checkbox>
@@ -256,7 +333,11 @@ export default function QuotePage() {
               <FormControl isRequired>
                 <FormLabel>Full Name</FormLabel>
                 <Input
-                  size="lg"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  size="md"
+                  color="gray.700"
                   bg="gray.50"
                   borderColor="gray.200"
                   _hover={{ borderColor: "buttonOrange" }}
@@ -267,7 +348,11 @@ export default function QuotePage() {
               <FormControl isRequired>
                 <FormLabel>Phone Number</FormLabel>
                 <Input
-                  size="lg"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  size="md"
+                  color="gray.700"
                   bg="gray.50"
                   borderColor="gray.200"
                   _hover={{ borderColor: "buttonOrange" }}
@@ -279,7 +364,11 @@ export default function QuotePage() {
             <FormControl isRequired>
               <FormLabel>Email Address</FormLabel>
               <Input
-                size="lg"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                size="md"
+                color="gray.700"
                 bg="gray.50"
                 borderColor="gray.200"
                 _hover={{ borderColor: "buttonOrange" }}
