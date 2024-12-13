@@ -14,8 +14,18 @@ import {
   Button,
   HStack,
   VStack,
+  Stat,
+  StatLabel,
+  StatNumber,
+  StatHelpText,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  IconButton,
+  useBreakpointValue,
 } from "@chakra-ui/react";
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 import {
   FaCar,
   FaTools,
@@ -31,34 +41,36 @@ import {
   FaUserCog,
   FaSignOutAlt,
   FaQuestionCircle,
+  FaEllipsisH,
 } from "react-icons/fa";
 import styled from "@emotion/styled";
 import { FaCarSide, FaNetworkWired } from "react-icons/fa6";
-
-const MotionBox = motion(Box as any);
-const MotionCard = motion(Card as any);
+import { Image, Link } from "@chakra-ui/next-js";
+import logo from "../assets/logo.webp";
+// const MotionBox = motion(Box as any);
+// const MotionCard = motion(Card as any);
 
 const Sidebar = styled(Box)`
-  background: white;
+  background: #1a1f37;
   height: 100vh;
   width: 250px;
   position: fixed;
   left: 0;
   top: 0;
   padding: 2rem 1rem;
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
 `;
-const GradientBackground = styled(Box)`
-  background: linear-gradient(135deg, #00204f 0%, #001529 100%);
+
+const MainContent = styled(Box)`
+  background: #111322;
   min-height: 100vh;
   margin-left: 250px;
-  width: 100%;
+  width: calc(100% - 250px);
+  color: white;
 `;
 
 const GlassCard = styled(Card)`
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(26, 31, 55, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
 
   &:hover {
@@ -66,22 +78,25 @@ const GlassCard = styled(Card)`
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
   }
 `;
-// const MainContent = styled(Box)`
-//   margin-left: 250px;
-//   padding: 2rem;
-//   min-height: 100vh;
-// `;
 
-const SidebarItem = ({ icon, label }: { icon: any; label: string }) => (
+const SidebarItem = ({
+  icon,
+  label,
+  active = false,
+}: {
+  icon: any;
+  label: string;
+  active?: boolean;
+}) => (
   <HStack
     cursor="pointer"
     p={3}
     borderRadius="md"
+    bg={active ? "rgba(255, 255, 255, 0.1)" : "transparent"}
     _hover={{
-      bg: "#00204f",
-      color: "white",
+      bg: "rgba(255, 255, 255, 0.1)",
     }}
-    color="#00204f"
+    color="white"
     transition="all 0.3s ease"
   >
     <Icon as={icon} />
@@ -122,43 +137,38 @@ const serviceCards = [
   },
 ];
 
-const SpecialistSection = () => (
-  <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6} mb={8}>
-    {["Repairs", "Services", "Bodywork"].map((type) => (
-      <MotionCard
-        key={type}
-        whileHover={{ scale: 1.02 }}
-        whileTap={{ scale: 0.98 }}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        bg="white"
-        shadow="sm"
-      >
-        <CardBody>
-          <Flex align="center" justify="center" direction="column">
-            <Icon as={FaCar} w={8} h={8} mb={2} color="#00204f" />
-            <Text fontWeight="bold" color="#00204f">
-              {type}
-            </Text>
-            <Text fontSize="sm" color="gray.600">
-              Car Model Specialist
-            </Text>
-          </Flex>
-        </CardBody>
-      </MotionCard>
-    ))}
-  </SimpleGrid>
-);
+const statsData = [
+  {
+    label: "Total Services",
+    value: "2,340",
+    change: "+5%",
+    icon: FaWrench,
+  },
+  {
+    label: "Active Bookings",
+    value: "15",
+    change: "+10%",
+    icon: FaCalendarAlt,
+  },
+  {
+    label: "Customer Rating",
+    value: "4.8",
+    change: "+2%",
+    icon: FaUserCog,
+  },
+];
 
 export default function Dashboard() {
+  const logoSize = useBreakpointValue({ base: 25, sm: 35 });
+
   return (
     <Flex>
       <Sidebar>
         <VStack spacing={8} align="stretch">
           <Box>
-            <Heading size="md" color="#00204f" mb={4}>
-              Autoland
-            </Heading>
+            <Link href="/">
+              <Image src={logo} alt="Pamtech Logo" height={logoSize} />
+            </Link>
           </Box>
 
           <VStack align="stretch" spacing={2}>
@@ -179,160 +189,98 @@ export default function Dashboard() {
         </VStack>
       </Sidebar>
 
-      {/* <MainContent>
-        <Container maxW="container.xl">
-          <MotionBox
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            mb={8}
-          >
-            <Heading color="#00204f" mb={2}>
-              Hello Vincent,
-            </Heading>
-            <Text color="gray.600">
-              What would you like to fix on your car today?
-            </Text>
-          </MotionBox>
-
-          <MotionBox
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            mb={12}
-          >
-            <Card p={6} mb={8} bg="white" shadow="sm">
-              <Flex justify="space-between" align="center">
-                <Text color="#00204f" fontSize="lg">
-                  Schedule Maintenance or Repair at your Convenience
-                </Text>
-                <Button
-                  bg="#00204f"
-                  color="white"
-                  size="lg"
-                  rightIcon={<Icon as={FaWrench} />}
-                  as="a"
-                  href="/booking"
-                  _hover={{
-                    bg: "#001529",
-                  }}
-                >
-                  Book Appointment
-                </Button>
-              </Flex>
-            </Card>
-
-            <Heading size="md" color="#00204f" mb={4}>
-              Technician Specialist
-            </Heading>
-            <SpecialistSection />
-
-            <Heading size="md" color="#00204f" mb={4}>
-              Car Services
-            </Heading>
-            <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={6}>
-              {serviceCards.map((service, index) => (
-                <MotionCard
-                  key={service.title}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  bg="white"
-                  shadow="sm"
-                >
-                  <CardBody>
-                    <Flex align="center" mb={4}>
-                      <Icon as={service.icon} w={8} h={8} color="#00204f" />
-                      <Text color="#00204f" fontWeight="bold" ml={3}>
-                        {service.title}
-                      </Text>
-                    </Flex>
-                    <Text color="gray.600" fontSize="sm">
-                      {service.description}
-                    </Text>
-                  </CardBody>
-                </MotionCard>
-              ))}
-            </SimpleGrid>
-          </MotionBox>
-        </Container>
-      </MainContent> */}
-      <GradientBackground>
+      <MainContent>
         <Container maxW="container.2xl" py={8} px={12}>
-          <MotionBox
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            mb={8}
-          >
-            <Heading color="white" mb={2}>
-              Hello Vincent,
-            </Heading>
-            <Text color="whiteAlpha.900">
-              What would you like to fix on your car today?
-            </Text>
-          </MotionBox>
+          <Flex justify="space-between" align="center" mb={8}>
+            <Box>
+              <Heading size="lg" mb={2}>
+                Welcome back, Vincent
+              </Heading>
+              <Text color="gray.400">
+                Track your service requests and manage your vehicles
+              </Text>
+            </Box>
+            <HStack spacing={4}>
+              <IconButton
+                aria-label="notifications"
+                icon={<FaBell />}
+                variant="ghost"
+                color="white"
+              />
+              <Menu>
+                <MenuButton
+                  as={IconButton}
+                  aria-label="options"
+                  icon={<FaEllipsisH />}
+                  variant="ghost"
+                  color="white"
+                />
+                <MenuList bg="#1a1f37">
+                  <MenuItem>Profile Settings</MenuItem>
+                  <MenuItem>Help Center</MenuItem>
+                  <MenuItem>Logout</MenuItem>
+                </MenuList>
+              </Menu>
+            </HStack>
+          </Flex>
 
-          <MotionBox
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            mb={12}
-          >
-            <GlassCard p={6} mb={8}>
-              <Flex justify="space-between" align="center">
-                <Text color="white" fontSize="lg">
-                  Schedule Maintenance or Repair at your Convenience
-                </Text>
-                <Button
-                  colorScheme="blue"
-                  size="sm"
-                  rightIcon={<Icon as={FaWrench} />}
-                  as="a"
-                  href="/booking"
-                >
-                  Book Appointment
+          <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6} mb={8}>
+            {statsData.map((stat) => (
+              <GlassCard key={stat.label}>
+                <CardBody>
+                  <Flex justify="space-between" align="center">
+                    <Stat>
+                      <StatLabel color="gray.400">{stat.label}</StatLabel>
+                      <StatNumber fontSize="2xl">{stat.value}</StatNumber>
+                      <StatHelpText color="green.400">
+                        {stat.change} vs. last month
+                      </StatHelpText>
+                    </Stat>
+                    <Icon as={stat.icon} w={8} h={8} color="blue.400" />
+                  </Flex>
+                </CardBody>
+              </GlassCard>
+            ))}
+          </SimpleGrid>
+
+          <GlassCard mb={8}>
+            <CardBody>
+              <Flex justify="space-between" align="center" mb={4}>
+                <Heading size="md">Recent Services</Heading>
+                <Button variant="ghost" colorScheme="blue" size="sm">
+                  View All
                 </Button>
               </Flex>
-            </GlassCard>
+              {/* Add recent services list here */}
+            </CardBody>
+          </GlassCard>
 
-            <Heading size="md" color="white" mb={4}>
-              Car Services
-            </Heading>
-            <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={6}>
-              {serviceCards.map((service, index) => (
-                <MotionCard
-                  key={service.title}
-                  as={GlassCard}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <CardBody>
-                    <Flex align="center" mb={4}>
-                      <Icon as={service.icon} w={8} h={8} color="white" />
-                      <Text color="white" fontWeight="bold" ml={3}>
-                        {service.title}
-                      </Text>
-                    </Flex>
-                    <Text color="whiteAlpha.800" fontSize="sm">
-                      {service.description}
+          <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={6}>
+            {serviceCards.map((service, index) => (
+              <GlassCard
+                key={service.title}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ type: "spring", delay: `${index * 0.1}` }}
+              >
+                <CardBody>
+                  <Flex align="center" mb={4}>
+                    <Icon as={service.icon} w={8} h={8} color="white" />
+                    <Text color="white" fontWeight="bold" ml={3}>
+                      {service.title}
                     </Text>
-                  </CardBody>
-                </MotionCard>
-              ))}
-            </SimpleGrid>
-            <Heading size="md" color="white" my={6} mb={4}>
-              Technician Specialist
-            </Heading>
-            <SpecialistSection />
-          </MotionBox>
+                  </Flex>
+                  <Text color="whiteAlpha.800" fontSize="sm">
+                    {service.description}
+                  </Text>
+                </CardBody>
+              </GlassCard>
+            ))}
+          </SimpleGrid>
         </Container>
-      </GradientBackground>
+      </MainContent>
     </Flex>
   );
 }
