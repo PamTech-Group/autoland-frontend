@@ -201,7 +201,7 @@ const SidebarContent = ({ onClose }: { onClose?: () => void }) => {
   const logoSize = useBreakpointValue({ base: 25, sm: 35 });
 
   return (
-    <VStack spacing={8} align="stretch">
+    <VStack spacing={8} align="stretch" color="gray.50">
       <Flex justify="space-between" align="center">
         <Box>
           <Link href="/">
