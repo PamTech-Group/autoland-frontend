@@ -24,6 +24,10 @@ import {
   MenuItem,
   IconButton,
   useBreakpointValue,
+  useDisclosure,
+  Drawer,
+  DrawerContent,
+  DrawerOverlay,
 } from "@chakra-ui/react";
 // import { motion } from "framer-motion";
 import {
@@ -42,11 +46,14 @@ import {
   FaSignOutAlt,
   FaQuestionCircle,
   FaEllipsisH,
+  FaBars,
+  FaTimes,
 } from "react-icons/fa";
 import styled from "@emotion/styled";
 import { FaCarSide, FaNetworkWired } from "react-icons/fa6";
 import { Image, Link } from "@chakra-ui/next-js";
 import logo from "../assets/logo.webp";
+// import { useRouter } from "next/navigation";
 // const MotionBox = motion(Box as any);
 // const MotionCard = motion(Card as any);
 
@@ -58,6 +65,11 @@ const Sidebar = styled(Box)`
   left: 0;
   top: 0;
   padding: 2rem 1rem;
+  transition: all 0.3s ease-in-out;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const MainContent = styled(Box)`
@@ -66,6 +78,12 @@ const MainContent = styled(Box)`
   margin-left: 250px;
   width: calc(100% - 250px);
   color: white;
+  transition: all 0.3s ease-in-out;
+
+  @media (max-width: 768px) {
+    margin-left: 0;
+    width: 100%;
+  }
 `;
 
 const GlassCard = styled(Card)`
@@ -178,39 +196,103 @@ const recentServices = [
   // Add more entries as needed
 ];
 
-export default function Dashboard() {
+const SidebarContent = ({ onClose }: { onClose?: () => void }) => {
+  // const router = useRouter();
   const logoSize = useBreakpointValue({ base: 25, sm: 35 });
 
   return (
+    <VStack spacing={8} align="stretch">
+      <Flex justify="space-between" align="center">
+        <Box>
+          <Link href="/">
+            <Image src={logo} alt="Autoland Logo" height={logoSize} />
+          </Link>
+        </Box>
+        {onClose && (
+          <IconButton
+            display={{ base: "flex", md: "none" }}
+            onClick={onClose}
+            variant="ghost"
+            color="white"
+            icon={<FaTimes />}
+            aria-label="Close menu"
+          />
+        )}
+      </Flex>
+
+      <VStack align="stretch" spacing={2}>
+        <SidebarItem icon={FaHome} label="Dashboard" active />
+        <SidebarItem icon={FaCalendarAlt} label="Appointments" />
+        <SidebarItem icon={FaHistory} label="Service History" />
+        <SidebarItem icon={FaCreditCard} label="Payments" />
+        <SidebarItem icon={FaBell} label="Notifications" />
+        <SidebarItem icon={FaCarSide} label="Car Management" />
+        <SidebarItem icon={FaNetworkWired} label="Plans" />
+      </VStack>
+
+      <VStack align="stretch" spacing={2} mt="auto">
+        <SidebarItem icon={FaUserCog} label="Settings" />
+        <SidebarItem icon={FaQuestionCircle} label="Help & Support" />
+        <SidebarItem icon={FaSignOutAlt} label="Logout" />
+      </VStack>
+    </VStack>
+  );
+};
+
+export default function Dashboard() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  // const isMobile = useBreakpointValue({ base: true, lg: false });
+
+  return (
     <Flex>
-      <Sidebar>
-        <VStack spacing={8} align="stretch">
-          <Box>
-            <Link href="/">
-              <Image src={logo} alt="Pamtech Logo" height={logoSize} />
-            </Link>
-          </Box>
+      {/* Desktop Sidebar */}
+      <Box display={{ base: "none", lg: "block" }}>
+        <Sidebar>
+          <SidebarContent />
+        </Sidebar>
+      </Box>
 
-          <VStack align="stretch" spacing={2}>
-            <SidebarItem icon={FaHome} label="Dashboard" />
-            <SidebarItem icon={FaCalendarAlt} label="Appointments" />
-            <SidebarItem icon={FaHistory} label="Service History" />
-            <SidebarItem icon={FaCreditCard} label="Payments" />
-            <SidebarItem icon={FaBell} label="Notifications" />
-            <SidebarItem icon={FaCarSide} label="Car Management" />
-            <SidebarItem icon={FaNetworkWired} label="Plans" />
-          </VStack>
+      {/* Mobile Drawer */}
+      <Drawer
+        autoFocus={false}
+        isOpen={isOpen}
+        placement="left"
+        onClose={onClose}
+        returnFocusOnClose={false}
+        onOverlayClick={onClose}
+        size="full"
+      >
+        <DrawerOverlay />
+        <DrawerContent bg="#1a1f37">
+          <SidebarContent onClose={onClose} />
+        </DrawerContent>
+      </Drawer>
 
-          <VStack align="stretch" spacing={2}>
-            <SidebarItem icon={FaUserCog} label="Settings" />
-            <SidebarItem icon={FaQuestionCircle} label="Help & Support" />
-            <SidebarItem icon={FaSignOutAlt} label="Logout" />
-          </VStack>
-        </VStack>
-      </Sidebar>
-
+      {/* Main Content */}
       <MainContent>
-        <Container maxW="container.2xl" py={8} px={12}>
+        <Container maxW="container.2xl" py={8} px={{ base: 4, lg: 12 }}>
+          {/* Mobile Header with Menu Button */}
+          <Flex
+            mb={8}
+            justify="space-between"
+            align="center"
+            display={{ base: "flex", lg: "none" }}
+          >
+            <IconButton
+              aria-label="Open menu"
+              icon={<FaBars />}
+              onClick={onOpen}
+              variant="ghost"
+              color="white"
+              colorScheme="blue"
+            />
+            <Link href="/">
+              <Image src={logo} alt="Autoland Logo" height={25} />
+            </Link>
+            <Box width="40px" /> {/* Spacer for alignment */}
+          </Flex>
+
+          {/* Welcome Section */}
           <Flex justify="space-between" align="center" mb={8}>
             <Box>
               <Heading size="lg" mb={2}>
@@ -226,6 +308,7 @@ export default function Dashboard() {
                 icon={<FaBell />}
                 variant="ghost"
                 color="white"
+                colorScheme="blue"
               />
               <Menu>
                 <MenuButton
@@ -234,16 +317,18 @@ export default function Dashboard() {
                   icon={<FaEllipsisH />}
                   variant="ghost"
                   color="white"
+                  colorScheme="blue"
                 />
                 <MenuList bg="#1a1f37">
-                  <MenuItem>Profile Settings</MenuItem>
-                  <MenuItem>Help Center</MenuItem>
-                  <MenuItem>Logout</MenuItem>
+                  <MenuItem bg="#1a1f37">Profile Settings</MenuItem>
+                  <MenuItem bg="#1a1f37">Help Center</MenuItem>
+                  <MenuItem bg="#1a1f37">Logout</MenuItem>
                 </MenuList>
               </Menu>
             </HStack>
           </Flex>
 
+          {/* Stats Grid */}
           <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6} mb={8}>
             {statsData.map((stat) => (
               <GlassCard key={stat.label}>
@@ -251,7 +336,7 @@ export default function Dashboard() {
                   <Flex justify="space-between" align="center">
                     <Stat>
                       <StatLabel color="gray.400">{stat.label}</StatLabel>
-                      <StatNumber fontSize="2xl">{stat.value}</StatNumber>
+                      <StatNumber fontSize="xl">{stat.value}</StatNumber>
                       <StatHelpText color="green.400">
                         {stat.change} vs. last month
                       </StatHelpText>
@@ -263,6 +348,7 @@ export default function Dashboard() {
             ))}
           </SimpleGrid>
 
+          {/* Recent Services */}
           <GlassCard mb={8}>
             <CardBody>
               <Flex justify="space-between" align="center" mb={4}>
@@ -312,7 +398,8 @@ export default function Dashboard() {
             </CardBody>
           </GlassCard>
 
-          <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spacing={6}>
+          {/* Service Cards Grid */}
+          <SimpleGrid columns={{ base: 1, sm: 2, lg: 3 }} spacing={6}>
             {serviceCards.map((service, index) => (
               <GlassCard
                 key={service.title}
@@ -323,9 +410,19 @@ export default function Dashboard() {
                 transition={{ type: "spring", delay: `${index * 0.1}` }}
               >
                 <CardBody>
-                  <Flex align="center" mb={4}>
+                  <Flex
+                    align="center"
+                    flexDirection={{ base: "column", md: "row" }}
+                    mb={4}
+                  >
                     <Icon as={service.icon} w={8} h={8} color="white" />
-                    <Text color="white" fontWeight="bold" ml={3}>
+                    <Text
+                      color="white"
+                      textAlign={{ base: "left", md: "center" }}
+                      fontWeight="bold"
+                      ml={{ base: 0, md: 3 }}
+                      mt={{ base: 3, md: 0 }}
+                    >
                       {service.title}
                     </Text>
                   </Flex>
