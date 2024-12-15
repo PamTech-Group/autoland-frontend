@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import {
@@ -6,71 +5,35 @@ import {
   Container,
   Heading,
   Text,
-  Card,
-  CardBody,
-  SimpleGrid,
-  Icon,
   Flex,
-  Button,
+  IconButton,
   HStack,
-  VStack,
-  Stat,
-  StatLabel,
-  StatNumber,
-  StatHelpText,
   Menu,
   MenuButton,
   MenuList,
   MenuItem,
-  IconButton,
-  useBreakpointValue,
   useDisclosure,
   Drawer,
   DrawerContent,
   DrawerOverlay,
 } from "@chakra-ui/react";
-// import { motion } from "framer-motion";
+import { Image, Link } from "@chakra-ui/next-js";
 import {
-  FaCar,
-  FaTools,
   FaWrench,
-  FaCog,
-  FaCarBattery,
-  FaAlignCenter,
-  FaHome,
   FaCalendarAlt,
-  FaHistory,
-  FaCreditCard,
-  FaBell,
   FaUserCog,
-  FaSignOutAlt,
-  FaQuestionCircle,
+  FaBell,
   FaEllipsisH,
   FaBars,
-  FaTimes,
 } from "react-icons/fa";
 import styled from "@emotion/styled";
-import { FaCarSide, FaNetworkWired } from "react-icons/fa6";
-import { Image, Link } from "@chakra-ui/next-js";
 import logo from "../assets/logo.webp";
-// import { useRouter } from "next/navigation";
-// const MotionBox = motion(Box as any);
-// const MotionCard = motion(Card as any);
 
-const Sidebar = styled(Box)`
-  background: #1a1f37;
-  height: 100vh;
-  width: 250px;
-  position: fixed;
-  left: 0;
-  top: 0;
-  padding: 2rem 1rem;
-  transition: all 0.3s ease-in-out;
-
-  @media (max-width: 768px) {
-    width: 100%;
-  }
-`;
+// Import components
+import Sidebar from "../components/SideBar";
+import ServiceCards from "../components/ServiceCards";
+import ServiceHistory from "../components/ServiceHistory";
+import StatsGrid from "../components/StatsGrid";
 
 const MainContent = styled(Box)`
   background: #111322;
@@ -86,104 +49,36 @@ const MainContent = styled(Box)`
   }
 `;
 
-const GlassCard = styled(Card)`
-  background: rgba(26, 31, 55, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.3s ease;
-
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-  }
-`;
-
-const SidebarItem = ({
-  icon,
-  label,
-  active = false,
-}: {
-  icon: any;
-  label: string;
-  active?: boolean;
-}) => (
-  <HStack
-    cursor="pointer"
-    p={3}
-    borderRadius="md"
-    bg={active ? "rgba(255, 255, 255, 0.1)" : "transparent"}
-    _hover={{
-      bg: "rgba(255, 255, 255, 0.1)",
-    }}
-    color="white"
-    transition="all 0.3s ease"
-  >
-    <Icon as={icon} />
-    <Text fontWeight="medium">{label}</Text>
-  </HStack>
-);
-
-const serviceCards = [
-  {
-    title: "Computerised Auto Diagnosis",
-    icon: FaCog,
-    description: "Advanced diagnostic scanning and troubleshooting",
-  },
-  {
-    title: "Maintenance & Lube Check",
-    icon: FaTools,
-    description: "Regular maintenance and fluid checks",
-  },
-  {
-    title: "Body Shop & Upgrade",
-    icon: FaCar,
-    description: "Body repairs and vehicle upgrades",
-  },
-  {
-    title: "Mechanical Repairs",
-    icon: FaWrench,
-    description: "Complete mechanical repair services",
-  },
-  {
-    title: "AC & Electrical Repairs",
-    icon: FaCarBattery,
-    description: "Electrical system and AC service",
-  },
-  {
-    title: "Wheel Alignment & Balancing",
-    icon: FaAlignCenter,
-    description: "Precision wheel services",
-  },
-];
-
+// Data
 const statsData = [
   {
     label: "Total Services",
-    value: "2,340",
-    change: "+5%",
+    value: "0",
+    change: "+0%",
     icon: FaWrench,
   },
   {
-    label: "Active Bookings",
-    value: "15",
-    change: "+10%",
+    label: "Ongoing Repairs",
+    value: "0",
+    change: "+0%",
     icon: FaCalendarAlt,
   },
   {
-    label: "Customer Rating",
-    value: "4.8",
-    change: "+2%",
+    label: "Completed Services",
+    value: "0",
+    change: "+0%",
     icon: FaUserCog,
   },
 ];
 
-const recentServices = [
+const serviceHistory = [
   {
     id: 1,
     service: "Oil Change",
     date: "2024-03-15",
     status: "Completed",
     cost: "$45.99",
-    vehicle: "Toyota Camry",
+    vehicle: "Toyota Camry XE 2014",
   },
   {
     id: 2,
@@ -191,65 +86,18 @@ const recentServices = [
     date: "2024-03-14",
     status: "In Progress",
     cost: "$89.99",
-    vehicle: "Honda Civic",
+    vehicle: "Honda Civic LX 2018",
   },
-  // Add more entries as needed
 ];
-
-const SidebarContent = ({ onClose }: { onClose?: () => void }) => {
-  // const router = useRouter();
-  const logoSize = useBreakpointValue({ base: 25, sm: 35 });
-
-  return (
-    <VStack spacing={8} align="stretch" color="gray.50">
-      <Flex justify="space-between" align="center">
-        <Box>
-          <Link href="/">
-            <Image src={logo} alt="Autoland Logo" height={logoSize} />
-          </Link>
-        </Box>
-        {onClose && (
-          <IconButton
-            display={{ base: "flex", md: "none" }}
-            onClick={onClose}
-            variant="ghost"
-            color="white"
-            icon={<FaTimes />}
-            aria-label="Close menu"
-          />
-        )}
-      </Flex>
-
-      <VStack align="stretch" spacing={2}>
-        <SidebarItem icon={FaHome} label="Dashboard" active />
-        <SidebarItem icon={FaCalendarAlt} label="Appointments" />
-        <SidebarItem icon={FaHistory} label="Service History" />
-        <SidebarItem icon={FaCreditCard} label="Payments" />
-        <SidebarItem icon={FaBell} label="Notifications" />
-        <SidebarItem icon={FaCarSide} label="Car Management" />
-        <SidebarItem icon={FaNetworkWired} label="Plans" />
-      </VStack>
-
-      <VStack align="stretch" spacing={2} mt="auto">
-        <SidebarItem icon={FaUserCog} label="Settings" />
-        <SidebarItem icon={FaQuestionCircle} label="Help & Support" />
-        <SidebarItem icon={FaSignOutAlt} label="Logout" />
-      </VStack>
-    </VStack>
-  );
-};
 
 export default function Dashboard() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  // const isMobile = useBreakpointValue({ base: true, lg: false });
 
   return (
     <Flex>
       {/* Desktop Sidebar */}
       <Box display={{ base: "none", lg: "block" }}>
-        <Sidebar>
-          <SidebarContent />
-        </Sidebar>
+        <Sidebar currentPath="/dashboard" />
       </Box>
 
       {/* Mobile Drawer */}
@@ -264,14 +112,14 @@ export default function Dashboard() {
       >
         <DrawerOverlay />
         <DrawerContent bg="#1a1f37">
-          <SidebarContent onClose={onClose} />
+          <Sidebar onClose={onClose} currentPath="/dashboard" />
         </DrawerContent>
       </Drawer>
 
       {/* Main Content */}
       <MainContent>
         <Container maxW="container.2xl" py={8} px={{ base: 4, lg: 12 }}>
-          {/* Mobile Header with Menu Button */}
+          {/* Mobile Header */}
           <Flex
             mb={8}
             justify="space-between"
@@ -289,7 +137,7 @@ export default function Dashboard() {
             <Link href="/">
               <Image src={logo} alt="Autoland Logo" height={25} />
             </Link>
-            <Box width="40px" /> {/* Spacer for alignment */}
+            <Box width="40px" />
           </Flex>
 
           {/* Welcome Section */}
@@ -329,110 +177,16 @@ export default function Dashboard() {
           </Flex>
 
           {/* Stats Grid */}
-          <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6} mb={8}>
-            {statsData.map((stat) => (
-              <GlassCard key={stat.label}>
-                <CardBody>
-                  <Flex justify="space-between" align="center">
-                    <Stat>
-                      <StatLabel color="gray.400">{stat.label}</StatLabel>
-                      <StatNumber fontSize="xl">{stat.value}</StatNumber>
-                      <StatHelpText color="green.400">
-                        {stat.change} vs. last month
-                      </StatHelpText>
-                    </Stat>
-                    <Icon as={stat.icon} w={8} h={8} color="blue.400" />
-                  </Flex>
-                </CardBody>
-              </GlassCard>
-            ))}
-          </SimpleGrid>
+          <StatsGrid stats={statsData} />
 
-          {/* Recent Services */}
-          <GlassCard mb={8}>
-            <CardBody>
-              <Flex justify="space-between" align="center" mb={4}>
-                <Heading size="sm">Recent Services</Heading>
-                <Button variant="ghost" colorScheme="blue" size="sm">
-                  View All
-                </Button>
-              </Flex>
-              <VStack spacing={4} align="stretch">
-                {recentServices.map((service) => (
-                  <Flex
-                    key={service.id}
-                    justify="space-between"
-                    align="center"
-                    p={3}
-                    borderRadius="md"
-                    bg="rgba(255, 255, 255, 0.05)"
-                    _hover={{ bg: "rgba(255, 255, 255, 0.1)" }}
-                  >
-                    <VStack align="start" spacing={1}>
-                      <Text fontWeight="bold">{service.service}</Text>
-                      <Text fontSize="sm" color="gray.400">
-                        {service.vehicle}
-                      </Text>
-                    </VStack>
-                    <HStack spacing={4}>
-                      <Text fontSize="sm" color="gray.400">
-                        {service.date}
-                      </Text>
-                      <Text
-                        fontSize="sm"
-                        color={
-                          service.status === "Completed"
-                            ? "green.400"
-                            : "yellow.400"
-                        }
-                      >
-                        {service.status}
-                      </Text>
-                      <Text fontSize="sm" color="blue.400">
-                        {service.cost}
-                      </Text>
-                    </HStack>
-                  </Flex>
-                ))}
-              </VStack>
-            </CardBody>
-          </GlassCard>
+          {/* Service History */}
+          <ServiceHistory
+            services={serviceHistory}
+            onViewAll={() => console.log("View all clicked")}
+          />
 
-          {/* Service Cards Grid */}
-          <SimpleGrid columns={{ base: 1, sm: 2, lg: 3 }} spacing={6}>
-            {serviceCards.map((service, index) => (
-              <GlassCard
-                key={service.title}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ type: "spring", delay: `${index * 0.1}` }}
-              >
-                <CardBody>
-                  <Flex
-                    align="center"
-                    flexDirection={{ base: "column", md: "row" }}
-                    mb={4}
-                  >
-                    <Icon as={service.icon} w={8} h={8} color="white" />
-                    <Text
-                      color="white"
-                      textAlign={{ base: "left", md: "center" }}
-                      fontWeight="bold"
-                      ml={{ base: 0, md: 3 }}
-                      mt={{ base: 3, md: 0 }}
-                    >
-                      {service.title}
-                    </Text>
-                  </Flex>
-                  <Text color="whiteAlpha.800" fontSize="sm">
-                    {service.description}
-                  </Text>
-                </CardBody>
-              </GlassCard>
-            ))}
-          </SimpleGrid>
+          {/* Service Cards */}
+          <ServiceCards />
         </Container>
       </MainContent>
     </Flex>
