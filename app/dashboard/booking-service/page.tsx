@@ -70,7 +70,7 @@ const MainContent = styled(Box)`
   }
 `;
 
-const MotionBox = motion(GlassCard);
+const MotionBox = motion(GlassCard as any);
 
 const servicesData = [
   {
@@ -115,10 +115,7 @@ const servicesData = [
 ];
 
 export default function BookingService() {
-  const {
-    isOpen: isDrawerOpen,
-    onClose: onDrawerClose,
-  } = useDisclosure();
+  const { isOpen: isDrawerOpen, onClose: onDrawerClose } = useDisclosure();
 
   return (
     <Flex>
@@ -134,8 +131,7 @@ export default function BookingService() {
         onClose={onDrawerClose}
         returnFocusOnClose={false}
         onOverlayClick={onDrawerClose}
-        size="full"
-      >
+        size="full">
         <DrawerOverlay />
         <DrawerContent bg="#1a1f37">
           <Sidebar onClose={onDrawerClose} />
@@ -160,16 +156,14 @@ export default function BookingService() {
           <SimpleGrid
             placeItems="center"
             columns={{ base: 1, md: 2, xl: 3 }}
-            spacing={8}
-          >
+            spacing={8}>
             {servicesData.map((service, index) => (
               <MotionBox
                 key={index}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
-              >
+                transition={{ duration: 0.5, delay: index * 0.2 }}>
                 <Flex direction="column" h="100%">
                   {/* Service Image */}
                   <Box
@@ -177,8 +171,7 @@ export default function BookingService() {
                     w="100%"
                     bg="gray.800"
                     borderTopRadius="15px"
-                    overflow="hidden"
-                  >
+                    overflow="hidden">
                     <Image
                       src={service.image.src}
                       alt={service.title}
@@ -195,8 +188,7 @@ export default function BookingService() {
                     align="start"
                     bg="rgba(26, 31, 55, 0.9)"
                     borderBottomRadius="15px"
-                    h="100%"
-                  >
+                    h="100%">
                     <Flex align="center" gap={3}>
                       <Icon as={service.icon} w={8} h={8} color="blue.400" />
                       <Heading size="sm" color="white">
@@ -210,8 +202,7 @@ export default function BookingService() {
                       mt="auto"
                       colorScheme="blue"
                       size="sm"
-                      onClick={() => alert(`Getting ${service.title} service`)}
-                    >
+                      onClick={() => alert(`Getting ${service.title} service`)}>
                       Learn More
                     </Button>
                   </VStack>

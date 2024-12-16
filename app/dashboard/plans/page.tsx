@@ -119,7 +119,7 @@ export default function PlansPage() {
                 Benefits:{" "}
                 {packages.find((pkg) => pkg.name === userPlan)?.benefits}
               </Text>
-              {userPlan !== "PREMIUM PACKAGE" && (
+              {userPlan !== packages[3].name && (
                 <Button colorScheme="blue" mt={4} onClick={handleSubscribe}>
                   Upgrade to Premium Package
                 </Button>
