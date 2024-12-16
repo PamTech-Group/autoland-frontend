@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import {
@@ -88,7 +89,8 @@ export default function PaymentPage() {
         onClose={onClose}
         returnFocusOnClose={false}
         onOverlayClick={onClose}
-        size="full">
+        size="full"
+      >
         <DrawerOverlay />
         <DrawerContent bg="#1a1f37">
           <Sidebar onClose={onClose} />
@@ -137,7 +139,8 @@ export default function PaymentPage() {
                   placeholder="Select Branch"
                   bg="gray.700"
                   size="sm"
-                  color="white">
+                  color="white"
+                >
                   <option style={{ color: "white", background: "#111322" }}>
                     Owerri
                   </option>

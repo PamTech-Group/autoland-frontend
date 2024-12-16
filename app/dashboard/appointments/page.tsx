@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import {
@@ -105,7 +106,8 @@ export default function AppointmentPage() {
         onClose={onClose}
         returnFocusOnClose={false}
         onOverlayClick={onClose}
-        size="full">
+        size="full"
+      >
         <DrawerOverlay />
         <DrawerContent bg="#1a1f37">
           <Sidebar onClose={onClose} />
@@ -137,12 +139,14 @@ export default function AppointmentPage() {
                 placeholder="Year"
                 bg="rgba(255,255,255,0.1)"
                 color="white"
-                borderRadius="10px">
+                borderRadius="10px"
+              >
                 {Array.from({ length: 16 }, (_, i) => 2010 + i).map((year) => (
                   <option
                     key={year}
                     value={year}
-                    style={{ background: "#333", color: "white" }}>
+                    style={{ background: "#333", color: "white" }}
+                  >
                     {year}
                   </option>
                 ))}
@@ -153,20 +157,24 @@ export default function AppointmentPage() {
                 placeholder="Workshop Centre"
                 bg="rgba(255,255,255,0.1)"
                 color="white"
-                borderRadius="10px">
+                borderRadius="10px"
+              >
                 <option
                   value="Owerri"
-                  style={{ background: "#333", color: "white" }}>
+                  style={{ background: "#333", color: "white" }}
+                >
                   Owerri
                 </option>
                 <option
                   value="Lagos"
-                  style={{ background: "#333", color: "white" }}>
+                  style={{ background: "#333", color: "white" }}
+                >
                   Lagos
                 </option>
                 <option
                   value="Abuja"
-                  style={{ background: "#333", color: "white" }}>
+                  style={{ background: "#333", color: "white" }}
+                >
                   Abuja
                 </option>
               </Select>
@@ -182,7 +190,8 @@ export default function AppointmentPage() {
                 onClick={handleBooking}
                 width="fit-content"
                 size="sm"
-                borderRadius="30px">
+                borderRadius="30px"
+              >
                 Book Appointment
               </Button>
             </Flex>
