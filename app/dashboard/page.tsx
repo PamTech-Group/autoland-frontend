@@ -97,7 +97,7 @@ export default function Dashboard() {
     <Flex>
       {/* Desktop Sidebar */}
       <Box display={{ base: "none", lg: "block" }}>
-        <Sidebar currentPath="/dashboard" />
+        <Sidebar />
       </Box>
 
       {/* Mobile Drawer */}
@@ -112,7 +112,7 @@ export default function Dashboard() {
       >
         <DrawerOverlay />
         <DrawerContent bg="#1a1f37">
-          <Sidebar onClose={onClose} currentPath="/dashboard" />
+          <Sidebar onClose={onClose} />
         </DrawerContent>
       </Drawer>
 
@@ -180,10 +180,7 @@ export default function Dashboard() {
           <StatsGrid stats={statsData} />
 
           {/* Service History */}
-          <ServiceHistory
-            services={serviceHistory}
-            onViewAll={() => console.log("View all clicked")}
-          />
+          <ServiceHistory services={serviceHistory} showViewAll={true} />
 
           {/* Service Cards */}
           <ServiceCards />
