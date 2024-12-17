@@ -22,10 +22,14 @@ import {
   DrawerOverlay,
   DrawerContent,
   useDisclosure,
+  IconButton,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import styled from "@emotion/styled";
 import Sidebar from "@/app/components/SideBar";
+import { Image, Link } from "@chakra-ui/next-js";
+import { FaBars } from "react-icons/fa6";
+import logo from "@/app/assets/logo.webp";
 
 const GlassCard = styled(Box)`
   background: linear-gradient(
@@ -77,8 +81,11 @@ const MainContent = styled(Box)`
 `;
 
 export default function AppointmentPage() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
+  const {
+    isOpen: isDrawerOpen,
+    onOpen: onDrawerOpen,
+    onClose: onDrawerClose,
+  } = useDisclosure();
   const toast = useToast();
 
   const handleBooking = () => {
@@ -101,22 +108,41 @@ export default function AppointmentPage() {
       {/* Mobile Drawer */}
       <Drawer
         autoFocus={false}
-        isOpen={isOpen}
+        isOpen={isDrawerOpen}
         placement="left"
-        onClose={onClose}
+        onClose={onDrawerClose}
         returnFocusOnClose={false}
-        onOverlayClick={onClose}
+        onOverlayClick={onDrawerClose}
         size="xs"
       >
         <DrawerOverlay />
         <DrawerContent bg="#1a1f37">
-          <Sidebar onClose={onClose} />
+          <Sidebar onClose={onDrawerClose} />
         </DrawerContent>
       </Drawer>
 
       {/* Main Content */}
       <MainContent>
         <Container maxW="container.2xl" py={8} px={{ base: 4, lg: 12 }}>
+          {/* Mobile Header */}
+          <Flex
+            mb={8}
+            justify="space-between"
+            align="center"
+            display={{ base: "flex", lg: "none" }}
+          >
+            <IconButton
+              aria-label="Open menu"
+              icon={<FaBars />}
+              onClick={onDrawerOpen}
+              variant="ghost"
+              color="white"
+            />
+            <Link href="/">
+              <Image src={logo.src} alt="Autoland Logo" height={25} />
+            </Link>
+            <Box width="40px" />
+          </Flex>
           <Flex flexDir="column" gap={6} mb={8}>
             <Heading size="sm" color="white">
               Book an Appointment

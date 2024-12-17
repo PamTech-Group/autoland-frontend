@@ -23,10 +23,14 @@ import {
   DrawerOverlay,
   DrawerContent,
   useDisclosure,
+  IconButton,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import styled from "@emotion/styled";
 import Sidebar from "@/app/components/SideBar";
+import { FaBars } from "react-icons/fa6";
+import { Image, Link } from "@chakra-ui/next-js";
+import logo from "@/app/assets/logo.webp";
 
 const GlassCard = styled(Box)`
   background: linear-gradient(
@@ -62,8 +66,11 @@ const MainContent = styled(Box)`
 
 export default function PaymentPage() {
   const toast = useToast();
-  const { isOpen, onClose } = useDisclosure();
-
+  const {
+    isOpen: isDrawerOpen,
+    onOpen: onDrawerOpen,
+    onClose: onDrawerClose,
+  } = useDisclosure();
   const handleUpload = () => {
     toast({
       title: "Receipt Uploaded Successfully",
@@ -84,21 +91,40 @@ export default function PaymentPage() {
       {/* Mobile Drawer */}
       <Drawer
         autoFocus={false}
-        isOpen={isOpen}
+        isOpen={isDrawerOpen}
         placement="left"
-        onClose={onClose}
+        onClose={onDrawerClose}
         returnFocusOnClose={false}
-        onOverlayClick={onClose}
+        onOverlayClick={onDrawerClose}
         size="xs"
       >
         <DrawerOverlay />
         <DrawerContent bg="#1a1f37">
-          <Sidebar onClose={onClose} />
+          <Sidebar onClose={onDrawerClose} />
         </DrawerContent>
       </Drawer>
       {/* Main Content */}
       <MainContent>
         <Container maxW="container.xl" py={8} px={{ base: 4, lg: 12 }}>
+          {/* Mobile Header */}
+          <Flex
+            mb={8}
+            justify="space-between"
+            align="center"
+            display={{ base: "flex", lg: "none" }}
+          >
+            <IconButton
+              aria-label="Open menu"
+              icon={<FaBars />}
+              onClick={onDrawerOpen}
+              variant="ghost"
+              color="white"
+            />
+            <Link href="/">
+              <Image src={logo.src} alt="Autoland Logo" height={25} />
+            </Link>
+            <Box width="40px" />
+          </Flex>
           <Flex flexDir="column" gap={6} width="full" mb={8}>
             <Heading size="sm" color="white">
               Payment Page

@@ -11,11 +11,15 @@ import {
   DrawerOverlay,
   DrawerContent,
   useDisclosure,
+  IconButton,
 } from "@chakra-ui/react";
 import { FaHistory } from "react-icons/fa";
 import Sidebar from "@/app/components/SideBar";
 import ServiceHistory from "@/app/components/ServiceHistory";
 import styled from "@emotion/styled";
+import { FaBars } from "react-icons/fa6";
+import { Image, Link } from "@chakra-ui/next-js";
+import logo from "@/app/assets/logo.webp";
 
 const GlassCard = styled(Box)`
   background: rgba(26, 31, 55, 0.8);
@@ -102,7 +106,11 @@ const serviceHistoryData = [
 ];
 
 export default function ServiceHistoryPage() {
-  const { isOpen, onClose } = useDisclosure();
+  const {
+    isOpen: isDrawerOpen,
+    onOpen: onDrawerOpen,
+    onClose: onDrawerClose,
+  } = useDisclosure();
 
   return (
     <Flex>
@@ -114,28 +122,47 @@ export default function ServiceHistoryPage() {
       {/* Mobile Drawer */}
       <Drawer
         autoFocus={false}
-        isOpen={isOpen}
+        isOpen={isDrawerOpen}
         placement="left"
-        onClose={onClose}
+        onClose={onDrawerClose}
         returnFocusOnClose={false}
-        onOverlayClick={onClose}
+        onOverlayClick={onDrawerClose}
         size="xs"
       >
         <DrawerOverlay />
         <DrawerContent bg="#1a1f37">
-          <Sidebar onClose={onClose} />
+          <Sidebar onClose={onDrawerOpen} />
         </DrawerContent>
       </Drawer>
 
       {/* Main Content */}
       <MainContent>
+        {/* Mobile Header */}
         <Container maxW="container.2xl" py={8} px={{ base: 4, lg: 12 }}>
+          <Flex
+            mb={8}
+            justify="space-between"
+            align="center"
+            display={{ base: "flex", lg: "none" }}
+          >
+            <IconButton
+              aria-label="Open menu"
+              icon={<FaBars />}
+              onClick={onDrawerOpen}
+              variant="ghost"
+              color="white"
+            />
+            <Link href="/">
+              <Image src={logo.src} alt="Autoland Logo" height={25} />
+            </Link>
+            <Box width="40px" />
+          </Flex>
           <Heading size="sm" mb={4}>
             <Flex alignItems="center" gap={2}>
               <FaHistory /> Service History
             </Flex>
           </Heading>
-          <Text color="gray.400" mb={8} width="60%">
+          <Text color="gray.400" mb={8} width={{ base: "100%", lg: "70%" }}>
             Here you can find a detailed history of all the services performed
             on your vehicle. This includes information about the service type,
             date, status, cost, and technician notes.

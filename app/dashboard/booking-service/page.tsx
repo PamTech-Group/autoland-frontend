@@ -16,6 +16,7 @@ import {
   Drawer,
   DrawerOverlay,
   DrawerContent,
+  IconButton,
 } from "@chakra-ui/react";
 import {
   FaCar,
@@ -36,8 +37,11 @@ import service4 from "../../assets/wedo4.webp";
 
 import service5 from "../../assets/wedo5.webp";
 import service6 from "../../assets/wedo6.webp";
+import logo from "@/app/assets/logo.webp";
 
 import styled from "@emotion/styled";
+import { FaBars } from "react-icons/fa6";
+import { Link } from "@chakra-ui/next-js";
 
 // Styled GlassCard with modern effects
 const GlassCard = styled(Box)`
@@ -116,7 +120,11 @@ const servicesData = [
 ];
 
 export default function BookingService() {
-  const { isOpen: isDrawerOpen, onClose: onDrawerClose } = useDisclosure();
+  const {
+    isOpen: isDrawerOpen,
+    onOpen: onDrawerOpen,
+    onClose: onDrawerClose,
+  } = useDisclosure();
 
   return (
     <Flex>
@@ -143,6 +151,25 @@ export default function BookingService() {
       {/* Main Content */}
       <MainContent>
         <Container maxW="container.2xl" py={8} px={{ base: 4, lg: 12 }}>
+          {/* Mobile Header */}
+          <Flex
+            mb={8}
+            justify="space-between"
+            align="center"
+            display={{ base: "flex", lg: "none" }}
+          >
+            <IconButton
+              aria-label="Open menu"
+              icon={<FaBars />}
+              onClick={onDrawerOpen}
+              variant="ghost"
+              color="white"
+            />
+            <Link href="/">
+              <Image src={logo.src} alt="Autoland Logo" height={25} />
+            </Link>
+            <Box width="40px" />
+          </Flex>
           {/* Header Section */}
           <Flex flexDir="column" gap={4} mb={8}>
             <Heading size="sm" color="white">
