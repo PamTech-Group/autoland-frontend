@@ -132,7 +132,7 @@ export default function BookingService() {
         onClose={onDrawerClose}
         returnFocusOnClose={false}
         onOverlayClick={onDrawerClose}
-        size="full"
+        size="xs"
       >
         <DrawerOverlay />
         <DrawerContent bg="#1a1f37">
@@ -144,15 +144,15 @@ export default function BookingService() {
       <MainContent>
         <Container maxW="container.2xl" py={8} px={{ base: 4, lg: 12 }}>
           {/* Header Section */}
-          <VStack spacing={4} mb={8} textAlign="center">
-            <Heading size="md" color="white">
+          <Flex flexDir="column" gap={4} mb={8}>
+            <Heading size="sm" color="white">
               Our Premium Services
             </Heading>
-            <Text color="gray.400" maxW="3xl" fontSize="md">
+            <Text color="gray.400" maxW="3xl" fontSize="xs">
               {`Experience top-tier automotive services tailored to enhance your
             vehicle's performance, safety, and aesthetics.`}
             </Text>
-          </VStack>
+          </Flex>
 
           {/* Service Cards */}
           <SimpleGrid

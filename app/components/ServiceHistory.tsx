@@ -86,8 +86,8 @@ const ServiceRow = styled(Grid)`
 
 const HeaderText = styled(Text)`
   color: gray.400;
-  font-size: sm;
-  font-weight: 600;
+  font-size: xs;
+  font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 `;
@@ -101,7 +101,7 @@ export default function ServiceHistory({
     <GlassCard mb={8}>
       <CardBody>
         <Flex justify="space-between" align="center" mb={4}>
-          <Heading size="sm">Services History</Heading>
+          <Heading size="xs">Services History</Heading>
           {showViewAll && (
             <Button
               variant="ghost"
@@ -119,20 +119,27 @@ export default function ServiceHistory({
             <VStack spacing={2} align="stretch">
               <TableHeader>
                 <HeaderText>Service Type</HeaderText>
-                <HeaderText>Date</HeaderText>
-                <HeaderText>Status</HeaderText>
-                <HeaderText>Cost</HeaderText>
                 <HeaderText>Vehicle</HeaderText>
+                <HeaderText>Date</HeaderText>
+                <HeaderText>Cost</HeaderText>
+                <HeaderText>Status</HeaderText>
               </TableHeader>
 
               {services.map((service) => (
                 <ServiceRow key={service.id}>
                   <Text fontWeight="bold">{service.service}</Text>
-                  <Text fontSize="sm" color="gray.400">
+                  <Text fontSize="xs" color="gray.400">
+                    {service.vehicle}
+                  </Text>
+
+                  <Text fontSize="xs" color="gray.400">
                     {service.date}
                   </Text>
+                  <Text fontSize="xs" color="blue.400">
+                    {service.cost}
+                  </Text>
                   <Text
-                    fontSize="sm"
+                    fontSize="xs"
                     color={
                       service.status === "Completed"
                         ? "green.400"
@@ -140,12 +147,6 @@ export default function ServiceHistory({
                     }
                   >
                     {service.status}
-                  </Text>
-                  <Text fontSize="sm" color="blue.400">
-                    {service.cost}
-                  </Text>
-                  <Text fontSize="sm" color="gray.400">
-                    {service.vehicle}
                   </Text>
                 </ServiceRow>
               ))}

@@ -119,22 +119,8 @@ export default function ServiceHistoryPage() {
         onClose={onClose}
         returnFocusOnClose={false}
         onOverlayClick={onClose}
-        size="full">
-        <DrawerOverlay />
-        <DrawerContent bg="#1a1f37">
-          <Sidebar onClose={onClose} />
-        </DrawerContent>
-      </Drawer>
-
-      {/* Mobile Drawer */}
-      <Drawer
-        autoFocus={false}
-        isOpen={isOpen}
-        placement="left"
-        onClose={onClose}
-        returnFocusOnClose={false}
-        onOverlayClick={onClose}
-        size="full">
+        size="xs"
+      >
         <DrawerOverlay />
         <DrawerContent bg="#1a1f37">
           <Sidebar onClose={onClose} />
@@ -144,12 +130,12 @@ export default function ServiceHistoryPage() {
       {/* Main Content */}
       <MainContent>
         <Container maxW="container.2xl" py={8} px={{ base: 4, lg: 12 }}>
-          <Heading size="md" mb={4}>
+          <Heading size="sm" mb={4}>
             <Flex alignItems="center" gap={2}>
               <FaHistory /> Service History
             </Flex>
           </Heading>
-          <Text color="gray.400" mb={8} width="80vw">
+          <Text color="gray.400" mb={8} width="60%">
             Here you can find a detailed history of all the services performed
             on your vehicle. This includes information about the service type,
             date, status, cost, and technician notes.

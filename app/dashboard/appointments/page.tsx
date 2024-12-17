@@ -106,7 +106,7 @@ export default function AppointmentPage() {
         onClose={onClose}
         returnFocusOnClose={false}
         onOverlayClick={onClose}
-        size="full"
+        size="xs"
       >
         <DrawerOverlay />
         <DrawerContent bg="#1a1f37">
@@ -117,19 +117,19 @@ export default function AppointmentPage() {
       {/* Main Content */}
       <MainContent>
         <Container maxW="container.2xl" py={8} px={{ base: 4, lg: 12 }}>
-          <VStack spacing={6} textAlign="center" mb={8}>
-            <Heading size="lg" color="white">
+          <Flex flexDir="column" gap={6} mb={8}>
+            <Heading size="sm" color="white">
               Book an Appointment
             </Heading>
-            <Text color="gray.400" maxW="3xl" fontSize="lg">
+            <Text color="gray.400" maxW="3xl" fontSize="xs">
               Schedule your appointment with ease and manage your bookings
               effortlessly.
             </Text>
-          </VStack>
+          </Flex>
 
           {/* Appointment Form */}
           <GlassCard>
-            <Heading size="md" mb={6} color="white" textAlign="center">
+            <Heading size="xs" mb={6} color="white">
               Appointment Details
             </Heading>
             <SimpleGrid columns={{ base: 1, md: 2 }} spacing={6}>
@@ -183,7 +183,7 @@ export default function AppointmentPage() {
               <InputField placeholder="Email" />
               <InputField placeholder="Report an issue with your car" />
             </SimpleGrid>
-            <Flex width="full" justifyContent="center">
+            <Flex width="full">
               <Button
                 mt={8}
                 colorScheme="blue"
@@ -199,9 +199,19 @@ export default function AppointmentPage() {
 
           {/* Past & Future Appointments */}
           <Tabs variant="soft-rounded" colorScheme="blue" mt={12}>
-            <TabList justifyContent="center">
-              <Tab _selected={{ color: "white", bg: "blue.500" }}>Upcoming</Tab>
-              <Tab _selected={{ color: "white", bg: "blue.500" }}>Past</Tab>
+            <TabList justifyContent="left">
+              <Tab
+                color="blue.400"
+                _selected={{ color: "white", bg: "blue.500" }}
+              >
+                Upcoming
+              </Tab>
+              <Tab
+                color="blue.400"
+                _selected={{ color: "white", bg: "blue.500" }}
+              >
+                Past
+              </Tab>
             </TabList>
             <TabPanels>
               <TabPanel>

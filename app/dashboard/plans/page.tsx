@@ -19,6 +19,10 @@ import {
   TabPanel,
   SimpleGrid,
   Select,
+  Drawer,
+  DrawerOverlay,
+  DrawerContent,
+  useDisclosure,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import styled from "@emotion/styled";
@@ -79,6 +83,7 @@ export default function PlansPage() {
   const userSubscribed = false; // Simulate subscription state
   const userPlan = "GOLD PACKAGE"; // Simulated user plan
   const toast = useToast();
+  const { isOpen, onClose } = useDisclosure();
 
   const handleSubscribe = () => {
     toast({
@@ -96,21 +101,34 @@ export default function PlansPage() {
       <Box display={{ base: "none", lg: "block" }}>
         <Sidebar />
       </Box>
-
+      {/* Mobile Drawer */}
+      <Drawer
+        autoFocus={false}
+        isOpen={isOpen}
+        placement="left"
+        onClose={onClose}
+        returnFocusOnClose={false}
+        onOverlayClick={onClose}
+        size="xs"
+      >
+        <DrawerOverlay />
+        <DrawerContent bg="#1a1f37">
+          <Sidebar onClose={onClose} />
+        </DrawerContent>
+      </Drawer>
       {/* Main Content */}
       <MainContent>
         <Container maxW="container.xl" py={8} px={{ base: 4, lg: 12 }}>
-          <VStack spacing={6} textAlign="center" mb={8}>
-            <Heading size="lg" color="white">
+          <Flex flexDir="column" gap={6} mb={8}>
+            <Heading size="sm" color="white">
               VIP AutoClub Membership
             </Heading>
-            <Text color="gray.400" maxW="3xl" fontSize="md">
+            <Text color="gray.400" maxW="3xl" fontSize="xs">
               {userSubscribed
                 ? "Here are the details of your current subscription."
                 : "Subscribe to one of our AutoClub packages and enjoy exclusive benefits."}
             </Text>
-          </VStack>
-
+          </Flex>{" "}
           {/* Display User Subscription */}
           {userSubscribed ? (
             <GlassCard>
@@ -131,7 +149,7 @@ export default function PlansPage() {
             <>
               {/* AutoClub Benefits */}
               <GlassCard mb={8}>
-                <Heading size="md" mb={4} color="white">
+                <Heading size="sm" mb={4} color="white">
                   Benefits of AutoClub
                 </Heading>
                 <VStack spacing={2} align="start">
@@ -160,7 +178,8 @@ export default function PlansPage() {
                       size="sm"
                       px={6}
                       borderRadius="30px"
-                      onClick={handleSubscribe}>
+                      onClick={handleSubscribe}
+                    >
                       Subscribe
                     </Button>
                   </GlassCard>
@@ -169,7 +188,7 @@ export default function PlansPage() {
 
               {/* Subscription Form */}
               <GlassCard mt={8}>
-                <Heading size="md" mb={4} color="white">
+                <Heading size="sm" mb={4} color="white">
                   Sign Up for AutoClub
                 </Heading>
                 <VStack spacing={4} align="stretch">
@@ -183,17 +202,24 @@ export default function PlansPage() {
                   <Select
                     placeholder="Select a Package"
                     bg="gray.700"
-                    color="white">
+                    color="white"
+                  >
                     {packages.map((pkg) => (
                       <option
                         key={pkg.name}
                         value={pkg.name}
-                        style={{ color: "white", background: "#111322" }}>
+                        style={{ color: "white", background: "#111322" }}
+                      >
                         {pkg.name}
                       </option>
                     ))}
                   </Select>
-                  <Button colorScheme="blue" onClick={handleSubscribe}>
+                  <Button
+                    width="fit-content"
+                    borderRadius="30px"
+                    colorScheme="blue"
+                    onClick={handleSubscribe}
+                  >
                     Submit
                   </Button>
                 </VStack>

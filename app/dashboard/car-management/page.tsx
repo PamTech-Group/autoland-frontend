@@ -593,7 +593,7 @@ export default function CarManagement() {
         onClose={onDrawerClose}
         returnFocusOnClose={false}
         onOverlayClick={onDrawerClose}
-        size="full"
+        size="xs"
       >
         <DrawerOverlay />
         <DrawerContent bg="#1a1f37">
@@ -626,7 +626,7 @@ export default function CarManagement() {
 
           <Flex justify="space-between" align="center" mb={8}>
             <Box>
-              <Heading size="md" mb={2}>
+              <Heading size="sm" mb={2}>
                 Car Management
               </Heading>
               <Text color="gray.400">
