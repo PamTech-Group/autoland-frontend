@@ -9,8 +9,17 @@ import {
   SimpleGrid,
   Skeleton,
   Text,
+  useBreakpointValue,
 } from "@chakra-ui/react";
-import { FaCar, FaComments, FaHeadset, FaUsers } from "react-icons/fa6";
+import {
+  FaCalendarCheck,
+  FaCar,
+  FaComments,
+  FaHeadset,
+  FaTruck,
+  FaUsers,
+  FaWrench,
+} from "react-icons/fa6";
 import service1 from "../assets/service1.webp";
 import service2 from "../assets/service2.webp";
 import service3 from "../assets/service3.webp";
@@ -44,12 +53,14 @@ import Image from "next/image";
 import YouTube from "react-youtube";
 import theme from "../theme";
 import { useState } from "react";
-import { FaShieldAlt, FaTools, FaUserCog } from "react-icons/fa";
+import { FaSearch, FaShieldAlt, FaTools, FaUserCog } from "react-icons/fa";
+import { MdArrowDownward, MdArrowForward } from "react-icons/md";
 
 function Body() {
   const [loadingTestimonials, setLoadingTestimonials] = useState(true);
   const [loadingCarTips, setLoadingCarTips] = useState(true);
   const [selectedCountry, setSelectedCountry] = useState("japanese");
+  const isMobile = useBreakpointValue({ base: true, md: false });
 
   const handleTestimonialsReady = () => {
     setLoadingTestimonials(false); // Set loading to false when testimonials are ready
@@ -202,6 +213,115 @@ function Body() {
           ))}
         </SimpleGrid>
       </Box>
+
+      {/* HOW WE WORK SECTION */}
+      <Box
+        my="4rem"
+        mx="auto"
+        width="100%"
+        maxWidth="80.25em"
+        textAlign="center"
+      >
+        <Heading as="h2" size="lg" mb="2.5rem" color="primaryBlue">
+          How We Work
+        </Heading>
+
+        <SimpleGrid
+          columns={{ base: 1, md: 4 }}
+          spacing={8}
+          position="relative"
+        >
+          {/* Step 1: Book */}
+          <Flex direction="column" align="center">
+            <Icon
+              as={FaCalendarCheck}
+              boxSize={12}
+              color="primaryBlue"
+              mb={4}
+            />
+            <Text fontWeight="bold" fontSize="lg" mb={2}>
+              Book
+            </Text>
+            <Text textAlign="center" maxW="200px">
+              Schedule your car repair or service with ease through our
+              platform.
+            </Text>
+            {!isMobile && (
+              <Icon
+                as={MdArrowForward}
+                boxSize={8}
+                color="gray.500"
+                position="absolute"
+                top="40%"
+                left="25%"
+              />
+            )}
+            {isMobile && (
+              <Icon as={MdArrowDownward} boxSize={8} color="gray.500" mt={4} />
+            )}
+          </Flex>
+
+          {/* Step 2: Diagnosis */}
+          <Flex direction="column" align="center">
+            <Icon as={FaSearch} boxSize={12} color="primaryBlue" mb={4} />
+            <Text fontWeight="bold" fontSize="lg" mb={2}>
+              Diagnosis
+            </Text>
+            <Text textAlign="center" maxW="200px">
+              Our experts analyze the issue and provide the best solution.
+            </Text>
+            {!isMobile && (
+              <Icon
+                as={MdArrowForward}
+                boxSize={8}
+                color="gray.500"
+                position="absolute"
+                top="40%"
+                left="50%"
+              />
+            )}
+            {isMobile && (
+              <Icon as={MdArrowDownward} boxSize={8} color="gray.500" mt={4} />
+            )}
+          </Flex>
+
+          {/* Step 3: Repair */}
+          <Flex direction="column" align="center">
+            <Icon as={FaWrench} boxSize={12} color="primaryBlue" mb={4} />
+            <Text fontWeight="bold" fontSize="lg" mb={2}>
+              Repair
+            </Text>
+            <Text textAlign="center" maxW="200px">
+              We repair and fix your car with top-notch tools and parts.
+            </Text>
+            {!isMobile && (
+              <Icon
+                as={MdArrowForward}
+                boxSize={8}
+                color="gray.500"
+                position="absolute"
+                top="40%"
+                left="75%"
+              />
+            )}
+            {isMobile && (
+              <Icon as={MdArrowDownward} boxSize={8} color="gray.500" mt={4} />
+            )}
+          </Flex>
+
+          {/* Step 4: Deliver */}
+          <Flex direction="column" align="center">
+            <Icon as={FaTruck} boxSize={12} color="primaryBlue" mb={4} />
+            <Text fontWeight="bold" fontSize="lg" mb={2}>
+              Deliver
+            </Text>
+            <Text textAlign="center" maxW="200px">
+              We ensure your vehicle is delivered on time, fully serviced.
+            </Text>
+          </Flex>
+        </SimpleGrid>
+      </Box>
+
       {/** Car MAKE WE SERVICE */}
       <Box
         my={theme.vmargin}

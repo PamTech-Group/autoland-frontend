@@ -86,7 +86,7 @@ const ServiceRow = styled(Grid)`
 
 const HeaderText = styled(Text)`
   color: gray.400;
-  font-size: xs;
+  font-size: 0.8rem;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.5px;
