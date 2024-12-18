@@ -30,7 +30,7 @@ import { usePathname, useRouter } from "next/navigation";
 
 const SidebarContainer = styled(Box)`
   background: #1a1f37;
-  height: 100vh;
+  min-height: 100vh;
   width: 250px;
   position: fixed;
   left: 0;
@@ -108,7 +108,7 @@ const SidebarContent = ({ onClose }: SidebarContentProps) => {
       label: "Appointments",
       path: "/dashboard/appointments",
     },
-    { icon: FaCreditCard, label: "Payments", path: "/dashboard/payments" },
+    { icon: FaCreditCard, label: "Accounts", path: "/dashboard/accounts" },
     { icon: FaNetworkWired, label: "Plans", path: "/dashboard/plans" },
     {
       icon: FaCarSide,

@@ -38,6 +38,9 @@ import Sidebar from "@/app/components/SideBar";
 import { Image, Link } from "@chakra-ui/next-js";
 import logo from "@/app/assets/logo.webp";
 import { useState } from "react";
+import MaintenanceProceduresList from "@/app/components/MaintenanceProcedures";
+import { EditIcon } from "@chakra-ui/icons";
+import { FaTrashCan } from "react-icons/fa6";
 
 const GlassCard = styled(Card)`
   background: rgba(26, 31, 55, 0.7);
@@ -95,6 +98,135 @@ interface CarDetails {
   maintenanceSchedule: MaintenanceSchedule[];
 }
 
+const maintenanceProcedures = [
+  {
+    id: "m3",
+    type: "Oil Change & Filter",
+    dueDate: "3,000 miles",
+    status: "Upcoming",
+  },
+  {
+    id: "m4",
+    type: "Wiper Blades (check)",
+    dueDate: "3,000 miles",
+    status: "Upcoming",
+  },
+  {
+    id: "m5",
+    type: "Tire Rotation",
+    dueDate: "6,000 miles",
+    status: "Upcoming",
+  },
+  {
+    id: "m6",
+    type: "Front + Rear Disc Brakes",
+    dueDate: "12,000 miles",
+    status: "Upcoming",
+  },
+  {
+    id: "m7",
+    type: "Rear Drum Adjustment",
+    dueDate: "12,000 miles",
+    status: "Upcoming",
+  },
+  {
+    id: "m8",
+    type: "Charging System Battery",
+    dueDate: "12,000 miles",
+    status: "Upcoming",
+  },
+  {
+    id: "m9",
+    type: "PVC Value (check)",
+    dueDate: "12,000 miles",
+    status: "Upcoming",
+  },
+  {
+    id: "m10",
+    type: "Fuel Filter",
+    dueDate: "15,000 miles",
+    status: "Upcoming",
+  },
+  {
+    id: "m11",
+    type: "Air Filter (check)",
+    dueDate: "15,000 miles",
+    status: "Upcoming",
+  },
+  {
+    id: "m12",
+    type: "Cabin Air Filter",
+    dueDate: "15,000 miles",
+    status: "Upcoming",
+  },
+  {
+    id: "m13",
+    type: "Wheel Alignment",
+    dueDate: "25,000 miles",
+    status: "Upcoming",
+  },
+  {
+    id: "m14",
+    type: "Air Conditioning Test",
+    dueDate: "25,000 miles",
+    status: "Upcoming",
+  },
+  {
+    id: "m15",
+    type: "Fuel Injection Service",
+    dueDate: "25,000 miles",
+    status: "Upcoming",
+  },
+  {
+    id: "m16",
+    type: "Transmission Service",
+    dueDate: "30,000 miles",
+    status: "Upcoming",
+  },
+  {
+    id: "m17",
+    type: "Cooling System Flush",
+    dueDate: "30,000 miles",
+    status: "Upcoming",
+  },
+  {
+    id: "m18",
+    type: "Brake Fluid Flush",
+    dueDate: "30,000 miles",
+    status: "Upcoming",
+  },
+  {
+    id: "m19",
+    type: "Axles/Rear Service",
+    dueDate: "40,000 miles",
+    status: "Upcoming",
+  },
+  {
+    id: "m20",
+    type: "Power Steering Flush",
+    dueDate: "50,000 miles",
+    status: "Upcoming",
+  },
+  {
+    id: "m21",
+    type: "Tune-Up",
+    dueDate: "50,000/70,000 miles",
+    status: "Upcoming",
+  },
+  {
+    id: "m22",
+    type: "Belt + Hoses (check)",
+    dueDate: "75,000 miles",
+    status: "Upcoming",
+  },
+  {
+    id: "m23",
+    type: "Timing Belt",
+    dueDate: "60,000/100,000 miles",
+    status: "Upcoming",
+  },
+];
+
 // Enhanced sample data
 const sampleCars: CarDetails[] = [
   {
@@ -137,7 +269,7 @@ const MaintenanceScheduleCard = ({
   <GlassCard>
     <CardBody>
       <VStack align="stretch" spacing={4}>
-        <Heading size="sm" color="white">
+        <Heading size="sm" my={4} color="white">
           Maintenance Schedule
         </Heading>
         {schedules.map((schedule) => (
@@ -172,7 +304,32 @@ const MaintenanceScheduleCard = ({
     </CardBody>
   </GlassCard>
 );
-
+// const MaintenanceProceduresList = () => (
+//   <GlassCard>
+//     <CardBody>
+//       <VStack align="stretch" spacing={4}>
+//         <Heading size="sm" color="white">
+//           Maintenance Procedures
+//         </Heading>
+//         {maintenanceProcedures.map((procedure) => (
+//           <Flex
+//             key={procedure.id}
+//             justify="space-between"
+//             align="center"
+//             p={3}
+//             bg="rgba(255, 255, 255, 0.05)"
+//             borderRadius="md"
+//           >
+//             <Text color="white">{procedure.type}</Text>
+//             <Text fontSize="sm" color="gray.400">
+//               Due: {procedure.dueDate}
+//             </Text>
+//           </Flex>
+//         ))}
+//       </VStack>
+//     </CardBody>
+//   </GlassCard>
+// );
 const CarDetailsCard = ({
   car,
   onEdit,
@@ -191,20 +348,39 @@ const CarDetailsCard = ({
                 {car.brand} {car.model}
               </Heading>
             </HStack>
-            <Badge
-              colorScheme={
-                car.status === "Active"
-                  ? "green"
-                  : car.status === "In Service"
-                  ? "yellow"
-                  : "red"
-              }
-              px={3}
-              py={1}
-              borderRadius="full"
-            >
-              {car.status}
-            </Badge>
+            <Flex gap={4} justifyContent="end" alignItems="center">
+              <Badge
+                colorScheme={
+                  car.status === "Active"
+                    ? "green"
+                    : car.status === "In Service"
+                    ? "yellow"
+                    : "red"
+                }
+                px={3}
+                py={1}
+                borderRadius="full"
+              >
+                {car.status}
+              </Badge>
+
+              <IconButton
+                isRound={true}
+                variant="solid"
+                colorScheme="blue"
+                aria-label="Edit"
+                onClick={() => onEdit(car)}
+                icon={<EditIcon />}
+              />
+              <IconButton
+                isRound={true}
+                variant="solid"
+                colorScheme="blue"
+                aria-label="Delete"
+                // onClick={() => ()}
+                icon={<FaTrashCan />}
+              />
+            </Flex>
           </Flex>
 
           <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
@@ -258,28 +434,7 @@ const CarDetailsCard = ({
 
     <MaintenanceScheduleCard schedules={car.maintenanceSchedule} />
 
-    <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
-      <Button
-        leftIcon={<FaCog />}
-        variant="outline"
-        colorScheme="blue"
-        size="sm"
-        onClick={() => {
-          /* Add service history navigation */
-        }}
-      >
-        View Service History
-      </Button>
-      <Button
-        leftIcon={<FaEdit />}
-        variant="solid"
-        colorScheme="blue"
-        size="sm"
-        onClick={() => onEdit(car)}
-      >
-        Edit Details
-      </Button>
-    </SimpleGrid>
+    <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}></SimpleGrid>
   </VStack>
 );
 
@@ -668,6 +823,11 @@ export default function CarManagement() {
               ))}
             </SimpleGrid>
           )}
+
+          {/* Add the Maintenance Procedures List here */}
+          <Box mt={12}>
+            <MaintenanceProceduresList />
+          </Box>
         </Container>
 
         <AddCarModal

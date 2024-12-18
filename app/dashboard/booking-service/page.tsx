@@ -1,131 +1,193 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-"use client";
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
+"use client";
 import {
   Box,
   Container,
   Heading,
   Text,
-  SimpleGrid,
-  Button,
-  VStack,
   Flex,
+  Grid,
+  VStack,
   Icon,
-  useDisclosure,
-  Image,
+  IconButton,
   Drawer,
+  useDisclosure,
   DrawerOverlay,
   DrawerContent,
-  IconButton,
+  FormControl,
+  FormLabel,
+  CheckboxGroup,
+  Checkbox,
+  Button,
+  Input,
 } from "@chakra-ui/react";
-import {
-  FaCar,
-  FaWrench,
-  FaTools,
-  FaCog,
-  FaBatteryFull,
-  FaAlignCenter,
-} from "react-icons/fa";
-import Sidebar from "@/app/components/SideBar";
-import { motion } from "framer-motion"; // Animation library
-import service1 from "../../assets/wedo1.webp";
-import service2 from "../../assets/wedo2.webp";
-
-import service3 from "../../assets/wedo3.webp";
-
-import service4 from "../../assets/wedo4.webp";
-
-import service5 from "../../assets/wedo5.webp";
-import service6 from "../../assets/wedo6.webp";
-import logo from "@/app/assets/logo.webp";
-
+import { FaCar, FaWrench, FaTools, FaCog } from "react-icons/fa";
+import { motion } from "framer-motion";
 import styled from "@emotion/styled";
+import Sidebar from "@/app/components/SideBar";
+import { Image, Link } from "@chakra-ui/next-js";
 import { FaBars } from "react-icons/fa6";
-import { Link } from "@chakra-ui/next-js";
+import logo from "@/app/assets/logo.webp";
+import { useState } from "react";
 
-// Styled GlassCard with modern effects
-const GlassCard = styled(Box)`
-  background: linear-gradient(
-    135deg,
-    rgba(36, 39, 59, 0.7),
-    rgba(28, 31, 48, 0.9)
-  );
-  border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-  &:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
-  }
-`;
-const MainContent = styled(Box)`
-  background: #111322;
-  min-height: 100vh;
-  margin-left: 250px;
-  width: calc(100% - 250px);
-  color: white;
-  transition: all 0.3s ease-in-out;
-
-  @media (max-width: 768px) {
-    margin-left: 0;
-    width: 100%;
-  }
-`;
-
-const MotionBox = motion(GlassCard as any);
-
-const servicesData = [
+// Services Data
+const services = [
   {
-    title: "Computerised Auto Repair & Services",
-    description:
-      "At AutoLand, we specialize in computerized auto repair and services for precise diagnostics. Our advanced technology quickly identifies issues, enhancing your vehicle's performance and safety. Trust our skilled technicians to ensure your car is in expert hands, from diagnosis to final repair.",
-    icon: FaCog,
-    image: service1,
-  },
-  {
-    title: "AC / Electrical Repairs",
-    description:
-      "At AutoLand, we take a detail-oriented approach to AC and electrical repairs, ensuring reliable vehicle function. Our services enhance comfort, improve safety, and boost efficiency. Using the latest technology and best practices, we deliver precise repairs. Trust our expertise to keep your car's systems in expert hands, from diagnosis to repair.",
-    icon: FaBatteryFull,
-    image: service2,
-  },
-  {
-    title: "Mechanical Repair",
-    description: `We focus on customer-centered mechanical repair services to keep your vehicle running smoothly. Our skilled technicians diagnose and resolve issues efficiently, enhancing performance and safety. Using advanced tools and techniques, we deliver reliable repairs every time. Trust our expertise to handle your car’s mechanical needs with precision and care.`,
-    icon: FaWrench,
-    image: service3,
-  },
-  {
-    title: "Body Shop / Vehicle Upgrade",
-    description: `Our state-of-the-art customer-centered body shop services for top-quality care and upgrades. Our solutions enhance aesthetics, improve functionality, and restore your vehicle. Using cutting-edge techniques and industry best practices, we ensure a flawless finish.`,
-    icon: FaTools,
-    image: service4,
-  },
-  {
-    title: "Wheel Alignment & Balancing",
-    description: `At AutoLand, we specialize in precision wheel alignment and balancing to ensure a smooth and safe ride. Our services enhance handling, extend tire life, and improve fuel efficiency. Trust us for accurate adjustments, ensuring your wheels are perfectly aligned every time.`,
-    icon: FaAlignCenter,
-    image: service5,
-  },
-  {
-    title: "Maintenance & Lube Check",
-    description:
-      "Regular maintenance and lube checks are essential for your vehicle's longevity. Our skilled technicians perform thorough inspections and ensure that all fluids are topped up and components are in optimal condition. Trust us to keep your vehicle running smoothly.",
+    id: 1,
+    title: "Routine Maintenance",
+    description: "Regular maintenance to keep your car in top-notch condition.",
     icon: FaCar,
-    image: service6,
+    gradient: ["#4A90E2", "#6A11CB"],
+  },
+  {
+    id: 2,
+    title: "Total Car Care",
+    description:
+      "Comprehensive care, including cleaning, servicing, and detailing.",
+    icon: FaTools,
+    gradient: ["#11998e", "#38ef7d"],
+  },
+  {
+    id: 3,
+    title: "Diagnosis",
+    description:
+      "Accurate vehicle diagnostics to identify and resolve issues quickly.",
+    icon: FaCog,
+    gradient: ["#FF6B6B", "#4ECDC4"],
+  },
+  {
+    id: 4,
+    title: "Quick Fix",
+    description:
+      "Rapid solutions for minor repairs to get you back on the road.",
+    icon: FaWrench,
+    gradient: ["#8E2DE2", "#4A00E0"],
   },
 ];
 
-export default function BookingService() {
+// Animated card component
+const ServiceCard: React.FC<{ service: (typeof services)[number] }> = ({
+  service,
+}) => {
+  return (
+    <motion.div
+      whileHover={{
+        scale: 1.05,
+        transition: { duration: 0.3 },
+      }}
+      whileTap={{ scale: 0.95 }}
+    >
+      <Box
+        bg={`linear-gradient(135deg, ${service.gradient[0]}, ${service.gradient[1]})`}
+        borderRadius="2xl"
+        boxShadow="xl"
+        p={4}
+        textAlign="center"
+        color="white"
+        position="relative"
+        overflow="hidden"
+        transition="all 0.3s ease"
+        _hover={{
+          transform: "translateY(-10px)",
+          boxShadow: "0 15px 30px rgba(0,0,0,0.2)",
+        }}
+      >
+        {/* Subtle background pattern */}
+        <Box
+          position="absolute"
+          top="0"
+          left="0"
+          right="0"
+          bottom="0"
+          opacity={0.1}
+          backgroundImage="radial-gradient(rgba(255,255,255,0.1) 20%, transparent 20%)"
+          backgroundSize="20px 20px"
+        />
+
+        <Flex
+          justify="center"
+          align="center"
+          w="14"
+          h="14"
+          bg="whiteAlpha.300"
+          borderRadius="full"
+          mx="auto"
+          mb={4}
+        >
+          <Icon as={service.icon} boxSize={8} />
+        </Flex>
+
+        <VStack spacing={3}>
+          <Heading size="sm" fontWeight="bold">
+            {service.title}
+          </Heading>
+          <Text fontSize="sm" opacity={0.9}>
+            {service.description}
+          </Text>
+        </VStack>
+      </Box>
+    </motion.div>
+  );
+};
+
+export default function BookingServicePage() {
+  const [selectedCars, setSelectedCars] = useState<string[]>([]); //+
+  const [selectedServices, setSelectedServices] = useState<string[]>([]); //+
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null); //+
+  //+
   const {
     isOpen: isDrawerOpen,
     onOpen: onDrawerOpen,
     onClose: onDrawerClose,
   } = useDisclosure();
+  const MainContent = styled(Box)`
+    background: #111322;
+    min-height: 100vh;
+    margin-left: 250px;
+    width: calc(100% - 250px);
+    color: white;
+    transition: all 0.3s ease-in-out;
 
+    @media (max-width: 768px) {
+      margin-left: 0;
+      width: 100%;
+    }
+  `;
+  const GlassCard = styled(Box)`
+    background: linear-gradient(
+      135deg,
+      rgba(36, 39, 59, 0.8),
+      rgba(28, 31, 48, 0.95)
+    );
+    border-radius: 15px;
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px);
+    padding: 30px;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+    }
+  `;
+  const handleSubmit = (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    // Form submission logic
+    console.log({
+      cars: selectedCars,
+      services: selectedServices,
+      date: selectedDate,
+    });
+  };
+
+  const userCars = [
+    { id: "car1", name: "Toyota Camry 2020", license: "ABC 123" },
+    { id: "car2", name: "Honda Civic 2019", license: "XYZ 456" },
+    { id: "car3", name: "Tesla Model 3", license: "EV 789" },
+    { id: "car3", name: "Tesla Model 3", license: "EV 789" },
+  ];
   return (
     <Flex>
       <Box display={{ base: "none", lg: "block" }}>
@@ -148,7 +210,6 @@ export default function BookingService() {
         </DrawerContent>
       </Drawer>
 
-      {/* Main Content */}
       <MainContent>
         <Container maxW="container.2xl" py={8} px={{ base: 4, lg: 12 }}>
           {/* Mobile Header */}
@@ -166,86 +227,166 @@ export default function BookingService() {
               color="white"
             />
             <Link href="/">
-              <Image src={logo.src} alt="Autoland Logo" height={25} />
+              <Image
+                src={logo.src}
+                alt="Autoland Logo"
+                height={25}
+                width={55}
+              />
             </Link>
             <Box width="40px" />
           </Flex>
-          {/* Header Section */}
-          <Flex flexDir="column" gap={4} mb={8}>
-            <Heading size="sm" color="white">
+          <Flex flexDir="column" gap={10} mb={6}>
+            <Heading
+              as="h1"
+              size="sm"
+              fontWeight="bold"
+              bgGradient="linear(to-r, blue.200, purple.200)"
+              bgClip="text"
+            >
               Our Premium Services
             </Heading>
-            <Text color="gray.400" maxW="3xl" fontSize="xs">
+            <Text maxW="2xl" color="gray.100" fontSize="lg">
               {`Experience top-tier automotive services tailored to enhance your
-            vehicle's performance, safety, and aesthetics.`}
+              vehicle's performance, safety, and aesthetics.`}
             </Text>
           </Flex>
 
-          {/* Service Cards */}
-          <SimpleGrid
-            placeItems="center"
-            columns={{ base: 1, md: 2, xl: 3 }}
-            spacing={8}
+          <Grid
+            templateColumns={{
+              base: "repeat(1, 1fr)",
+              md: "repeat(2, 1fr)",
+              lg: "repeat(4, 1fr)",
+            }}
+            gap={6}
           >
-            {servicesData.map((service, index) => (
-              <MotionBox
-                key={index}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
-              >
-                <Flex direction="column" h="100%">
-                  {/* Service Image */}
-                  <Box
-                    h="250px"
-                    w="100%"
-                    bg="gray.800"
-                    borderTopRadius="15px"
-                    overflow="hidden"
-                  >
-                    <Image
-                      src={service.image.src}
-                      alt={service.title}
-                      objectFit="cover"
-                      w="100%"
-                      h="100%"
-                    />
-                  </Box>
-
-                  {/* Service Content */}
-                  <VStack
-                    spacing={4}
-                    p={6}
-                    align="start"
-                    bg="rgba(26, 31, 55, 0.9)"
-                    borderBottomRadius="15px"
-                    h="100%"
-                  >
-                    <Flex align="center" gap={3}>
-                      <Icon as={service.icon} w={8} h={8} color="blue.400" />
-                      <Heading size="sm" color="white">
-                        {service.title}
-                      </Heading>
-                    </Flex>
-                    <Text color="gray.400" fontSize="sm" lineHeight="1.6">
-                      {service.description}
-                    </Text>
-                    <Button
-                      mt="auto"
-                      colorScheme="blue"
-                      size="sm"
-                      onClick={() => alert(`Getting ${service.title} service`)}
-                    >
-                      Learn More
-                    </Button>
-                  </VStack>
-                </Flex>
-              </MotionBox>
+            {services.map((service, index) => (
+              <ServiceCard key={index} service={service} />
             ))}
-          </SimpleGrid>
+          </Grid>
+          {/* FORM */}
+          <form onSubmit={handleSubmit}>
+            <VStack spacing={10} align="stretch" mt={8} p={{ base: 0, lg: 6 }}>
+              <Heading size="sm" color="white">
+                Book a Service
+              </Heading>
+              {/* Car Selection */}
+              <GlassCard>
+                <FormControl>
+                  <FormLabel fontWeight={700} mb={6} color="gray.50">
+                    Select Your Car
+                  </FormLabel>
+                  <CheckboxGroup
+                    colorScheme="purple"
+                    value={selectedCars}
+                    onChange={(value: string[]) => setSelectedCars(value)}
+                  >
+                    <Grid
+                      templateColumns={{
+                        base: "repeat(1, 1fr)",
+                        md: "repeat(2, 1fr)",
+                      }}
+                      gap={4}
+                    >
+                      {userCars.map((car) => (
+                        <Checkbox
+                          key={car.id}
+                          value={car.id}
+                          borderColor="blue.500"
+                        >
+                          <Flex flexDir="column">
+                            <Text fontWeight="medium">{car.name}</Text>
+                            <Text fontSize="sm" color="gray.500">
+                              {car.license}
+                            </Text>
+                          </Flex>
+                        </Checkbox>
+                      ))}
+                    </Grid>
+                  </CheckboxGroup>
+                </FormControl>
+
+                {/* Service Selection */}
+                <FormControl>
+                  <FormLabel fontWeight={700} my={10} color="gray.50">
+                    Select Services
+                  </FormLabel>
+                  <CheckboxGroup
+                    colorScheme="purple"
+                    value={selectedServices}
+                    onChange={(value: string[]) => setSelectedServices(value)}
+                  >
+                    <Grid
+                      templateColumns={{
+                        base: "repeat(1, 1fr)",
+                        md: "repeat(2, 1fr)",
+                      }}
+                      gap={4}
+                    >
+                      {services.map((service) => (
+                        <Checkbox
+                          key={service.id}
+                          value={service.id}
+                          borderColor="blue.500"
+                        >
+                          <Flex flexDir="column">
+                            <Text fontWeight="medium">{service.title}</Text>
+                            <Text fontSize="sm" color="gray.500">
+                              {service.description}
+                            </Text>
+                          </Flex>
+                        </Checkbox>
+                      ))}
+                    </Grid>
+                  </CheckboxGroup>
+                </FormControl>
+
+                {/* Date Selection */}
+                <FormControl mt={6}>
+                  <FormLabel fontWeight="bold" color="gray.300">
+                    Select Date
+                  </FormLabel>
+                  <Box
+                    borderWidth={1}
+                    borderRadius="md"
+                    p={2}
+                    borderColor="blue.500"
+                    width="fit-content"
+                  >
+                    <Input type="date" width="fit-content" />
+                  </Box>
+                </FormControl>
+                {/* Submit Button */}
+
+                <Button
+                  type="submit"
+                  colorScheme="blue"
+                  size="sm"
+                  padding={5}
+                  width="fit-content"
+                  mt={10}
+                >
+                  Book Service
+                </Button>
+              </GlassCard>
+            </VStack>
+          </form>
         </Container>
       </MainContent>
+      {/* Custom Styles for Date Picker */}
+      <style jsx global>{`
+        .custom-datepicker {
+          width: 100%;
+          padding: 8px;
+          border: 1px solid #cbd5e0;
+          border-radius: 0.375rem;
+          background-color: transparent;
+        }
+        .custom-datepicker:focus {
+          outline: none;
+          border-color: #6b46c1;
+        }
+      `}</style>
     </Flex>
   );
 }

@@ -20,6 +20,7 @@ import styled from "@emotion/styled";
 import { FaBars } from "react-icons/fa6";
 import { Image, Link } from "@chakra-ui/next-js";
 import logo from "@/app/assets/logo.webp";
+import { ServiceRecord } from "@/app/utils/serviceRecords";
 
 const GlassCard = styled(Box)`
   background: rgba(26, 31, 55, 0.8);
@@ -41,68 +42,123 @@ const MainContent = styled(Box)`
     width: 100%;
   }
 `;
-const serviceHistoryData = [
+
+const services: ServiceRecord[] = [
   {
     id: 1,
-    service: "Oil Change",
-    date: "2024-03-15",
+    service: "Routine Maintenance",
+    date: "2023-08-15",
     status: "Completed",
-    cost: "$45.99",
-    vehicle: "Toyota Camry XE 2014",
-    technician: "John Doe",
-    notes: "Changed oil and filter.",
+    cost: "$350.00",
+    vehicle: "Toyota Camry 2020",
+    demurrage: "$0",
+    details: {
+      "Oil Change": {
+        description: "Full synthetic oil change with filter replacement",
+        cost: "$75.00",
+      },
+      "Wheel Alignment": {
+        description: "4-wheel alignment and suspension check",
+        cost: "$125.00",
+      },
+      "Brake Inspection": {
+        description: "Front and rear brake pad and rotor inspection",
+        cost: "$150.00",
+      },
+    },
   },
   {
     id: 2,
-    service: "Brake Inspection",
-    date: "2024-03-14",
-    status: "In Progress",
-    cost: "$89.99",
-    vehicle: "Honda Civic LX 2018",
-    technician: "Jane Smith",
-    notes: "Checked brake pads and rotors.",
+    service: "Quick Fix",
+    date: "2023-08-15",
+    status: "Completed",
+    cost: "$350.00",
+    vehicle: "Toyota Corolla 2019",
+    demurrage: "$0",
+    details: {
+      "Tire Change": {
+        description: "Full Tire replacement",
+        cost: "$75.00",
+      },
+      "Wheel Alignment": {
+        description: "4-wheel alignment and suspension check",
+        cost: "$125.00",
+      },
+      "Brake Inspection": {
+        description: "Front and rear brake pad and rotor inspection",
+        cost: "$150.00",
+      },
+    },
   },
   {
     id: 3,
-    service: "Tire Rotation",
-    date: "2024-03-10",
+    service: "Routine Maintenance",
+    date: "2023-08-15",
     status: "Completed",
-    cost: "$30.00",
-    vehicle: "Ford Focus 2019",
-    technician: "Emily Johnson",
-    notes: "Rotated tires and checked pressure.",
+    cost: "$350.00",
+    vehicle: "Toyota Camry 2020",
+    demurrage: "$0",
+    details: {
+      "Oil Change": {
+        description: "Full synthetic oil change with filter replacement",
+        cost: "$75.00",
+      },
+      "Wheel Alignment": {
+        description: "4-wheel alignment and suspension check",
+        cost: "$125.00",
+      },
+      "Brake Inspection": {
+        description: "Front and rear brake pad and rotor inspection",
+        cost: "$150.00",
+      },
+    },
   },
   {
-    id: 2,
-    service: "Brake Inspection",
-    date: "2024-03-14",
-    status: "In Progress",
-    cost: "$89.99",
-    vehicle: "Honda Civic LX 2018",
-    technician: "Jane Smith",
-    notes: "Checked brake pads and rotors.",
+    id: 4,
+    service: "Routine Maintenance",
+    date: "2023-08-15",
+    status: "Completed",
+    cost: "$350.00",
+    vehicle: "Toyota Camry 2020",
+    demurrage: "$0",
+    details: {
+      "Oil Change": {
+        description: "Full synthetic oil change with filter replacement",
+        cost: "$75.00",
+      },
+      "Wheel Alignment": {
+        description: "4-wheel alignment and suspension check",
+        cost: "$125.00",
+      },
+      "Brake Inspection": {
+        description: "Front and rear brake pad and rotor inspection",
+        cost: "$150.00",
+      },
+    },
   },
   {
-    id: 2,
-    service: "Brake Inspection",
-    date: "2024-03-14",
-    status: "In Progress",
-    cost: "$89.99",
-    vehicle: "Honda Civic LX 2018",
-    technician: "Jane Smith",
-    notes: "Checked brake pads and rotors.",
+    id: 5,
+    service: "Routine Maintenance",
+    date: "2023-08-15",
+    status: "Completed",
+    cost: "$350.00",
+    vehicle: "Toyota Camry 2020",
+    demurrage: "$0",
+    details: {
+      "Oil Change": {
+        description: "Full synthetic oil change with filter replacement",
+        cost: "$75.00",
+      },
+      "Wheel Alignment": {
+        description: "4-wheel alignment and suspension check",
+        cost: "$125.00",
+      },
+      "Brake Inspection": {
+        description: "Front and rear brake pad and rotor inspection",
+        cost: "$150.00",
+      },
+    },
   },
-  {
-    id: 2,
-    service: "Brake Inspection",
-    date: "2024-03-14",
-    status: "In Progress",
-    cost: "$89.99",
-    vehicle: "Honda Civic LX 2018",
-    technician: "Jane Smith",
-    notes: "Checked brake pads and rotors.",
-  },
-  // Add more service history records as needed
 ];
 
 export default function ServiceHistoryPage() {
@@ -153,7 +209,12 @@ export default function ServiceHistoryPage() {
               color="white"
             />
             <Link href="/">
-              <Image src={logo.src} alt="Autoland Logo" height={25} />
+              <Image
+                src={logo.src}
+                alt="Autoland Logo"
+                height={25}
+                width={50}
+              />
             </Link>
             <Box width="40px" />
           </Flex>
@@ -169,7 +230,7 @@ export default function ServiceHistoryPage() {
           </Text>
 
           <GlassCard>
-            <ServiceHistory services={serviceHistoryData} showViewAll={false} />
+            <ServiceHistory services={services} showViewAll={false} />
           </GlassCard>
         </Container>
       </MainContent>

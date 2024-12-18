@@ -121,7 +121,12 @@ export default function PaymentPage() {
               color="white"
             />
             <Link href="/">
-              <Image src={logo.src} alt="Autoland Logo" height={25} />
+              <Image
+                src={logo.src}
+                alt="Autoland Logo"
+                height={25}
+                width={50}
+              />
             </Link>
             <Box width="40px" />
           </Flex>

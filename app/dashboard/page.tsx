@@ -36,6 +36,7 @@ import Sidebar from "../components/SideBar";
 import ServiceCards from "../components/ServiceCards";
 import ServiceHistory from "../components/ServiceHistory";
 import StatsGrid from "../components/StatsGrid";
+import { ServiceRecord } from "../utils/serviceRecords";
 
 const MainContent = styled(Box)`
   background: #111322;
@@ -73,22 +74,52 @@ const statsData = [
   },
 ];
 
-const serviceHistory = [
+const services: ServiceRecord[] = [
   {
     id: 1,
-    service: "Oil Change",
-    date: "2024-03-15",
+    service: "Routine Maintenance",
+    date: "2023-08-15",
     status: "Completed",
-    cost: "$45.99",
-    vehicle: "Toyota Camry XE 2014",
+    cost: "$350.00",
+    vehicle: "Toyota Camry 2020",
+    demurrage: "$0",
+    details: {
+      "Oil Change": {
+        description: "Full synthetic oil change with filter replacement",
+        cost: "$75.00",
+      },
+      "Wheel Alignment": {
+        description: "4-wheel alignment and suspension check",
+        cost: "$125.00",
+      },
+      "Brake Inspection": {
+        description: "Front and rear brake pad and rotor inspection",
+        cost: "$150.00",
+      },
+    },
   },
   {
     id: 2,
-    service: "Brake Inspection",
-    date: "2024-03-14",
-    status: "In Progress",
-    cost: "$89.99",
-    vehicle: "Honda Civic LX 2018",
+    service: "Quick Fix",
+    date: "2023-08-15",
+    status: "Completed",
+    cost: "$350.00",
+    vehicle: "Toyota Corolla 2019",
+    demurrage: "$0",
+    details: {
+      "Tire Change": {
+        description: "Full Tire replacement",
+        cost: "$75.00",
+      },
+      "Wheel Alignment": {
+        description: "4-wheel alignment and suspension check",
+        cost: "$125.00",
+      },
+      "Brake Inspection": {
+        description: "Front and rear brake pad and rotor inspection",
+        cost: "$150.00",
+      },
+    },
   },
 ];
 
@@ -182,7 +213,7 @@ export default function Dashboard() {
           <StatsGrid stats={statsData} />
 
           {/* Service History */}
-          <ServiceHistory services={serviceHistory} showViewAll={true} />
+          <ServiceHistory services={services} showViewAll={true} />
 
           {/* Service Cards */}
           <ServiceCards />
