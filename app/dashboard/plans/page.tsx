@@ -116,8 +116,7 @@ export default function PlansPage() {
         onClose={onDrawerClose}
         returnFocusOnClose={false}
         onOverlayClick={onDrawerClose}
-        size="xs"
-      >
+        size="xs">
         <DrawerOverlay />
         <DrawerContent bg="#1a1f37">
           <Sidebar onClose={onDrawerClose} />
@@ -131,8 +130,7 @@ export default function PlansPage() {
             mb={8}
             justify="space-between"
             align="center"
-            display={{ base: "flex", lg: "none" }}
-          >
+            display={{ base: "flex", lg: "none" }}>
             <IconButton
               aria-label="Open menu"
               icon={<FaBars />}
@@ -140,10 +138,6 @@ export default function PlansPage() {
               variant="ghost"
               color="white"
             />
-            <Link href="/">
-              <Image src={logo.src} alt="Autoland Logo" height={25} />
-            </Link>
-            <Box width="40px" />
           </Flex>
           <Flex flexDir="column" gap={6} mb={8}>
             <Heading size="sm" color="white">
@@ -204,8 +198,7 @@ export default function PlansPage() {
                       size="sm"
                       px={6}
                       borderRadius="30px"
-                      onClick={handleSubscribe}
-                    >
+                      onClick={handleSubscribe}>
                       Subscribe
                     </Button>
                   </GlassCard>
@@ -228,24 +221,20 @@ export default function PlansPage() {
                   <Select
                     placeholder="Select a Package"
                     bg="gray.700"
-                    color="white"
-                  >
+                    color="white">
                     {packages.map((pkg) => (
                       <option
                         key={pkg.name}
                         value={pkg.name}
-                        style={{ color: "white", background: "#111322" }}
-                      >
+                        style={{ color: "white", background: "#111322" }}>
                         {pkg.name}
                       </option>
                     ))}
                   </Select>
                   <Button
                     width="fit-content"
-                    borderRadius="30px"
                     colorScheme="blue"
-                    onClick={handleSubscribe}
-                  >
+                    onClick={handleSubscribe}>
                     Submit
                   </Button>
                 </VStack>

@@ -183,8 +183,7 @@ export default function ServiceHistoryPage() {
         onClose={onDrawerClose}
         returnFocusOnClose={false}
         onOverlayClick={onDrawerClose}
-        size="xs"
-      >
+        size="xs">
         <DrawerOverlay />
         <DrawerContent bg="#1a1f37">
           <Sidebar onClose={onDrawerOpen} />
@@ -199,8 +198,7 @@ export default function ServiceHistoryPage() {
             mb={8}
             justify="space-between"
             align="center"
-            display={{ base: "flex", lg: "none" }}
-          >
+            display={{ base: "flex", lg: "none" }}>
             <IconButton
               aria-label="Open menu"
               icon={<FaBars />}
@@ -208,15 +206,6 @@ export default function ServiceHistoryPage() {
               variant="ghost"
               color="white"
             />
-            <Link href="/">
-              <Image
-                src={logo.src}
-                alt="Autoland Logo"
-                height={25}
-                width={50}
-              />
-            </Link>
-            <Box width="40px" />
           </Flex>
           <Heading size="sm" mb={4}>
             <Flex alignItems="center" gap={2}>
@@ -229,9 +218,7 @@ export default function ServiceHistoryPage() {
             date, status, cost, and technician notes.
           </Text>
 
-          <GlassCard>
-            <ServiceHistory services={services} showViewAll={false} />
-          </GlassCard>
+          <ServiceHistory services={services} showViewAll={false} />
         </Container>
       </MainContent>
     </Flex>

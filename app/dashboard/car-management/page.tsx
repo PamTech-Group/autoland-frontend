@@ -41,6 +41,7 @@ import { useState } from "react";
 import MaintenanceProceduresList from "@/app/components/MaintenanceProcedures";
 import { EditIcon } from "@chakra-ui/icons";
 import { FaTrashCan } from "react-icons/fa6";
+import { small } from "framer-motion/client";
 
 const GlassCard = styled(Card)`
   background: rgba(26, 31, 55, 0.7);
@@ -279,8 +280,7 @@ const MaintenanceScheduleCard = ({
             align="center"
             p={3}
             bg="rgba(255, 255, 255, 0.05)"
-            borderRadius="md"
-          >
+            borderRadius="md">
             <VStack align="start" spacing={1}>
               <Text color="white">{schedule.type}</Text>
               <Text fontSize="sm" color="gray.400">
@@ -294,8 +294,7 @@ const MaintenanceScheduleCard = ({
                   : schedule.status === "Overdue"
                   ? "red"
                   : "yellow"
-              }
-            >
+              }>
               {schedule.status}
             </Badge>
           </Flex>
@@ -304,32 +303,7 @@ const MaintenanceScheduleCard = ({
     </CardBody>
   </GlassCard>
 );
-// const MaintenanceProceduresList = () => (
-//   <GlassCard>
-//     <CardBody>
-//       <VStack align="stretch" spacing={4}>
-//         <Heading size="sm" color="white">
-//           Maintenance Procedures
-//         </Heading>
-//         {maintenanceProcedures.map((procedure) => (
-//           <Flex
-//             key={procedure.id}
-//             justify="space-between"
-//             align="center"
-//             p={3}
-//             bg="rgba(255, 255, 255, 0.05)"
-//             borderRadius="md"
-//           >
-//             <Text color="white">{procedure.type}</Text>
-//             <Text fontSize="sm" color="gray.400">
-//               Due: {procedure.dueDate}
-//             </Text>
-//           </Flex>
-//         ))}
-//       </VStack>
-//     </CardBody>
-//   </GlassCard>
-// );
+
 const CarDetailsCard = ({
   car,
   onEdit,
@@ -343,8 +317,13 @@ const CarDetailsCard = ({
         <VStack align="stretch" spacing={4}>
           <Flex justify="space-between" align="center">
             <HStack>
-              <Icon as={FaCar} w={6} h={6} color="blue.400" />
-              <Heading size="md" color="white">
+              <Icon
+                as={FaCar}
+                w={{ base: 4, lg: 6 }}
+                h={{ base: 4, lg: 6 }}
+                color="blue.400"
+              />
+              <Heading size={{ base: "sm", lg: "md" }} color="white">
                 {car.brand} {car.model}
               </Heading>
             </HStack>
@@ -359,13 +338,13 @@ const CarDetailsCard = ({
                 }
                 px={3}
                 py={1}
-                borderRadius="full"
-              >
+                borderRadius="full">
                 {car.status}
               </Badge>
 
               <IconButton
                 isRound={true}
+                size={{ base: "xs", lg: "md" }}
                 variant="solid"
                 colorScheme="blue"
                 aria-label="Edit"
@@ -374,6 +353,7 @@ const CarDetailsCard = ({
               />
               <IconButton
                 isRound={true}
+                size={{ base: "xs", lg: "md" }}
                 variant="solid"
                 colorScheme="blue"
                 aria-label="Delete"
@@ -501,8 +481,7 @@ const AddCarModal = ({
                   color="white"
                   _hover={{
                     border: "1px solid rgba(255, 255, 255, 0.4)",
-                  }}
-                >
+                  }}>
                   <option value="toyota">Toyota</option>
                   <option value="honda">Honda</option>
                   <option value="ford">Ford</option>
@@ -748,8 +727,7 @@ export default function CarManagement() {
         onClose={onDrawerClose}
         returnFocusOnClose={false}
         onOverlayClick={onDrawerClose}
-        size="xs"
-      >
+        size="xs">
         <DrawerOverlay />
         <DrawerContent bg="#1a1f37">
           <Sidebar onClose={onDrawerClose} />
@@ -764,8 +742,7 @@ export default function CarManagement() {
             mb={8}
             justify="space-between"
             align="center"
-            display={{ base: "flex", lg: "none" }}
-          >
+            display={{ base: "flex", lg: "none" }}>
             <IconButton
               aria-label="Open menu"
               icon={<FaBars />}
@@ -773,10 +750,6 @@ export default function CarManagement() {
               variant="ghost"
               color="white"
             />
-            <Link href="/">
-              <Image src={logo} alt="Autoland Logo" height={25} />
-            </Link>
-            <Box width="40px" />
           </Flex>
 
           <Flex justify="space-between" align="center" mb={8}>
@@ -784,7 +757,7 @@ export default function CarManagement() {
               <Heading size="sm" mb={2}>
                 Car Management
               </Heading>
-              <Text color="gray.400">
+              <Text color="gray.400" width="80%">
                 Manage your cars and track their service history
               </Text>
             </Box>
@@ -792,8 +765,7 @@ export default function CarManagement() {
               leftIcon={<FaPlus />}
               colorScheme="blue"
               onClick={onModalOpen}
-              size="sm"
-            >
+              size="sm">
               Add Car
             </Button>
           </Flex>
@@ -809,8 +781,7 @@ export default function CarManagement() {
                   <Button
                     leftIcon={<FaPlus />}
                     colorScheme="blue"
-                    onClick={onModalOpen}
-                  >
+                    onClick={onModalOpen}>
                     Add Car
                   </Button>
                 </VStack>

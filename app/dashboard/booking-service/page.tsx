@@ -26,9 +26,7 @@ import { FaCar, FaWrench, FaTools, FaCog } from "react-icons/fa";
 import { motion } from "framer-motion";
 import styled from "@emotion/styled";
 import Sidebar from "@/app/components/SideBar";
-import { Image, Link } from "@chakra-ui/next-js";
 import { FaBars } from "react-icons/fa6";
-import logo from "@/app/assets/logo.webp";
 import { useState } from "react";
 
 // Services Data
@@ -43,10 +41,9 @@ const services = [
   {
     id: 2,
     title: "Total Car Care",
-    description:
-      "Comprehensive care, including cleaning, servicing, and detailing.",
+    description: "Comprehensive care, Engine Fixes, Gear Box change, etc.",
     icon: FaTools,
-    gradient: ["#11998e", "#38ef7d"],
+    gradient: ["#4A90E2", "#6A11CB"],
   },
   {
     id: 3,
@@ -54,7 +51,7 @@ const services = [
     description:
       "Accurate vehicle diagnostics to identify and resolve issues quickly.",
     icon: FaCog,
-    gradient: ["#FF6B6B", "#4ECDC4"],
+    gradient: ["#4A90E2", "#6A11CB"],
   },
   {
     id: 4,
@@ -62,7 +59,7 @@ const services = [
     description:
       "Rapid solutions for minor repairs to get you back on the road.",
     icon: FaWrench,
-    gradient: ["#8E2DE2", "#4A00E0"],
+    gradient: ["#4A90E2", "#6A11CB"],
   },
 ];
 
@@ -76,8 +73,7 @@ const ServiceCard: React.FC<{ service: (typeof services)[number] }> = ({
         scale: 1.05,
         transition: { duration: 0.3 },
       }}
-      whileTap={{ scale: 0.95 }}
-    >
+      whileTap={{ scale: 0.95 }}>
       <Box
         bg={`linear-gradient(135deg, ${service.gradient[0]}, ${service.gradient[1]})`}
         borderRadius="2xl"
@@ -91,8 +87,7 @@ const ServiceCard: React.FC<{ service: (typeof services)[number] }> = ({
         _hover={{
           transform: "translateY(-10px)",
           boxShadow: "0 15px 30px rgba(0,0,0,0.2)",
-        }}
-      >
+        }}>
         {/* Subtle background pattern */}
         <Box
           position="absolute"
@@ -113,8 +108,7 @@ const ServiceCard: React.FC<{ service: (typeof services)[number] }> = ({
           bg="whiteAlpha.300"
           borderRadius="full"
           mx="auto"
-          mb={4}
-        >
+          mb={4}>
           <Icon as={service.icon} boxSize={8} />
         </Flex>
 
@@ -202,8 +196,7 @@ export default function BookingServicePage() {
         onClose={onDrawerClose}
         returnFocusOnClose={false}
         onOverlayClick={onDrawerClose}
-        size="xs"
-      >
+        size="xs">
         <DrawerOverlay />
         <DrawerContent bg="#1a1f37">
           <Sidebar onClose={onDrawerClose} />
@@ -217,8 +210,7 @@ export default function BookingServicePage() {
             mb={8}
             justify="space-between"
             align="center"
-            display={{ base: "flex", lg: "none" }}
-          >
+            display={{ base: "flex", lg: "none" }}>
             <IconButton
               aria-label="Open menu"
               icon={<FaBars />}
@@ -226,15 +218,6 @@ export default function BookingServicePage() {
               variant="ghost"
               color="white"
             />
-            <Link href="/">
-              <Image
-                src={logo.src}
-                alt="Autoland Logo"
-                height={25}
-                width={55}
-              />
-            </Link>
-            <Box width="40px" />
           </Flex>
           <Flex flexDir="column" gap={10} mb={6}>
             <Heading
@@ -242,11 +225,10 @@ export default function BookingServicePage() {
               size="sm"
               fontWeight="bold"
               bgGradient="linear(to-r, blue.200, purple.200)"
-              bgClip="text"
-            >
+              bgClip="text">
               Our Premium Services
             </Heading>
-            <Text maxW="2xl" color="gray.100" fontSize="lg">
+            <Text maxW="2xl" color="gray.100" fontSize="md">
               {`Experience top-tier automotive services tailored to enhance your
               vehicle's performance, safety, and aesthetics.`}
             </Text>
@@ -258,8 +240,7 @@ export default function BookingServicePage() {
               md: "repeat(2, 1fr)",
               lg: "repeat(4, 1fr)",
             }}
-            gap={6}
-          >
+            gap={6}>
             {services.map((service, index) => (
               <ServiceCard key={index} service={service} />
             ))}
@@ -279,21 +260,18 @@ export default function BookingServicePage() {
                   <CheckboxGroup
                     colorScheme="purple"
                     value={selectedCars}
-                    onChange={(value: string[]) => setSelectedCars(value)}
-                  >
+                    onChange={(value: string[]) => setSelectedCars(value)}>
                     <Grid
                       templateColumns={{
                         base: "repeat(1, 1fr)",
                         md: "repeat(2, 1fr)",
                       }}
-                      gap={4}
-                    >
+                      gap={4}>
                       {userCars.map((car) => (
                         <Checkbox
                           key={car.id}
                           value={car.id}
-                          borderColor="blue.500"
-                        >
+                          borderColor="blue.500">
                           <Flex flexDir="column">
                             <Text fontWeight="medium">{car.name}</Text>
                             <Text fontSize="sm" color="gray.500">
@@ -314,21 +292,18 @@ export default function BookingServicePage() {
                   <CheckboxGroup
                     colorScheme="purple"
                     value={selectedServices}
-                    onChange={(value: string[]) => setSelectedServices(value)}
-                  >
+                    onChange={(value: string[]) => setSelectedServices(value)}>
                     <Grid
                       templateColumns={{
                         base: "repeat(1, 1fr)",
                         md: "repeat(2, 1fr)",
                       }}
-                      gap={4}
-                    >
+                      gap={4}>
                       {services.map((service) => (
                         <Checkbox
                           key={service.id}
                           value={service.id}
-                          borderColor="blue.500"
-                        >
+                          borderColor="blue.500">
                           <Flex flexDir="column">
                             <Text fontWeight="medium">{service.title}</Text>
                             <Text fontSize="sm" color="gray.500">
@@ -351,8 +326,7 @@ export default function BookingServicePage() {
                     borderRadius="md"
                     p={2}
                     borderColor="blue.500"
-                    width="fit-content"
-                  >
+                    width="fit-content">
                     <Input type="date" width="fit-content" />
                   </Box>
                 </FormControl>
@@ -364,8 +338,7 @@ export default function BookingServicePage() {
                   size="sm"
                   padding={5}
                   width="fit-content"
-                  mt={10}
-                >
+                  mt={10}>
                   Book Service
                 </Button>
               </GlassCard>

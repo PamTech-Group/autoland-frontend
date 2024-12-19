@@ -31,6 +31,7 @@ import { usePathname, useRouter } from "next/navigation";
 const SidebarContainer = styled(Box)`
   background: #1a1f37;
   min-height: 100vh;
+  overflow: scroll;
   width: 250px;
   position: fixed;
   left: 0;
@@ -69,8 +70,7 @@ const SidebarItem = ({
         bg: "rgba(255, 255, 255, 0.1)",
       }}
       color="white"
-      transition="all 0.3s ease"
-    >
+      transition="all 0.3s ease">
       <Icon as={icon} />
       <Text fontWeight="medium">{label}</Text>
     </HStack>
@@ -108,7 +108,7 @@ const SidebarContent = ({ onClose }: SidebarContentProps) => {
       label: "Appointments",
       path: "/dashboard/appointments",
     },
-    { icon: FaCreditCard, label: "Accounts", path: "/dashboard/accounts" },
+    { icon: FaCreditCard, label: "Accounts", path: "/dashboard/payments" },
     { icon: FaNetworkWired, label: "Plans", path: "/dashboard/plans" },
     {
       icon: FaCarSide,
@@ -121,7 +121,7 @@ const SidebarContent = ({ onClose }: SidebarContentProps) => {
     {
       icon: FaBell,
       label: "Notifications",
-      path: "/dashboard/notifications",
+      path: "/dashboard/notification",
     },
     { icon: FaUserCog, label: "Settings", path: "/dashboard/profile" },
     {
@@ -196,8 +196,7 @@ const SidebarContent = ({ onClose }: SidebarContentProps) => {
           onClick={() => {
             handleLogout();
             onClose?.();
-          }}
-        >
+          }}>
           <Icon as={FaSignOutAlt} />
           <Text fontWeight="medium">Logout</Text>
         </HStack>
