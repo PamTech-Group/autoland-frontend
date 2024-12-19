@@ -1,5 +1,4 @@
 "use client";
-
 import {
   Box,
   Container,
@@ -20,7 +19,6 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
-  Divider,
   Icon,
 } from "@chakra-ui/react";
 import styled from "@emotion/styled";
@@ -30,14 +28,12 @@ import {
   FaBell,
   FaCarSide,
   FaCheck,
-  FaClock,
   FaCoins,
   FaEllipsisV,
   FaTools,
   FaTrash,
 } from "react-icons/fa";
-import { Image, Link } from "@chakra-ui/next-js";
-import logo from "@/app/assets/logo.webp";
+
 import Sidebar from "@/app/components/SideBar";
 import { useState } from "react";
 

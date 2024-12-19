@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import {
@@ -24,8 +23,7 @@ import {
 } from "@chakra-ui/react";
 import styled from "@emotion/styled";
 import { FaBars, FaCamera, FaEdit } from "react-icons/fa";
-import { Image, Link } from "@chakra-ui/next-js";
-import logo from "@/app/assets/logo.webp";
+
 import Sidebar from "@/app/components/SideBar";
 import { useRef, useState } from "react";
 
@@ -67,7 +65,7 @@ export default function ProfilePage() {
   } = useDisclosure();
 
   // Sample user data - replace with actual data
-  const [userData, setUserData] = useState({
+  const [userData] = useState({
     name: "John Doe",
     email: "john.doe@example.com",
     phone: "+234 801 234 5678",
@@ -103,7 +101,8 @@ export default function ProfilePage() {
         onClose={onDrawerClose}
         returnFocusOnClose={false}
         onOverlayClick={onDrawerClose}
-        size="xs">
+        size="xs"
+      >
         <DrawerOverlay />
         <DrawerContent bg="#1a1f37">
           <Sidebar onClose={onDrawerClose} />
@@ -117,7 +116,8 @@ export default function ProfilePage() {
             mb={8}
             justify="space-between"
             align="center"
-            display={{ base: "flex", lg: "none" }}>
+            display={{ base: "flex", lg: "none" }}
+          >
             <IconButton
               aria-label="Open menu"
               icon={<FaBars />}
@@ -134,7 +134,8 @@ export default function ProfilePage() {
                 direction={{ base: "column", md: "row" }}
                 align="center"
                 justify="space-between"
-                gap={6}>
+                gap={6}
+              >
                 <HStack spacing={6}>
                   <Box position="relative">
                     <Avatar
@@ -172,7 +173,8 @@ export default function ProfilePage() {
                   leftIcon={<FaEdit />}
                   colorScheme="blue"
                   variant="outline"
-                  onClick={() => setIsEditing(!isEditing)}>
+                  onClick={() => setIsEditing(!isEditing)}
+                >
                   {isEditing ? "Save Changes" : "Edit Profile"}
                 </Button>
               </Flex>

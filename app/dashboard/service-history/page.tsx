@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import {
@@ -18,17 +17,9 @@ import Sidebar from "@/app/components/SideBar";
 import ServiceHistory from "@/app/components/ServiceHistory";
 import styled from "@emotion/styled";
 import { FaBars } from "react-icons/fa6";
-import { Image, Link } from "@chakra-ui/next-js";
-import logo from "@/app/assets/logo.webp";
+
 import { ServiceRecord } from "@/app/utils/serviceRecords";
 
-const GlassCard = styled(Box)`
-  background: rgba(26, 31, 55, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 15px;
-  padding: 20px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-`;
 const MainContent = styled(Box)`
   background: #111322;
   min-height: 100vh;
@@ -183,7 +174,8 @@ export default function ServiceHistoryPage() {
         onClose={onDrawerClose}
         returnFocusOnClose={false}
         onOverlayClick={onDrawerClose}
-        size="xs">
+        size="xs"
+      >
         <DrawerOverlay />
         <DrawerContent bg="#1a1f37">
           <Sidebar onClose={onDrawerOpen} />
@@ -198,7 +190,8 @@ export default function ServiceHistoryPage() {
             mb={8}
             justify="space-between"
             align="center"
-            display={{ base: "flex", lg: "none" }}>
+            display={{ base: "flex", lg: "none" }}
+          >
             <IconButton
               aria-label="Open menu"
               icon={<FaBars />}

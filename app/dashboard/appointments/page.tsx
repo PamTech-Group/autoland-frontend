@@ -1,6 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
-
 import {
   Box,
   Container,
@@ -24,7 +22,6 @@ import {
   useDisclosure,
   IconButton,
 } from "@chakra-ui/react";
-import { motion } from "framer-motion";
 import styled from "@emotion/styled";
 import Sidebar from "@/app/components/SideBar";
 import { FaBars } from "react-icons/fa6";
@@ -111,7 +108,8 @@ export default function AppointmentPage() {
         onClose={onDrawerClose}
         returnFocusOnClose={false}
         onOverlayClick={onDrawerClose}
-        size="xs">
+        size="xs"
+      >
         <DrawerOverlay />
         <DrawerContent bg="#1a1f37">
           <Sidebar onClose={onDrawerClose} />
@@ -126,7 +124,8 @@ export default function AppointmentPage() {
             mb={8}
             justify="space-between"
             align="center"
-            display={{ base: "flex", lg: "none" }}>
+            display={{ base: "flex", lg: "none" }}
+          >
             <IconButton
               aria-label="Open menu"
               icon={<FaBars />}
@@ -157,12 +156,14 @@ export default function AppointmentPage() {
                 placeholder="Year"
                 bg="rgba(255,255,255,0.1)"
                 color="white"
-                borderRadius="10px">
+                borderRadius="10px"
+              >
                 {Array.from({ length: 16 }, (_, i) => 2010 + i).map((year) => (
                   <option
                     key={year}
                     value={year}
-                    style={{ background: "#333", color: "white" }}>
+                    style={{ background: "#333", color: "white" }}
+                  >
                     {year}
                   </option>
                 ))}
@@ -173,20 +174,24 @@ export default function AppointmentPage() {
                 placeholder="Workshop Centre"
                 bg="rgba(255,255,255,0.1)"
                 color="white"
-                borderRadius="10px">
+                borderRadius="10px"
+              >
                 <option
                   value="Owerri"
-                  style={{ background: "#333", color: "white" }}>
+                  style={{ background: "#333", color: "white" }}
+                >
                   Owerri
                 </option>
                 <option
                   value="Lagos"
-                  style={{ background: "#333", color: "white" }}>
+                  style={{ background: "#333", color: "white" }}
+                >
                   Lagos
                 </option>
                 <option
                   value="Abuja"
-                  style={{ background: "#333", color: "white" }}>
+                  style={{ background: "#333", color: "white" }}
+                >
                   Abuja
                 </option>
               </Select>
@@ -201,7 +206,8 @@ export default function AppointmentPage() {
                 colorScheme="blue"
                 onClick={handleBooking}
                 width="fit-content"
-                size="sm">
+                size="sm"
+              >
                 Book Appointment
               </Button>
             </Flex>
@@ -212,12 +218,14 @@ export default function AppointmentPage() {
             <TabList justifyContent="left">
               <Tab
                 color="blue.400"
-                _selected={{ color: "white", bg: "blue.500" }}>
+                _selected={{ color: "white", bg: "blue.500" }}
+              >
                 Upcoming
               </Tab>
               <Tab
                 color="blue.400"
-                _selected={{ color: "white", bg: "blue.500" }}>
+                _selected={{ color: "white", bg: "blue.500" }}
+              >
                 Past
               </Tab>
             </TabList>

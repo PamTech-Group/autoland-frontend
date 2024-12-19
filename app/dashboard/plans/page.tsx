@@ -1,7 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
 "use client";
-
 import {
   Box,
   Container,
@@ -12,11 +9,6 @@ import {
   Text,
   Flex,
   useToast,
-  Tabs,
-  TabList,
-  TabPanels,
-  Tab,
-  TabPanel,
   SimpleGrid,
   Select,
   Drawer,
@@ -25,12 +17,9 @@ import {
   useDisclosure,
   IconButton,
 } from "@chakra-ui/react";
-import { motion } from "framer-motion";
 import styled from "@emotion/styled";
 import Sidebar from "@/app/components/SideBar";
 import { FaBars } from "react-icons/fa6";
-import { Image, Link } from "@chakra-ui/next-js";
-import logo from "@/app/assets/logo.webp";
 
 const GlassCard = styled(Box)`
   background: linear-gradient(
@@ -116,7 +105,8 @@ export default function PlansPage() {
         onClose={onDrawerClose}
         returnFocusOnClose={false}
         onOverlayClick={onDrawerClose}
-        size="xs">
+        size="xs"
+      >
         <DrawerOverlay />
         <DrawerContent bg="#1a1f37">
           <Sidebar onClose={onDrawerClose} />
@@ -130,7 +120,8 @@ export default function PlansPage() {
             mb={8}
             justify="space-between"
             align="center"
-            display={{ base: "flex", lg: "none" }}>
+            display={{ base: "flex", lg: "none" }}
+          >
             <IconButton
               aria-label="Open menu"
               icon={<FaBars />}
@@ -198,7 +189,8 @@ export default function PlansPage() {
                       size="sm"
                       px={6}
                       borderRadius="30px"
-                      onClick={handleSubscribe}>
+                      onClick={handleSubscribe}
+                    >
                       Subscribe
                     </Button>
                   </GlassCard>
@@ -221,12 +213,14 @@ export default function PlansPage() {
                   <Select
                     placeholder="Select a Package"
                     bg="gray.700"
-                    color="white">
+                    color="white"
+                  >
                     {packages.map((pkg) => (
                       <option
                         key={pkg.name}
                         value={pkg.name}
-                        style={{ color: "white", background: "#111322" }}>
+                        style={{ color: "white", background: "#111322" }}
+                      >
                         {pkg.name}
                       </option>
                     ))}
@@ -234,7 +228,8 @@ export default function PlansPage() {
                   <Button
                     width="fit-content"
                     colorScheme="blue"
-                    onClick={handleSubscribe}>
+                    onClick={handleSubscribe}
+                  >
                     Submit
                   </Button>
                 </VStack>

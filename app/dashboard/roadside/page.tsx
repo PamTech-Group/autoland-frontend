@@ -1,5 +1,4 @@
 "use client";
-
 import {
   Box,
   Container,
@@ -15,13 +14,11 @@ import {
   Heading,
   Input,
   Button,
-  HStack,
 } from "@chakra-ui/react";
 import styled from "@emotion/styled";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaBars, FaCar, FaTools, FaWrench } from "react-icons/fa";
-import { Image, Link } from "@chakra-ui/next-js";
-import logo from "@/app/assets/logo.webp";
+
 import Sidebar from "@/app/components/SideBar";
 import { useEffect, useState } from "react";
 
@@ -128,7 +125,8 @@ export default function RoadsidePage() {
         onClose={onDrawerClose}
         returnFocusOnClose={false}
         onOverlayClick={onDrawerClose}
-        size="xs">
+        size="xs"
+      >
         <DrawerOverlay />
         <DrawerContent bg="#1a1f37">
           <Sidebar onClose={onDrawerClose} />
@@ -141,7 +139,8 @@ export default function RoadsidePage() {
           py={8}
           px={{ base: 4, lg: 12 }}
           position="relative"
-          overflow="unset">
+          overflow="unset"
+        >
           <AnimatePresence>
             {[...Array(5)].map((_, i) => (
               <FloatingIcon
@@ -161,7 +160,8 @@ export default function RoadsidePage() {
                   position: "absolute",
                   top: `${Math.random() * 100}%`,
                   left: `${Math.random() * 100}%`,
-                }}>
+                }}
+              >
                 {i % 2 === 0 ? (
                   <FaCar size={30} />
                 ) : i % 3 === 0 ? (
@@ -177,7 +177,8 @@ export default function RoadsidePage() {
             mb={8}
             justify="space-between"
             align="center"
-            display={{ base: "flex", lg: "none" }}>
+            display={{ base: "flex", lg: "none" }}
+          >
             <IconButton
               aria-label="Open menu"
               icon={<FaBars />}
@@ -190,12 +191,14 @@ export default function RoadsidePage() {
             <GlassCard
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}>
+              transition={{ duration: 0.5 }}
+            >
               <VStack spacing={6} textAlign="center" maxW="600px">
                 <Heading
                   size="md"
                   bgGradient="linear(to-r, blue.400, purple.400)"
-                  bgClip="text">
+                  bgClip="text"
+                >
                   Roadside Assistance
                 </Heading>
                 <Text fontSize="sm" color="gray.400">
@@ -206,7 +209,8 @@ export default function RoadsidePage() {
                   <CountdownBox>
                     <Text
                       fontSize={{ base: "md", lg: "2xl" }}
-                      fontWeight="bold">
+                      fontWeight="bold"
+                    >
                       {countdown.days}
                     </Text>
                     <Text color="gray.400">Days</Text>
@@ -214,7 +218,8 @@ export default function RoadsidePage() {
                   <CountdownBox>
                     <Text
                       fontSize={{ base: "md", lg: "2xl" }}
-                      fontWeight="bold">
+                      fontWeight="bold"
+                    >
                       {countdown.hours}
                     </Text>
                     <Text color="gray.400">Hours</Text>
@@ -222,7 +227,8 @@ export default function RoadsidePage() {
                   <CountdownBox>
                     <Text
                       fontSize={{ base: "md", lg: "2xl" }}
-                      fontWeight="bold">
+                      fontWeight="bold"
+                    >
                       {countdown.minutes}
                     </Text>
                     <Text color="gray.400">Minutes</Text>
@@ -230,7 +236,8 @@ export default function RoadsidePage() {
                   <CountdownBox>
                     <Text
                       fontSize={{ base: "md", lg: "2xl" }}
-                      fontWeight="bold">
+                      fontWeight="bold"
+                    >
                       {countdown.seconds}
                     </Text>
                     <Text color="gray.400">Seconds</Text>
@@ -263,7 +270,8 @@ export default function RoadsidePage() {
                           "linear-gradient(45deg, transparent 0%, rgba(255,255,255,0.2) 50%, transparent 100%)",
                         transform: "translateX(-100%)",
                         animation: "shine 3s infinite",
-                      }}>
+                      }}
+                    >
                       Notify Me
                     </Button>
                   </Flex>
@@ -280,7 +288,8 @@ export default function RoadsidePage() {
                 duration: 5,
                 repeat: Infinity,
                 repeatType: "reverse",
-              }}>
+              }}
+            >
               <FaCar size={120} color="rgba(66, 153, 225, 0.6)" />
             </motion.div>
           </VStack>

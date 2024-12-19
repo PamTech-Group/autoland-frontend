@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 
 import {
@@ -20,12 +19,9 @@ import {
   useDisclosure,
   IconButton,
 } from "@chakra-ui/react";
-import { motion } from "framer-motion";
 import styled from "@emotion/styled";
 import Sidebar from "@/app/components/SideBar";
 import { FaBars } from "react-icons/fa6";
-import { Image, Link } from "@chakra-ui/next-js";
-import logo from "@/app/assets/logo.webp";
 
 const GlassCard = styled(Box)`
   background: linear-gradient(

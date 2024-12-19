@@ -1,7 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-
 "use client";
-
 import {
   Box,
   Container,
@@ -32,16 +29,14 @@ import {
   DrawerOverlay,
   IconButton,
 } from "@chakra-ui/react";
-import { FaPlus, FaCar, FaCog, FaEdit, FaBars } from "react-icons/fa";
+import { FaPlus, FaCar, FaBars } from "react-icons/fa";
 import styled from "@emotion/styled";
 import Sidebar from "@/app/components/SideBar";
-import { Image, Link } from "@chakra-ui/next-js";
-import logo from "@/app/assets/logo.webp";
+
 import { useState } from "react";
 import MaintenanceProceduresList from "@/app/components/MaintenanceProcedures";
 import { EditIcon } from "@chakra-ui/icons";
 import { FaTrashCan } from "react-icons/fa6";
-import { small } from "framer-motion/client";
 
 const GlassCard = styled(Card)`
   background: rgba(26, 31, 55, 0.7);
@@ -99,134 +94,134 @@ interface CarDetails {
   maintenanceSchedule: MaintenanceSchedule[];
 }
 
-const maintenanceProcedures = [
-  {
-    id: "m3",
-    type: "Oil Change & Filter",
-    dueDate: "3,000 miles",
-    status: "Upcoming",
-  },
-  {
-    id: "m4",
-    type: "Wiper Blades (check)",
-    dueDate: "3,000 miles",
-    status: "Upcoming",
-  },
-  {
-    id: "m5",
-    type: "Tire Rotation",
-    dueDate: "6,000 miles",
-    status: "Upcoming",
-  },
-  {
-    id: "m6",
-    type: "Front + Rear Disc Brakes",
-    dueDate: "12,000 miles",
-    status: "Upcoming",
-  },
-  {
-    id: "m7",
-    type: "Rear Drum Adjustment",
-    dueDate: "12,000 miles",
-    status: "Upcoming",
-  },
-  {
-    id: "m8",
-    type: "Charging System Battery",
-    dueDate: "12,000 miles",
-    status: "Upcoming",
-  },
-  {
-    id: "m9",
-    type: "PVC Value (check)",
-    dueDate: "12,000 miles",
-    status: "Upcoming",
-  },
-  {
-    id: "m10",
-    type: "Fuel Filter",
-    dueDate: "15,000 miles",
-    status: "Upcoming",
-  },
-  {
-    id: "m11",
-    type: "Air Filter (check)",
-    dueDate: "15,000 miles",
-    status: "Upcoming",
-  },
-  {
-    id: "m12",
-    type: "Cabin Air Filter",
-    dueDate: "15,000 miles",
-    status: "Upcoming",
-  },
-  {
-    id: "m13",
-    type: "Wheel Alignment",
-    dueDate: "25,000 miles",
-    status: "Upcoming",
-  },
-  {
-    id: "m14",
-    type: "Air Conditioning Test",
-    dueDate: "25,000 miles",
-    status: "Upcoming",
-  },
-  {
-    id: "m15",
-    type: "Fuel Injection Service",
-    dueDate: "25,000 miles",
-    status: "Upcoming",
-  },
-  {
-    id: "m16",
-    type: "Transmission Service",
-    dueDate: "30,000 miles",
-    status: "Upcoming",
-  },
-  {
-    id: "m17",
-    type: "Cooling System Flush",
-    dueDate: "30,000 miles",
-    status: "Upcoming",
-  },
-  {
-    id: "m18",
-    type: "Brake Fluid Flush",
-    dueDate: "30,000 miles",
-    status: "Upcoming",
-  },
-  {
-    id: "m19",
-    type: "Axles/Rear Service",
-    dueDate: "40,000 miles",
-    status: "Upcoming",
-  },
-  {
-    id: "m20",
-    type: "Power Steering Flush",
-    dueDate: "50,000 miles",
-    status: "Upcoming",
-  },
-  {
-    id: "m21",
-    type: "Tune-Up",
-    dueDate: "50,000/70,000 miles",
-    status: "Upcoming",
-  },
-  {
-    id: "m22",
-    type: "Belt + Hoses (check)",
-    dueDate: "75,000 miles",
-    status: "Upcoming",
-  },
-  {
-    id: "m23",
-    type: "Timing Belt",
-    dueDate: "60,000/100,000 miles",
-    status: "Upcoming",
-  },
-];
+// const maintenanceProcedures = [
+//   {
+//     id: "m3",
+//     type: "Oil Change & Filter",
+//     dueDate: "3,000 miles",
+//     status: "Upcoming",
+//   },
+//   {
+//     id: "m4",
+//     type: "Wiper Blades (check)",
+//     dueDate: "3,000 miles",
+//     status: "Upcoming",
+//   },
+//   {
+//     id: "m5",
+//     type: "Tire Rotation",
+//     dueDate: "6,000 miles",
+//     status: "Upcoming",
+//   },
+//   {
+//     id: "m6",
+//     type: "Front + Rear Disc Brakes",
+//     dueDate: "12,000 miles",
+//     status: "Upcoming",
+//   },
+//   {
+//     id: "m7",
+//     type: "Rear Drum Adjustment",
+//     dueDate: "12,000 miles",
+//     status: "Upcoming",
+//   },
+//   {
+//     id: "m8",
+//     type: "Charging System Battery",
+//     dueDate: "12,000 miles",
+//     status: "Upcoming",
+//   },
+//   {
+//     id: "m9",
+//     type: "PVC Value (check)",
+//     dueDate: "12,000 miles",
+//     status: "Upcoming",
+//   },
+//   {
+//     id: "m10",
+//     type: "Fuel Filter",
+//     dueDate: "15,000 miles",
+//     status: "Upcoming",
+//   },
+//   {
+//     id: "m11",
+//     type: "Air Filter (check)",
+//     dueDate: "15,000 miles",
+//     status: "Upcoming",
+//   },
+//   {
+//     id: "m12",
+//     type: "Cabin Air Filter",
+//     dueDate: "15,000 miles",
+//     status: "Upcoming",
+//   },
+//   {
+//     id: "m13",
+//     type: "Wheel Alignment",
+//     dueDate: "25,000 miles",
+//     status: "Upcoming",
+//   },
+//   {
+//     id: "m14",
+//     type: "Air Conditioning Test",
+//     dueDate: "25,000 miles",
+//     status: "Upcoming",
+//   },
+//   {
+//     id: "m15",
+//     type: "Fuel Injection Service",
+//     dueDate: "25,000 miles",
+//     status: "Upcoming",
+//   },
+//   {
+//     id: "m16",
+//     type: "Transmission Service",
+//     dueDate: "30,000 miles",
+//     status: "Upcoming",
+//   },
+//   {
+//     id: "m17",
+//     type: "Cooling System Flush",
+//     dueDate: "30,000 miles",
+//     status: "Upcoming",
+//   },
+//   {
+//     id: "m18",
+//     type: "Brake Fluid Flush",
+//     dueDate: "30,000 miles",
+//     status: "Upcoming",
+//   },
+//   {
+//     id: "m19",
+//     type: "Axles/Rear Service",
+//     dueDate: "40,000 miles",
+//     status: "Upcoming",
+//   },
+//   {
+//     id: "m20",
+//     type: "Power Steering Flush",
+//     dueDate: "50,000 miles",
+//     status: "Upcoming",
+//   },
+//   {
+//     id: "m21",
+//     type: "Tune-Up",
+//     dueDate: "50,000/70,000 miles",
+//     status: "Upcoming",
+//   },
+//   {
+//     id: "m22",
+//     type: "Belt + Hoses (check)",
+//     dueDate: "75,000 miles",
+//     status: "Upcoming",
+//   },
+//   {
+//     id: "m23",
+//     type: "Timing Belt",
+//     dueDate: "60,000/100,000 miles",
+//     status: "Upcoming",
+//   },
+// ];
 
 // Enhanced sample data
 const sampleCars: CarDetails[] = [
@@ -280,7 +275,8 @@ const MaintenanceScheduleCard = ({
             align="center"
             p={3}
             bg="rgba(255, 255, 255, 0.05)"
-            borderRadius="md">
+            borderRadius="md"
+          >
             <VStack align="start" spacing={1}>
               <Text color="white">{schedule.type}</Text>
               <Text fontSize="sm" color="gray.400">
@@ -294,7 +290,8 @@ const MaintenanceScheduleCard = ({
                   : schedule.status === "Overdue"
                   ? "red"
                   : "yellow"
-              }>
+              }
+            >
               {schedule.status}
             </Badge>
           </Flex>
@@ -338,7 +335,8 @@ const CarDetailsCard = ({
                 }
                 px={3}
                 py={1}
-                borderRadius="full">
+                borderRadius="full"
+              >
                 {car.status}
               </Badge>
 
@@ -481,7 +479,8 @@ const AddCarModal = ({
                   color="white"
                   _hover={{
                     border: "1px solid rgba(255, 255, 255, 0.4)",
-                  }}>
+                  }}
+                >
                   <option value="toyota">Toyota</option>
                   <option value="honda">Honda</option>
                   <option value="ford">Ford</option>
@@ -727,7 +726,8 @@ export default function CarManagement() {
         onClose={onDrawerClose}
         returnFocusOnClose={false}
         onOverlayClick={onDrawerClose}
-        size="xs">
+        size="xs"
+      >
         <DrawerOverlay />
         <DrawerContent bg="#1a1f37">
           <Sidebar onClose={onDrawerClose} />
@@ -742,7 +742,8 @@ export default function CarManagement() {
             mb={8}
             justify="space-between"
             align="center"
-            display={{ base: "flex", lg: "none" }}>
+            display={{ base: "flex", lg: "none" }}
+          >
             <IconButton
               aria-label="Open menu"
               icon={<FaBars />}
@@ -765,7 +766,8 @@ export default function CarManagement() {
               leftIcon={<FaPlus />}
               colorScheme="blue"
               onClick={onModalOpen}
-              size="sm">
+              size="sm"
+            >
               Add Car
             </Button>
           </Flex>
@@ -781,7 +783,8 @@ export default function CarManagement() {
                   <Button
                     leftIcon={<FaPlus />}
                     colorScheme="blue"
-                    onClick={onModalOpen}>
+                    onClick={onModalOpen}
+                  >
                     Add Car
                   </Button>
                 </VStack>
