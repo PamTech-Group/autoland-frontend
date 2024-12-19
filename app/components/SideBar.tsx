@@ -32,6 +32,7 @@ const SidebarContainer = styled(Box)`
   background: #1a1f37;
   min-height: 100vh;
   overflow: scroll;
+  scrollbar-width: none;
   width: 250px;
   position: fixed;
   left: 0;
