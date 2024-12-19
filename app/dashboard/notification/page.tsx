@@ -37,6 +37,7 @@ import {
 import Sidebar from "@/app/components/SideBar";
 import { useState } from "react";
 
+// Styled components
 const MainContent = styled(Box)`
   background: #111322;
   min-height: 100vh;
@@ -79,6 +80,20 @@ const NotificationItem = styled(motion.div)`
   }
 `;
 
+// Types
+interface Notification {
+  id: number;
+  type: "payment" | "service" | "vehicle" | "default";
+  message: string;
+  time: string;
+  read: boolean;
+  date: string;
+}
+
+interface GroupedNotifications {
+  [key: string]: Notification[];
+}
+
 const getNotificationIcon = (type: string) => {
   switch (type) {
     case "payment":
@@ -100,8 +115,8 @@ export default function NotificationsPage() {
     onClose: onDrawerClose,
   } = useDisclosure();
 
-  const [filter, setFilter] = useState("all");
-  const [notifications, setNotifications] = useState([
+  const [filter, setFilter] = useState<"all" | "unread" | "read">("all");
+  const [notifications, setNotifications] = useState<Notification[]>([
     {
       id: 1,
       type: "payment",
@@ -126,7 +141,6 @@ export default function NotificationsPage() {
       read: true,
       date: "yesterday",
     },
-    // Add more notifications as needed
   ]);
 
   const handleMarkAsRead = (id: number) => {
@@ -152,17 +166,15 @@ export default function NotificationsPage() {
     return true;
   });
 
-  const groupedNotifications = filteredNotifications.reduce(
-    (groups: any, notif) => {
+  const groupedNotifications: GroupedNotifications =
+    filteredNotifications.reduce((groups, notif) => {
       const date = notif.date;
       if (!groups[date]) {
         groups[date] = [];
       }
       groups[date].push(notif);
       return groups;
-    },
-    {}
-  );
+    }, {} as GroupedNotifications);
 
   return (
     <Flex>
@@ -177,7 +189,8 @@ export default function NotificationsPage() {
         onClose={onDrawerClose}
         returnFocusOnClose={false}
         onOverlayClick={onDrawerClose}
-        size="xs">
+        size="xs"
+      >
         <DrawerOverlay />
         <DrawerContent bg="#1a1f37">
           <Sidebar onClose={onDrawerClose} />
@@ -186,12 +199,12 @@ export default function NotificationsPage() {
 
       <MainContent>
         <Container maxW="container.xl" py={8} px={{ base: 4, lg: 12 }}>
-          {/* Mobile Header */}
           <Flex
             mb={8}
             justify="space-between"
             align="center"
-            display={{ base: "flex", lg: "none" }}>
+            display={{ base: "flex", lg: "none" }}
+          >
             <IconButton
               aria-label="Open menu"
               icon={<FaBars />}
@@ -201,17 +214,18 @@ export default function NotificationsPage() {
             />
           </Flex>
 
-          {/* Notifications Header */}
           <GlassCard
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}>
+            transition={{ duration: 0.5 }}
+          >
             <Flex
               justify={{ base: "center", md: "space-between" }}
               wrap="wrap"
               align="center"
               gap={4}
-              mb={6}>
+              mb={6}
+            >
               <HStack spacing={4}>
                 <Heading size="sm">Notifications</Heading>
                 <Badge colorScheme="blue" rounded="full" px={3}>
@@ -235,97 +249,96 @@ export default function NotificationsPage() {
                   leftIcon={<FaTrash />}
                   variant="ghost"
                   size="sm"
-                  onClick={handleClearAll}>
+                  onClick={handleClearAll}
+                >
                   Clear All
                 </Button>
               </HStack>
             </Flex>
 
             <VStack spacing={6} align="stretch">
-              {Object.entries(groupedNotifications).map(
-                ([date, notifs]: [string, any]) => (
-                  <Box key={date}>
-                    <Text
-                      color="gray.400"
-                      fontSize="sm"
-                      textTransform="capitalize"
-                      mb={4}>
-                      {date}
-                    </Text>
-                    <VStack spacing={3} align="stretch">
-                      {notifs.map((notification: any) => (
-                        <NotificationItem
-                          key={notification.id}
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          exit={{ opacity: 0, x: 20 }}
-                          whileHover={{ x: 8 }}
-                          onClick={() => handleMarkAsRead(notification.id)}>
-                          <Flex justify="space-between" align="center">
-                            <HStack spacing={4}>
-                              <Icon
-                                as={getNotificationIcon(notification.type)}
-                                color={
-                                  notification.read ? "gray.500" : "blue.400"
-                                }
-                                boxSize={5}
+              {Object.entries(groupedNotifications).map(([date, notifs]) => (
+                <Box key={date}>
+                  <Text
+                    color="gray.400"
+                    fontSize="sm"
+                    textTransform="capitalize"
+                    mb={4}
+                  >
+                    {date}
+                  </Text>
+                  <VStack spacing={3} align="stretch">
+                    {notifs.map((notification) => (
+                      <NotificationItem
+                        key={notification.id}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: 20 }}
+                        whileHover={{ x: 8 }}
+                        onClick={() => handleMarkAsRead(notification.id)}
+                      >
+                        <Flex justify="space-between" align="center">
+                          <HStack spacing={4}>
+                            <Icon
+                              as={getNotificationIcon(notification.type)}
+                              color={
+                                notification.read ? "gray.500" : "blue.400"
+                              }
+                              boxSize={5}
+                            />
+                            <VStack align="start" spacing={1}>
+                              <Text
+                                fontSize="md"
+                                color={notification.read ? "gray.400" : "white"}
+                              >
+                                {notification.message}
+                              </Text>
+                              <Text fontSize="xs" color="gray.500">
+                                {notification.time}
+                              </Text>
+                            </VStack>
+                          </HStack>
+                          <HStack>
+                            {!notification.read && (
+                              <Badge colorScheme="blue" rounded="full" />
+                            )}
+                            <Menu>
+                              <MenuButton
+                                as={IconButton}
+                                icon={<FaEllipsisV />}
+                                variant="ghost"
+                                size="sm"
                               />
-                              <VStack align="start" spacing={1}>
-                                <Text
-                                  fontSize="md"
-                                  color={
-                                    notification.read ? "gray.400" : "white"
-                                  }>
-                                  {notification.message}
-                                </Text>
-                                <Text fontSize="xs" color="gray.500">
-                                  {notification.time}
-                                </Text>
-                              </VStack>
-                            </HStack>
-                            <HStack>
-                              {!notification.read && (
-                                <Badge colorScheme="blue" rounded="full" />
-                              )}
-                              <Menu>
-                                <MenuButton
-                                  as={IconButton}
-                                  icon={<FaEllipsisV />}
-                                  variant="ghost"
-                                  size="sm"
-                                />
-                                <MenuList bg="#1a1f37">
-                                  <MenuItem
-                                    icon={<FaCheck />}
-                                    onClick={(e) => {
-                                      e.stopPropagation();
-                                      handleMarkAsRead(notification.id);
-                                    }}>
-                                    Mark as read
-                                  </MenuItem>
-                                  <MenuItem icon={<FaTrash />}>Remove</MenuItem>
-                                </MenuList>
-                              </Menu>
-                            </HStack>
-                          </Flex>
-                        </NotificationItem>
-                      ))}
-                    </VStack>
-                  </Box>
-                )
-              )}
-
-              {notifications.length === 0 && (
-                <Flex
-                  direction="column"
-                  align="center"
-                  justify="center"
-                  py={10}
-                  color="gray.500">
-                  <Icon as={FaBell} boxSize={8} mb={4} />
-                  <Text>No notifications</Text>
-                </Flex>
-              )}
+                              <MenuList bg="#1a1f37">
+                                <MenuItem
+                                  icon={<FaCheck />}
+                                  onClick={() =>
+                                    handleMarkAsRead(notification.id)
+                                  }
+                                >
+                                  Mark as read
+                                </MenuItem>
+                                <MenuItem
+                                  icon={<FaTrash />}
+                                  onClick={() =>
+                                    setNotifications(
+                                      notifications.filter(
+                                        (n) => n.id !== notification.id
+                                      )
+                                    )
+                                  }
+                                >
+                                  Delete
+                                </MenuItem>
+                              </MenuList>
+                            </Menu>
+                          </HStack>
+                        </Flex>
+                      </NotificationItem>
+                    ))}
+                  </VStack>
+                </Box>
+              ))}
             </VStack>
           </GlassCard>
         </Container>

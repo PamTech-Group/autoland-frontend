@@ -34,10 +34,8 @@ import {
   FaFacebook,
   FaTwitter,
   FaInstagram,
-  FaComment,
 } from "react-icons/fa";
-import { Image, Link } from "@chakra-ui/next-js";
-import logo from "@/app/assets/logo.webp";
+
 import Sidebar from "@/app/components/SideBar";
 
 const MainContent = styled(Box)`
@@ -110,7 +108,8 @@ export default function SupportPage() {
         onClose={onDrawerClose}
         returnFocusOnClose={false}
         onOverlayClick={onDrawerClose}
-        size="xs">
+        size="xs"
+      >
         <DrawerOverlay />
         <DrawerContent bg="#1a1f37">
           <Sidebar onClose={onDrawerClose} />
@@ -124,7 +123,8 @@ export default function SupportPage() {
             mb={8}
             justify="space-between"
             align="center"
-            display={{ base: "flex", lg: "none" }}>
+            display={{ base: "flex", lg: "none" }}
+          >
             <IconButton
               aria-label="Open menu"
               icon={<FaBars />}
@@ -138,7 +138,7 @@ export default function SupportPage() {
           <VStack spacing={4} align="start" mb={12}>
             <Heading size="lg">Support Center</Heading>
             <Text color="gray.400">
-              We're here to help! Reach out to us through any of these channels.
+              {`  We're here to help! Reach out to us through any of these channels.`}
             </Text>
           </VStack>
 
@@ -188,11 +188,13 @@ export default function SupportPage() {
           <GlassCard
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}>
+            transition={{ duration: 0.5 }}
+          >
             <Flex
               direction={{ base: "column", lg: "row" }}
               align="start"
-              gap={8}>
+              gap={8}
+            >
               <Box flex={1}>
                 <Heading size="md" mb={4}>
                   Visit Our Office
@@ -217,14 +219,16 @@ export default function SupportPage() {
                 bg="whiteAlpha.100"
                 rounded="lg"
                 position="relative"
-                overflow="hidden">
+                overflow="hidden"
+              >
                 {/* Add your map component here */}
                 <Text
                   position="absolute"
                   top="50%"
                   left="50%"
                   transform="translate(-50%, -50%)"
-                  color="gray.500">
+                  color="gray.500"
+                >
                   Map View
                 </Text>
               </Box>
@@ -236,7 +240,8 @@ export default function SupportPage() {
             <GlassCard
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}>
+              transition={{ duration: 0.5 }}
+            >
               <Heading size="md" mb={6}>
                 Send us a Message
               </Heading>
