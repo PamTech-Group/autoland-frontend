@@ -141,7 +141,7 @@ export default function RoadsidePage() {
           py={8}
           px={{ base: 4, lg: 12 }}
           position="relative"
-          overflow="scroll">
+          overflow="unset">
           <AnimatePresence>
             {[...Array(5)].map((_, i) => (
               <FloatingIcon
