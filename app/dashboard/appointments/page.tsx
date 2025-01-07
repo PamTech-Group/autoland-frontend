@@ -168,7 +168,7 @@ export default function AppointmentPage() {
                   </option>
                 ))}
               </Select>
-              <InputField placeholder="Engine Type" />
+              <InputField type="date" placeholder="Select Date" />
               <InputField placeholder="City" />
               <Select
                 placeholder="Workshop Centre"
