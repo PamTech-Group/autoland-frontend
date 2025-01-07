@@ -30,7 +30,7 @@ import { usePathname, useRouter } from "next/navigation";
 
 const SidebarContainer = styled(Box)`
   background: #1a1f37;
-  max-height: 100svh;
+  height: 100svh;
   overflow-y: scroll;
   scrollbar-width: none;
   width: 250px;
