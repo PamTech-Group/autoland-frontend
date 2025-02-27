@@ -46,16 +46,14 @@ function NavWhite() {
         md: "1rem 4rem",
         lg: "1rem 6rem",
         dxl: "1rem 8rem",
-      }}
-    >
+      }}>
       <Flex
         h={{
           base: 10,
           md: 16,
         }}
         alignItems={"center"}
-        justifyContent={"space-between"}
-      >
+        justifyContent={"space-between"}>
         {/* Logo */}
         <Box>
           <Link href="/">
@@ -73,49 +71,48 @@ function NavWhite() {
           padding=".7rem 1.5rem"
           borderRadius="lg"
           bgColor="rgba(243, 243, 243, 0.75)"
-          fontSize="md"
-        >
+          fontSize="md">
           <Link
+            _hover={{ color: "#FF0000" }}
             style={{ textDecoration: "none" }}
-            fontSize="md"
+            fontSize="sm"
             fontWeight={400}
-            href="/about"
-          >
+            href="/about">
             About Us
           </Link>
 
           <Link
+            _hover={{ color: "#FF0000" }}
             style={{ textDecoration: "none" }}
-            fontSize="md"
+            fontSize="sm"
             fontWeight={400}
-            href="/services"
-          >
+            href="/services">
             Services
           </Link>
 
           <Link
+            _hover={{ color: "#FF0000" }}
             style={{ textDecoration: "none" }}
-            fontSize="md"
+            fontSize="sm"
             fontWeight={400}
-            href="/autoclub"
-          >
+            href="/autoclub">
             Autoclub
           </Link>
 
           <Link
+            _hover={{ color: "#FF0000" }}
             style={{ textDecoration: "none" }}
-            fontSize="md"
+            fontSize="sm"
             fontWeight={400}
-            href="/autolander"
-          >
+            href="/autolander">
             Showroom
           </Link>
           <Link
+            _hover={{ color: "#FF0000" }}
             style={{ textDecoration: "none" }}
-            fontSize="md"
+            fontSize="sm"
             fontWeight={400}
-            href="/booking"
-          >
+            href="/booking">
             Book us
           </Link>
         </Flex>
@@ -149,8 +146,7 @@ function NavWhite() {
             }}
             _active={{
               bgColor: "#F0F8FF",
-            }}
-          >
+            }}>
             Get Quote
           </Button>
           <Button
@@ -165,8 +161,7 @@ function NavWhite() {
             }}
             _active={{
               bgColor: "#bf1e1d",
-            }}
-          >
+            }}>
             Login
           </Button>
         </HStack>
@@ -175,8 +170,7 @@ function NavWhite() {
         <Drawer
           isOpen={isMobileMenuOpen}
           placement="right"
-          onClose={onMobileMenuClose}
-        >
+          onClose={onMobileMenuClose}>
           <DrawerOverlay />
           <DrawerContent bgColor="primaryBlue" color="white">
             <DrawerCloseButton />
@@ -186,51 +180,44 @@ function NavWhite() {
                 <Link
                   style={{ textDecoration: "none" }}
                   href="/about"
-                  onClick={onMobileMenuClose}
-                >
+                  onClick={onMobileMenuClose}>
                   About Us
                 </Link>
 
                 <Link
                   style={{ textDecoration: "none" }}
                   href="/services"
-                  onClick={onMobileMenuClose}
-                >
+                  onClick={onMobileMenuClose}>
                   Our Services
                 </Link>
                 <Link
                   style={{ textDecoration: "none" }}
                   href="/autoclub"
-                  onClick={onMobileMenuClose}
-                >
+                  onClick={onMobileMenuClose}>
                   Join Autoclub
                 </Link>
                 <Link
                   style={{ textDecoration: "none" }}
                   href="/autolander"
-                  onClick={onMobileMenuClose}
-                >
+                  onClick={onMobileMenuClose}>
                   Showroom
                 </Link>
                 <Link
                   style={{ textDecoration: "none" }}
                   href="/booking"
-                  onClick={onMobileMenuClose}
-                >
+                  onClick={onMobileMenuClose}>
                   Book us
                 </Link>
                 <Link
                   style={{ textDecoration: "none" }}
                   href="/quote"
-                  onClick={onMobileMenuClose}
-                >
+                  onClick={onMobileMenuClose}>
                   Get Quote
                 </Link>
                 <Link
                   style={{ textDecoration: "none" }}
                   href="/login"
-                  onClick={onMobileMenuClose}
-                >
+                  onClick={onMobileMenuClose}>
                   Login
                 </Link>
               </VStack>

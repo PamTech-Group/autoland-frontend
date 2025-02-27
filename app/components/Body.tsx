@@ -128,8 +128,7 @@ function Body() {
         lg: "1rem 6rem",
         dxl: "1rem 8rem",
       }}
-      justifyContent="center"
-    >
+      justifyContent="center">
       <Flex
         zIndex={50}
         justifyContent="center"
@@ -142,8 +141,7 @@ function Body() {
           base: "0 auto 0 auto",
           xl: "-2rem auto 0 auto ",
           dxl: "-1rem auto 0 auto ",
-        }}
-      >
+        }}>
         <Flex alignItems="center" gap={2}>
           <Icon as={FaUsers} boxSize={{ base: 5, md: 8 }} mb={2} />
           <Text fontWeight={400}>Qualified Professionals</Text>
@@ -174,16 +172,14 @@ function Body() {
             base: 9,
             md: 6,
           }}
-          color="primaryBlue"
-        >
+          color="primaryBlue">
           Our Services
         </Heading>
         <SimpleGrid
           placeItems="center"
           columns={{ base: 1, md: 2, myxl: 3 }}
           gap={6}
-          rowGap={12}
-        >
+          rowGap={12}>
           {services.map((service, index) => (
             <Flex
               as="a"
@@ -191,12 +187,11 @@ function Body() {
               flexDirection="column"
               key={index}
               bg="white"
-              width="fit-content"
+              width="300px"
               borderRadius="md"
               overflow="hidden"
               boxShadow="md"
-              maxHeight="27rem"
-            >
+              height="400px">
               <Box width="100%">
                 <Image
                   src={service.image}
@@ -220,8 +215,7 @@ function Body() {
         mx="auto"
         width="100%"
         maxWidth="80.25em"
-        textAlign="center"
-      >
+        textAlign="center">
         <Heading as="h2" size="lg" mb="2.5rem" color="primaryBlue">
           How We Work
         </Heading>
@@ -229,8 +223,7 @@ function Body() {
         <SimpleGrid
           columns={{ base: 1, md: 4 }}
           spacing={8}
-          position="relative"
-        >
+          position="relative">
           {/* Step 1: Book */}
           <Flex direction="column" align="center">
             <Icon
@@ -330,16 +323,14 @@ function Body() {
         padding={{ base: "3rem 1rem", lg: "4rem 2rem", xl: "6rem 3rem" }}
         mx="auto"
         width="100%"
-        maxWidth="80.25em"
-      >
+        maxWidth="80.25em">
         <Box>
           <Heading
             as="h2"
             size="md"
             mb="2.5rem"
             textAlign="left"
-            color="primaryBlue"
-          >
+            color="primaryBlue">
             Car Make We Service
           </Heading>
 
@@ -351,8 +342,7 @@ function Body() {
             mb={6}
             gap={{ base: "1rem%", lg: "2rem" }}
             bgColor="rgba(0, 32, 79, 0.05)"
-            flexWrap={{ base: "wrap", md: "nowrap" }}
-          >
+            flexWrap={{ base: "wrap", md: "nowrap" }}>
             <Button
               size={{ base: "sm", xl: "md" }}
               color={selectedCountry === "japanese" ? "white" : "text"}
@@ -362,8 +352,7 @@ function Body() {
               }
               _active={{ bgColor: "primaryBlue", color: "white" }}
               _hover={{ bgColor: "primaryBlue", color: "white" }}
-              _focus={{ color: "white" }}
-            >
+              _focus={{ color: "white" }}>
               JAPANESE
             </Button>
             <Button
@@ -372,8 +361,7 @@ function Body() {
               bgColor={
                 selectedCountry === "american" ? "primaryBlue" : "transparent"
               }
-              _hover={{ bgColor: "primaryBlue", color: "white" }}
-            >
+              _hover={{ bgColor: "primaryBlue", color: "white" }}>
               AMERICAN
             </Button>
             <Button
@@ -382,8 +370,7 @@ function Body() {
               bgColor={
                 selectedCountry === "german" ? "primaryBlue" : "transparent"
               }
-              _hover={{ bgColor: "primaryBlue", color: "white" }}
-            >
+              _hover={{ bgColor: "primaryBlue", color: "white" }}>
               GERMAN
             </Button>
           </Flex>
@@ -398,8 +385,7 @@ function Body() {
             }}
             gap={6}
             placeItems="center"
-            justifyContent="center"
-          >
+            justifyContent="center">
             {carBrands[selectedCountry as CountryKey].map((brand, index) => (
               <Image
                 key={index}
@@ -426,22 +412,19 @@ function Body() {
             base: 9,
             md: 6,
           }}
-          color="primaryBlue"
-        >
+          color="primaryBlue">
           Why Choose Us
         </Heading>
         <Flex
           flexDirection={{ base: "column", lg: "row" }}
           gap={{ base: "2rem", lg: "0" }}
           justifyContent="space-between"
-          alignItems="center"
-        >
+          alignItems="center">
           <Box>
             <SimpleGrid
               columns={{ base: 1, md: 2 }}
               rowGap={8}
-              textColor="text"
-            >
+              textColor="text">
               <Flex alignItems="center" gap={2}>
                 <Icon
                   bgColor="primaryBlue"
@@ -518,16 +501,14 @@ function Body() {
           mb={{
             base: 12,
             md: 10,
-          }}
-        >
+          }}>
           Our Partners & Clients
         </Heading>
         <Flex
           justifyContent="center"
           gap="2.5rem"
           flexWrap="wrap"
-          alignItems="center"
-        >
+          alignItems="center">
           <Image
             src={partner1}
             alt="partner1"
@@ -568,8 +549,7 @@ function Body() {
         <SimpleGrid
           columns={{ base: 1, md: 2, xl: 3 }}
           spacing={10}
-          justifyContent="center"
-        >
+          justifyContent="center">
           {loadingTestimonials && <Skeleton height="250px" width="100%" />}
           {testimonials.map((videoId, index) => (
             <YouTube
@@ -590,8 +570,7 @@ function Body() {
           placeItems="center"
           columns={{ base: 1, md: 2, xl: 3 }}
           spacing={10}
-          justifyContent="center"
-        >
+          justifyContent="center">
           {loadingCarTips && <Skeleton height="250px" width="100%" />}
           {carTips.map((videoId, index) => (
             <YouTube
